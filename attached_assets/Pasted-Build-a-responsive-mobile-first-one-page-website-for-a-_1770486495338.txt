@@ -1,0 +1,91 @@
+Build a responsive, mobile-first one-page website for a startup called Jijé.
+
+Purpose:
+Create a clear, culturally grounded landing page that introduces Jijé as a marketplace for African food, vendors, and cultural experiences, and drives waitlist sign-ups ahead of launch.
+
+Target audience:
+African immigrants, diaspora communities, early users, vendors, event organizers, and partners.
+
+Tone:
+Warm, confident, culturally authentic, and modern. Avoid fintech language, hype, or technical jargon.
+
+Brand direction:
+- Primary color: deep green (earthy and cultural)
+- Secondary colors: off-white and neutral gray
+- Typography: modern rounded sans-serif (similar to Quicksand)
+- Layout: clean, minimal, generous white space
+- Avoid stock photos of people; use illustrations, food imagery, icons, or abstract cultural visuals
+
+Page structure and content:
+
+SECTION 1: Hero
+- Headline: “Culture, Delivered.”
+- Subheadline: “Discover African food, trusted vendors, and cultural events in your city.”
+- Supporting text: “Jijé connects communities to the food and experiences that feel like home.”
+- Primary CTA button: “Join the Waitlist”
+- Secondary CTA link: “Explore What’s Coming”
+- Visual: subtle cultural illustration or food-focused graphic
+
+SECTION 2: The Problem
+- Title: “Finding Home Isn’t Easy.”
+- Bullet points:
+  • Authentic African food is hard to find
+  • Great vendors rely on social media and word of mouth
+  • Cultural events are scattered and hard to discover
+- Simple icons representing food, vendors, and community
+
+SECTION 3: The Solution
+- Title: “One Place for Culture and Community.”
+- Three feature cards:
+  1. Food & Groceries — “Shop from trusted African food vendors near you”
+  2. Cultural Discovery — “Explore weekly food themes, stories, and traditions”
+  3. Events & Concerts — “Find cultural events and concerts happening in your city”
+- Minimal iconography or illustrations
+
+SECTION 4: How It Works
+- Title: “How Jijé Works”
+- Step 1: “Browse African food vendors and cultural experiences”
+- Step 2: “Order food or discover events near you”
+- Step 3: “Enjoy culture — delivered or experienced live”
+- Simple step-based layout
+
+SECTION 5: Culture & Events Spotlight
+- Title: “More Than Food — It’s Culture”
+- Content:
+  • Weekly culture spotlights (e.g., Ghana Week)
+  • Featured vendors and signature dishes
+  • Local cultural events and concerts
+  • Discover food near events and events through food
+- Carousel or card-style layout
+
+SECTION 6: Early Stage / Pilot
+- Title: “Launching City by City”
+- Content:
+  • Jijé is currently pre-MVP
+  • Preparing for pilot launches in select cities
+  • Focused on quality vendors and authentic experiences
+- Simple roadmap or timeline visual
+
+SECTION 7: Who It’s For
+- Title: “Built for the Community”
+- Bullet groups:
+  • Customers — discover food and culture
+  • Vendors — reach customers beyond social media
+  • Event organizers — promote cultural experiences
+- Simple icons for each group
+
+SECTION 8: Final CTA
+- Headline: “Be First When Jijé Launches”
+- Supporting text: “Join the waitlist to get early access when we launch in your city.”
+- Primary CTA button: “Join the Waitlist”
+- Secondary CTA link: “Partner With Us”
+
+Footer:
+- Minimal footer with brand name only
+- Optional text: “Built with community at the center.”
+
+Functional requirements:
+- All CTAs open a simple email waitlist form
+- Smooth scrolling between sections
+- Accessible contrast and readable font sizes
+- Mobile-first design, optimized for desktop
