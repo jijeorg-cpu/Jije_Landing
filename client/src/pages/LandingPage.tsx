@@ -46,10 +46,7 @@ function HeroSection() {
             </span>
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
-            The marketplace for authentic African food, groceries, and cultural events. 
-            Connect with home, wherever you are.
-          </p>
+          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">The marketplace for authentic African & Afro-Carribean food, groceries, and cultural events. Connect with home, wherever you are.</p>
 
           <WaitlistForm />
         </motion.div>
