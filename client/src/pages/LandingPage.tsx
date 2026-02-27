@@ -41,7 +41,7 @@ function HeroSection() {
           
           <h1 className="text-5xl md:text-7xl font-display font-extrabold text-primary leading-[1.1] mb-6 tracking-tight">
             Culture. Commerce. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600 text-justify">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600 text-center">
               Community.
             </span>
           </h1>
