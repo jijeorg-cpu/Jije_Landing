@@ -24,7 +24,6 @@ function HeroSection() {
       {/* Abstract Background Shapes */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
-
       <div className="container mx-auto px-4 md:px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -41,9 +40,9 @@ function HeroSection() {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-display font-extrabold text-primary leading-[1.1] mb-6 tracking-tight">
-            Culture, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600">
-              Delivered.
+            Culture. Commerce. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600 text-center">
+              Community.
             </span>
           </h1>
           
