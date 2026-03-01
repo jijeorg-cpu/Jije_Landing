@@ -1,24 +1,15 @@
 import { motion } from "framer-motion";
 
 interface SectionHeadingProps {
-  label: string;
+  label?: string;
   title: string;
   description?: string;
   centered?: boolean;
 }
 
-export function SectionHeading({ label, title, description, centered = true }: SectionHeadingProps) {
+export function SectionHeading({ title, description, centered = true }: SectionHeadingProps) {
   return (
     <div className={`mb-12 md:mb-16 ${centered ? "text-center" : "text-left"}`}>
-      <motion.span
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wide uppercase mb-4"
-      >
-        {label}
-      </motion.span>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
