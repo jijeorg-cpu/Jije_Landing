@@ -8,8 +8,7 @@ import {
   Calendar, 
   ShoppingBag, 
   ChefHat, 
-  Users, 
-  Globe
+  Users
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
@@ -109,54 +108,6 @@ function HeroSection() {
   );
 }
 
-function ProblemSection() {
-  return (
-    <section id="problem" className="py-24 bg-white relative">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <SectionHeading
-            label="The Problem"
-            title="Finding Home Isn't Easy"
-            description="Scattered WhatsApp groups. Overpriced imports. Events you only hear about after they happen. The diaspora experience shouldn't be this fragmented."
-          />
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              icon: <Globe className="w-8 h-8 text-red-500" />,
-              title: "Scattered Sources",
-              desc: "You have to visit 5 different shops just to find the right ingredients for one meal."
-            },
-            {
-              icon: <Users className="w-8 h-8 text-orange-500" />,
-              title: "Disconnected Community",
-              desc: "Missing out on cultural festivals and gatherings because there's no central hub."
-            },
-            {
-              icon: <ShoppingBag className="w-8 h-8 text-primary" />,
-              title: "Inconsistent Access",
-              desc: "Relying on suitcases from home to get the authentic products you love."
-            }
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-3xl bg-secondary/30 border border-secondary hover:border-primary/20 transition-all duration-300"
-            >
-              <div className="mb-6 p-4 bg-white rounded-2xl w-fit shadow-sm">{item.icon}</div>
-              <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function SolutionSection() {
   return (
@@ -369,7 +320,6 @@ export function LandingPage() {
     <main className="min-h-screen font-sans bg-background text-foreground selection:bg-primary/20">
       <Navbar />
       <HeroSection />
-      <ProblemSection />
       <SolutionSection />
       <HowItWorksSection />
       <AudienceSection />

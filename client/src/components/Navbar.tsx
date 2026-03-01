@@ -58,9 +58,7 @@ export function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <Link to="join" smooth={true} duration={500}>
-            <Button className="rounded-full px-6 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all">
-              Get Early Access
-            </Button>
+            <Button className="rounded-full px-6 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all">Partner With Us</Button>
           </Link>
         </div>
 
@@ -72,7 +70,6 @@ export function Navbar() {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border p-4 shadow-xl flex flex-col gap-4 animate-in slide-in-from-top-5">
