@@ -9,8 +9,6 @@ import {
   ShoppingBag, 
   ChefHat, 
   Users, 
-  ArrowRight,
-  Sparkles,
   Globe
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -277,66 +275,6 @@ function HowItWorksSection() {
   );
 }
 
-function SpotlightSection() {
-  return (
-    <section id="spotlight" className="py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          <div className="lg:w-1/2">
-            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
-              {/* Unsplash: Art/Fashion */}
-              {/* <!-- https://unsplash.com/photos/woman-wearing-multicolored-dress-holding-brown-handbag-L0yK3w2T9Bw --> */}
-              <img 
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop" 
-                alt="Cultural Fashion and Art" 
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg max-w-xs">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="text-yellow-500" size={18} />
-                  <span className="font-bold text-sm">More Than Food</span>
-                </div>
-                <p className="text-xs text-muted-foreground">Discover fashion, art, and music that celebrates heritage.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="lg:w-1/2">
-            <SectionHeading
-              label="Culture Spotlight"
-              title="A Platform for Creators"
-              description=""
-              centered={false}
-            />
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Jijé isn't just a delivery app. It's a stage for the chefs, artists, and organizers who keep our culture alive. 
-              We're building a digital home where creators can thrive and the community can discover the next big thing.
-            </p>
-            
-            <ul className="space-y-4 mb-10">
-              {[
-                "Promote your events to a targeted audience",
-                "Sell products to people looking for authenticity",
-                "Build a following that values your craft"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <div className="bg-green-100 p-1 rounded-full text-primary">
-                    <ArrowRight size={14} strokeWidth={3} />
-                  </div>
-                  <span className="font-medium text-foreground">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Button variant="outline" className="rounded-full px-8 h-12 text-primary border-primary hover:bg-primary/5">
-              Learn about selling on Jijé
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function AudienceSection() {
   return (
@@ -434,7 +372,6 @@ export function LandingPage() {
       <ProblemSection />
       <SolutionSection />
       <HowItWorksSection />
-      <SpotlightSection />
       <AudienceSection />
       <FinalCTA />
     </main>
