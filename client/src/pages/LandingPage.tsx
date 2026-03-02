@@ -236,7 +236,7 @@ function FinalCTA() {
             <MapPin className="w-8 h-8 text-white" />
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Be First When Jíjé Launches</h2>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Be First to Experience Jíjé</h2>
           <p className="text-xl text-primary-foreground/90 mb-10">We're launching city by city. Join the waitlist to bring Jíjé to your area and get exclusive early access perks.</p>
 
           <div className="bg-white p-2 rounded-[2rem] shadow-2xl">
