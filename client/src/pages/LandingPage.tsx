@@ -17,7 +17,7 @@ import { Link } from "react-scroll";
 
 function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-[#F9F7F2]">
+    <section  className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-[#F9F7F2]">
       {/* Abstract Background Shapes */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
@@ -56,7 +56,7 @@ function HeroSection() {
 
 function SolutionSection() {
   return (
-    <section className="py-24 bg-[#F9F7F2]">
+    <section id= "mission" className="py-24 bg-[#F9F7F2]">
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading
           label="The Solution"
@@ -72,13 +72,15 @@ function SolutionSection() {
           >
             {/* Unsplash: Jollof rice */}
             {/* <!-- https://unsplash.com/photos/top-view-delicious-food-table-xMh_ww8k6yo --> */}
-            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                 style={{ backgroundImage: `url('https://images.unsplash.com/photo-1519708227418-c8fd9a3a2720?q=80&w=1974&auto=format&fit=crop')` }} />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105" 
+              style={{ backgroundImage: `url('/attached_assets/jije_jollof.JPEG')` }} />
+            <div 
+              className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-  transparent"
+              />
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <Utensils className="mb-4 h-8 w-8 text-accent" />
               <h3 className="text-2xl font-bold mb-2 text-[#008431]">Authentic Food</h3>
-              <p className="text-white/80">Order meals from top rated African chefs and restaurants near you.</p>
+              <p className="text-white/80">Order meals from top rated African and Afro-Caribbean culinary services and restaurants near you.</p>
             </div>
           </motion.div>
 
@@ -123,10 +125,12 @@ function SolutionSection() {
 
 function HowItWorksSection() {
   const steps = [
-    { num: "01", title: "Browse", desc: "Explore curated menus, grocery lists, and event calendars tailored to your culture." },
+    { num: "01", title: "Browse", desc: "Explore curated menus, grocery lists, catering/chef services and event calendars tailored to your culture." },
     { num: "02", title: "Order / Book", desc: "Seamlessly purchase meals, groceries, or tickets in just a few taps." },
     { num: "03", title: "Experience", desc: "Enjoy authentic delivery or head out to connect with your community." }
   ];
+
+  
 
   return (
     <section id="how-it-works" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
@@ -153,7 +157,7 @@ function HowItWorksSection() {
               <div className="text-8xl font-display font-black text-white/10 absolute -top-12 left-1/2 -translate-x-1/2 z-0">
                 {step.num}
               </div>
-              <div className="relative z-10">
+              <div className="relative z-10 mt-8">
                 <h3 className="text-2xl font-bold mb-4 bg-[transparent] text-[#008431]">{step.title}</h3>
                 <p className="text-primary-foreground/80 leading-relaxed text-lg">{step.desc}</p>
               </div>
@@ -173,7 +177,7 @@ function HowItWorksSection() {
 
 function AudienceSection() {
   return (
-    <section className="py-24 bg-[#F9F7F2]">
+    <section id="spotlight" className="py-24 bg-[#F9F7F2]">
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading
           label="Who It's For"

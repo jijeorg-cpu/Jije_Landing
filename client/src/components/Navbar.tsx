@@ -16,7 +16,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Our Mission", to: "problem" },
+    { name: "Our Mission", to: "mission" },
     { name: "How It Works", to: "how-it-works" },
     { name: "Community", to: "spotlight" },
   ];
@@ -31,10 +31,15 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
-          <div className="bg-primary text-white p-2 rounded-lg">
-            <UtensilsCrossed size={24} />
-          </div>
+        <div
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <img
+            src="/jije_logo_reversed.png"
+            alt="Jijé logo"
+            className="h-8 w-auto object-contain"
+          />
           <span className="text-2xl font-bold font-display text-primary tracking-tight">
             Jijé
           </span>

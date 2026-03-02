@@ -25,7 +25,7 @@ export function SectionHeading({ title, description, centered = true }: SectionH
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className={`text-muted-foreground text-lg md:text-xl max-w-2xl leading-relaxed ${
+          className={`text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed ${
             centered ? "mx-auto" : ""
           }`}
         >
