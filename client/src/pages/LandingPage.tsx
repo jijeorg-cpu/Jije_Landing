@@ -43,7 +43,7 @@ function HeroSection() {
             </span>
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">We're building Jíjé; a culturally powered marketplace for African and Afro-Caribbean meals, groceries and cultural events.</p>
+          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">We're building Jíjé; a culturally powered marketplace connecting communities to African and Afro-Caribbean meals, groceries, culinary services and events.</p>
 
           <WaitlistForm />
         </motion.div>
