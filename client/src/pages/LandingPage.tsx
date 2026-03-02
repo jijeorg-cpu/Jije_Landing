@@ -58,13 +58,6 @@ function HeroSection() {
           <div className="relative w-full aspect-square max-w-[600px] mx-auto">
             {/* Main Image */}
             <div className="absolute inset-0 bg-gray-200 rounded-[2rem] overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 ease-out z-10">
-              {/* Unsplash: African food feast */}
-              {/* <!-- https://unsplash.com/photos/a-table-topped-with-plates-of-food-and-bowls-of-food-V8kR70-p8r8 --> */}
-              <img 
-                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop" 
-                alt="Delicious Jollof Rice and Plantains" 
-                className="w-full h-full object-cover"
-              />
               <div className="absolute bottom-8 left-8 text-white">
                 <p className="font-bold text-lg">Authentic Flavors</p>
                 <p className="text-sm opacity-90">From local chefs to your table</p>
