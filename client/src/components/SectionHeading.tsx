@@ -15,7 +15,7 @@ export function SectionHeading({ title, description, centered = true }: SectionH
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4 leading-tight"
+        className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight text-[#008431]"
       >
         {title}
       </motion.h2>
