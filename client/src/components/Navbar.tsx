@@ -58,7 +58,7 @@ export function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <Link to="join" smooth={true} duration={500}>
-            <Button className="rounded-full px-6 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all">Partner With Us</Button>
+            <Button className="rounded-full px-6 font-semibold hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all bg-[#008431]">Partner With Us</Button>
           </Link>
         </div>
 
