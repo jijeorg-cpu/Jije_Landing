@@ -211,7 +211,7 @@ function AudienceSection() {
                 <div className="p-2 bg-primary/10 rounded-lg">{card.icon}</div>
                 <span className="font-semibold text-sm uppercase tracking-wide opacity-70">{card.role}</span>
               </div>
-              <h3 className="text-2xl font-bold mb-3">{card.title}</h3>
+              <h3 className="text-2xl font-bold mb-3 text-[#008431]">{card.title}</h3>
               <p className="text-muted-foreground">{card.desc}</p>
             </motion.div>
           ))}
