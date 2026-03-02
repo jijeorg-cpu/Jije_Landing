@@ -56,21 +56,6 @@ function HeroSection() {
         >
           {/* Hero Image / Collage Placeholder */}
           <div className="relative w-full aspect-square max-w-[600px] mx-auto">
-            {/* Floating Card 1 */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -top-6 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 flex items-center gap-3 max-w-[200px]"
-            >
-              <div className="bg-orange-100 p-2 rounded-lg text-orange-600">
-                <ShoppingBag size={20} />
-              </div>
-              <div>
-                <p className="font-bold text-sm text-foreground">Hard-to-find</p>
-                <p className="text-xs text-muted-foreground">Groceries & Spices</p>
-              </div>
-            </motion.div>
-
             {/* Floating Card 2 */}
             <motion.div 
               animate={{ y: [0, 10, 0] }}
