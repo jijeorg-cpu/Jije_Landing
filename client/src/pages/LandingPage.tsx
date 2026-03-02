@@ -56,14 +56,6 @@ function HeroSection() {
         >
           {/* Hero Image / Collage Placeholder */}
           <div className="relative w-full aspect-square max-w-[600px] mx-auto">
-            {/* Main Image */}
-            <div className="absolute inset-0 bg-gray-200 rounded-[2rem] overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 ease-out z-10">
-              <div className="absolute bottom-8 left-8 text-white">
-                <p className="font-bold text-lg">Authentic Flavors</p>
-                <p className="text-sm opacity-90">From local chefs to your table</p>
-              </div>
-            </div>
-
             {/* Floating Card 1 */}
             <motion.div 
               animate={{ y: [0, -10, 0] }}
