@@ -246,7 +246,7 @@ function FinalCTA() {
           </div>
           
           <p className="mt-8 text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Jíjé Inc. All rights reserved.
+            © {new Date().getFullYear()} Jíjé Group Inc. All rights reserved.
           </p>
         </motion.div>
       </div>
