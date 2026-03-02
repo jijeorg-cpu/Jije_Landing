@@ -43,7 +43,7 @@ function HeroSection() {
             </span>
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">The marketplace for authentic African & Afro-Carribean food, groceries, and cultural events. Connect with home, wherever you are.</p>
+          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">We're building Jíjé; a culturally powered marketplace for African and Afro-Caribbean meals, groceries and cultural events.</p>
 
           <WaitlistForm />
         </motion.div>
