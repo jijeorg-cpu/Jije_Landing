@@ -97,7 +97,7 @@ function SolutionSection() {
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <ShoppingBag className="mb-4 h-8 w-8 text-accent" />
               <h3 className="text-2xl font-bold mb-2 text-[#008431]">Grocery Discovery</h3>
-              <p className="text-white/80">Find rare ingredients, spices, and fabrics delivered to your door.</p>
+              <p className="text-white/80">Find cultural ingredients, spices, and essentials delivered to your door.</p>
             </div>
           </motion.div>
 
