@@ -187,7 +187,6 @@ function HowItWorksSection() {
     <section id="how-it-works" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
       {/* Texture overlay */}
       <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
-      
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <SectionHeading
           label="How It Works"
@@ -210,7 +209,7 @@ function HowItWorksSection() {
                 {step.num}
               </div>
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-[#9AC31C] bg-[transparent]">{step.title}</h3>
                 <p className="text-primary-foreground/80 leading-relaxed text-lg">{step.desc}</p>
               </div>
               
