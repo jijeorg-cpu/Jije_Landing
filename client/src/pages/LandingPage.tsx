@@ -280,7 +280,6 @@ function FinalCTA() {
   return (
     <section id="join" className="py-24 bg-primary relative overflow-hidden text-center">
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none" />
-      
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-2xl">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -292,9 +291,7 @@ function FinalCTA() {
             <MapPin className="w-8 h-8 text-white" />
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-            Be First When Jijé Launches
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Be First When Jíjé Launches</h2>
           <p className="text-xl text-primary-foreground/90 mb-10">
             We're launching city by city. Join the waitlist to bring Jijé to your area and get exclusive early access perks.
           </p>
