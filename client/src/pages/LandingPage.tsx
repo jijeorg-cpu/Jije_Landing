@@ -36,7 +36,7 @@ function HeroSection() {
             Coming Soon to Your City
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-display font-extrabold text-primary leading-[1.1] mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-display font-extrabold leading-[1.1] mb-6 tracking-tight text-[#008431]">
             Culture. Commerce. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600 text-center">
               Community.
