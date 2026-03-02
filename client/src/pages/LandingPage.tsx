@@ -154,7 +154,7 @@ function HowItWorksSection() {
                 {step.num}
               </div>
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-4 text-[#9AC31C] bg-[transparent]">{step.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 bg-[transparent] text-[#008431]">{step.title}</h3>
                 <p className="text-primary-foreground/80 leading-relaxed text-lg">{step.desc}</p>
               </div>
               
