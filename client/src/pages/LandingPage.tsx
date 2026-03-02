@@ -65,7 +65,6 @@ function HeroSection() {
                 alt="Delicious Jollof Rice and Plantains" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-8 left-8 text-white">
                 <p className="font-bold text-lg">Authentic Flavors</p>
                 <p className="text-sm opacity-90">From local chefs to your table</p>
