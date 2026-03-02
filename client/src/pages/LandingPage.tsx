@@ -80,7 +80,7 @@ function SolutionSection() {
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <Utensils className="mb-4 h-8 w-8 text-accent" />
               <h3 className="text-2xl font-bold mb-2 text-[#008431]">Authentic Food</h3>
-              <p className="text-white/80">Order meals from top rated African and Afro-Caribbean culinary services and restaurants near you.</p>
+              <p className="text-white/80">Order meals and book culinary services from top rated African and Afro-Caribbean restaurants, vendors, chefs and caterers.</p>
             </div>
           </motion.div>
 
