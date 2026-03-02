@@ -99,9 +99,7 @@ export function WaitlistForm() {
                 </>
               )}
             </Button>
-            <p className="text-xs text-center text-muted-foreground mt-2">
-              Join 2,000+ others waiting for authentic flavors. No spam, ever.
-            </p>
+            <p className="text-xs text-center text-muted-foreground mt-2">Join others waiting for authentic flavors. No spam, ever.</p>
           </motion.form>
         )}
       </AnimatePresence>
