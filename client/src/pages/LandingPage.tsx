@@ -61,7 +61,7 @@ function SolutionSection() {
         <SectionHeading
           label="The Solution"
           title="One Place for Culture & Community"
-          description="Jijé brings the entire ecosystem together. Eat, shop, and connect without the hassle."
+          description="Jíjé brings the entire ecosystem together. Eat, shop, and connect without the hassle."
         />
 
         <div className="grid lg:grid-cols-3 gap-6">
