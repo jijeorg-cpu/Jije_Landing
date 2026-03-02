@@ -86,7 +86,7 @@ export function WaitlistForm() {
             <Button
               type="submit"
               disabled={isPending}
-              className="h-14 rounded-full text-lg font-bold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-0.5 active:translate-y-0 w-full"
+              className="h-14 rounded-full text-lg font-bold hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-0.5 active:translate-y-0 w-full bg-[#008431]"
             >
               {isPending ? (
                 <>
