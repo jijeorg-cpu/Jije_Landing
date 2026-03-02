@@ -40,9 +40,6 @@ export function Navbar() {
             alt="Jijé logo"
             className="h-8 w-auto object-contain"
           />
-          <span className="text-2xl font-bold font-display text-primary tracking-tight">
-            Jijé
-          </span>
         </div>
 
         {/* Desktop Nav */}
