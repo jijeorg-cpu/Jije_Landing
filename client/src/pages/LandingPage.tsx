@@ -292,9 +292,7 @@ function FinalCTA() {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Be First When Jíjé Launches</h2>
-          <p className="text-xl text-primary-foreground/90 mb-10">
-            We're launching city by city. Join the waitlist to bring Jijé to your area and get exclusive early access perks.
-          </p>
+          <p className="text-xl text-primary-foreground/90 mb-10">We're launching city by city. Join the waitlist to bring Jíjé to your area and get exclusive early access perks.</p>
 
           <div className="bg-white p-2 rounded-[2rem] shadow-2xl">
             <div className="bg-secondary/30 rounded-[1.5rem] p-6 md:p-8">
