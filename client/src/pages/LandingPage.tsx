@@ -109,7 +109,7 @@ function SolutionSection() {
             {/* Unsplash: Concert/Festival */}
             {/* <!-- https://unsplash.com/photos/people-raising-hands-in-concert-hzgs56Ze49s --> */}
             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                 style={{ backgroundImage: `url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop')` }} />
+                 style={{ backgroundImage: `url('/jije_cultural.JPG')` }} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <Calendar className="mb-4 h-8 w-8 text-accent" />
@@ -125,9 +125,9 @@ function SolutionSection() {
 
 function HowItWorksSection() {
   const steps = [
-    { num: "01", title: "Browse", desc: "Explore curated menus, grocery lists, catering/chef services and event calendars tailored to your culture." },
-    { num: "02", title: "Order / Book", desc: "Seamlessly purchase meals, groceries, or tickets in just a few taps." },
-    { num: "03", title: "Experience", desc: "Enjoy authentic delivery or head out to connect with your community." }
+    { num: "1", title: "Discover", desc: "Explore curated meals, groceries, culinary services and events  tailored to your culture and interests." },
+    { num: "2", title: "Order / Book", desc: "Seamlessly order meals, culinary services, or purchase event tickets in just a few taps." },
+    { num: "3", title: "Experience", desc: "Enjoy authentic delivery to your door or step out to connect with your community." }
   ];
 
   

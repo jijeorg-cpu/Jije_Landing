@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const partnerUrl = "https://tally.so/r/rjKA6p"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,16 +30,16 @@ export function Navbar() {
           : "bg-transparent py-6"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between py-2">
         {/* Logo */}
         <div
           className="flex items-center gap-3 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <img
-            src="/jije_logo_reversed.png"
+            src="/JijeLogo_Primary_Logo.png"
             alt="Jijé logo"
-            className="h-8 w-auto object-contain"
+            className="h-14 md:h-12 lg:h-24 w-auto object-contain"
           />
         </div>
 
@@ -59,9 +60,12 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <Link to="join" smooth={true} duration={500}>
-            <Button className="rounded-full px-6 font-semibold hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all bg-[#008431]">Partner With Us</Button>
-          </Link>
+          {/*<Link to="join" smooth={true} duration={500*/}
+            <Button 
+              onClick={() =>
+                window.open(import.meta.env.VITE_PARTNER_FORM_URL, "_blank")
+              }
+              className="rounded-full px-6 font-semibold hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all bg-[#008431]">Partner With Us</Button> 
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -92,6 +96,15 @@ export function Navbar() {
               Get Early Access
             </Button>
           </Link>
+          <Button
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              window.open("https://tally.so/r/rjKA6p", "_blank");
+            }}
+            className="w-full rounded-full bg-[#008431] text-white py-6 text-lg font-semibold"
+          >
+            Partner With Us
+          </Button>
         </div>
       )}
     </nav>
