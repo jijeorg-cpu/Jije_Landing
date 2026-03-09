@@ -63,7 +63,7 @@ export function Navbar() {
           {/*<Link to="join" smooth={true} duration={500*/}
             <Button 
               onClick={() =>
-                window.open(import.meta.env.VITE_PARTNER_FORM_URL, "_blank")
+                window.open("https://tally.so/r/rjKA6p", "_blank")
               }
               className="rounded-full px-6 font-semibold hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all bg-[#008431]">Partner With Us</Button> 
         </div>
