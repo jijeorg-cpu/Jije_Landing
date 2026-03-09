@@ -37,7 +37,7 @@ export function Navbar() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <img
-            src="/JijeLogo_Primary_Logo.png"
+            src="/jije-icon-v2.png"
             alt="Jijé logo"
             className="h-14 md:h-12 lg:h-24 w-auto object-contain"
           />
