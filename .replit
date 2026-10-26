@@ -47,3 +47,7 @@ waitForPort = 5000
 PURELYMAIL_SMTP_USER = "admin@jije.ca"
 RECRUITMENT_EMAIL_FROM = "admin@jije.ca"
 RECRUITMENT_EMAIL_TO = "admin@jije.ca"
+
+[postMerge]
+path = "script/post-merge.sh"
+timeoutMs = 180000
