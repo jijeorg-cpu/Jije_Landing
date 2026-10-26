@@ -38,6 +38,12 @@
   --card-foreground: 146 49% 15%;
 
   --radius: 1rem;
+
+  --recruit-ink: 146 49% 15%;
+  --recruit-paper: 42 38% 95%;
+  --recruit-leaf: 145 55% 28%;
+  --recruit-citrus: 39 76% 72%;
+  --recruit-clay: 15 48% 58%;
 }
 
 @layer base {
@@ -63,4 +69,68 @@
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
+
+html { scroll-behavior: smooth; }
+
+.recruit-page {
+  background: hsl(var(--recruit-paper));
+  color: hsl(var(--recruit-ink));
+}
+
+.recruit-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.055em;
+}
+
+.recruit-eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.recruit-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .14;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.recruit-field {
+  min-height: 3.25rem;
+  width: 100%;
+  border: 1px solid hsl(34 22% 78%);
+  border-radius: .7rem;
+  background: hsl(42 38% 97%);
+  padding: .8rem 1rem;
+  color: hsl(var(--recruit-ink));
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.recruit-field::placeholder { color: hsl(25 12% 52%); }
+.recruit-field:focus-visible {
+  outline: 2px solid hsl(var(--recruit-leaf) / .32);
+  outline-offset: 2px;
+  border-color: hsl(var(--recruit-leaf));
+}
+.recruit-field[aria-invalid="true"] { border-color: hsl(0 64% 48%); }
+
+@keyframes recruit-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.recruit-rise { animation: recruit-rise .65s cubic-bezier(.2,.75,.2,1) both; }
+.recruit-delay-1 { animation-delay: .1s; }
+.recruit-delay-2 { animation-delay: .2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }

@@ -1,109 +1,95 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-scroll";
-import { Menu, X, UtensilsCrossed } from "lucide-react";
+import { Link as RouteLink, useLocation } from "wouter";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const landingLinks = [
+  { name: "Our mission", to: "mission" },
+  { name: "How it works", to: "how-it-works" },
+  { name: "Community", to: "spotlight" },
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const partnerUrl = "https://tally.so/r/rjKA6p"
+  const [location] = useLocation();
+  const isHome = location === "/";
+  const partnerUrl = "https://tally.so/r/rjKA6p";
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Our Mission", to: "mission" },
-    { name: "How It Works", to: "how-it-works" },
-    { name: "Community", to: "spotlight" },
-  ];
+  const closeMenu = () => setIsMobileMenuOpen(false);
+  const renderLandingLink = (link: (typeof landingLinks)[number], mobile = false) =>
+    <a
+      key={link.to}
+      href={isHome ? `#${link.to}` : `/#${link.to}`}
+      onClick={mobile ? closeMenu : undefined}
+      className={`${mobile ? "border-b border-border/50 py-2 text-lg" : "text-sm"} font-medium text-foreground/75 transition-colors hover:text-primary`}
+    >
+      {link.name}
+    </a>;
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      aria-label="Main navigation"
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? "bg-background/90 backdrop-blur-md shadow-sm py-4"
-          : "bg-transparent py-6"
+          ? "bg-background/95 py-3 shadow-sm backdrop-blur-md"
+          : "bg-background/85 py-4 backdrop-blur-sm md:bg-transparent md:py-5"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between py-2">
-        {/* Logo */}
-        <div
-          className="flex items-center gap-3 cursor-pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
-          <img
-            src="/jije-icon-v2.png"
-            alt="Jijé logo"
-            className="h-14 md:h-12 lg:h-24 w-auto object-contain"
-          />
+      <div className="container mx-auto flex items-center justify-between px-4 md:px-6">
+        <RouteLink href="/" aria-label="Jíjé home" className="flex shrink-0 items-center">
+          <img src="/jije-icon-v2.png" alt="Jíjé" className="h-12 w-auto object-contain md:h-14" />
+        </RouteLink>
+
+        <div className="hidden items-center gap-6 lg:flex">
+          {landingLinks.map((link) => renderLandingLink(link))}
+          <RouteLink href="/vendors" className="text-sm font-medium text-foreground/75 transition-colors hover:text-primary">For vendors</RouteLink>
+          <RouteLink href="/drivers" className="text-sm font-medium text-foreground/75 transition-colors hover:text-primary">For drivers</RouteLink>
         </div>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.to}
-              smooth={true}
-              duration={500}
-              className="text-sm font-medium text-foreground/80 hover:text-primary cursor-pointer transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-2 md:flex">
+          <RouteLink href="/vendors" className="inline-flex min-h-10 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90">Join the pilot</RouteLink>
+          <Button
+            variant="outline"
+            onClick={() => window.open(partnerUrl, "_blank", "noopener,noreferrer")}
+            className="min-h-10 rounded-full border-primary/25 px-4 text-sm font-semibold text-primary"
+          >
+            Partnership enquiry
+          </Button>
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
-          {/*<Link to="join" smooth={true} duration={500*/}
-            <Button 
-              onClick={() =>
-                window.open("https://tally.so/r/rjKA6p", "_blank")
-              }
-              className="rounded-full px-6 font-semibold hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all bg-[#008431]">Partner With Us</Button> 
-        </div>
-
-        {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-foreground p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          type="button"
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMobileMenuOpen}
+          className="rounded-full p-2 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:hidden"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={23} aria-hidden="true" /> : <Menu size={23} aria-hidden="true" />}
         </button>
       </div>
-      {/* Mobile Menu Dropdown */}
+
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border p-4 shadow-xl flex flex-col gap-4 animate-in slide-in-from-top-5">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.to}
-              smooth={true}
-              duration={500}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-lg font-medium text-foreground py-2 border-b border-border/50"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link to="join" smooth={true} duration={500} onClick={() => setIsMobileMenuOpen(false)}>
-            <Button className="w-full rounded-full mt-4 bg-primary text-primary-foreground py-6 text-lg">
-              Get Early Access
-            </Button>
-          </Link>
+        <div className="absolute left-0 top-full flex w-full flex-col gap-3 border-b border-border bg-background/98 p-5 shadow-xl backdrop-blur-xl md:hidden">
+          {landingLinks.map((link) => renderLandingLink(link, true))}
+          <RouteLink href="/vendors" onClick={closeMenu} className="border-b border-border/50 py-2 text-lg font-medium text-foreground">For vendors</RouteLink>
+          <RouteLink href="/drivers" onClick={closeMenu} className="border-b border-border/50 py-2 text-lg font-medium text-foreground">For drivers</RouteLink>
+          <RouteLink href="/vendors" onClick={closeMenu} className="mt-2 inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-5 font-semibold text-primary-foreground">Join the pilot</RouteLink>
           <Button
+            variant="outline"
             onClick={() => {
-              setIsMobileMenuOpen(false);
-              window.open("https://tally.so/r/rjKA6p", "_blank");
+              closeMenu();
+              window.open(partnerUrl, "_blank", "noopener,noreferrer");
             }}
-            className="w-full rounded-full bg-[#008431] text-white py-6 text-lg font-semibold"
+            className="min-h-12 rounded-full border-primary/25 text-primary"
           >
-            Partner With Us
+            Existing partnership enquiry
           </Button>
         </div>
       )}
