@@ -5,6 +5,7 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { recruitmentApplicationInputSchema } from "@shared/schema";
 import { z } from "zod";
+import { notifyRecruitmentApplication } from "./recruitment-notifications";
 
 const applicationAttempts = new Map<string, number[]>();
 const APPLICATION_RATE_LIMIT = 5;
@@ -35,7 +36,8 @@ function isRateLimited(ip: string) {
 
 export async function registerRoutes(
   httpServer: Server,
-  app: Express
+  app: Express,
+  notifyApplication = notifyRecruitmentApplication,
 ): Promise<Server> {
 
   app.post(api.waitlist.create.path, async (req, res) => {
@@ -93,6 +95,16 @@ export async function registerRoutes(
         ...input,
         source: input.applicationType === "vendor" ? "/vendors" : "/drivers",
       });
+      // Save first; SMTP errors must never turn a persisted application into a failed submission.
+      try {
+        await notifyApplication(application);
+      } catch {
+        // Do not log credentials, provider responses, or applicant personal information.
+        console.error("Recruitment notification failed; application remains saved.", {
+          applicationId: application.id,
+          applicationType: application.applicationType,
+        });
+      }
       return res.status(201).json({
         id: application.id,
         applicationType: application.applicationType,

@@ -40,3 +40,10 @@ author = "agent"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
+
+[userenv]
+
+[userenv.shared]
+PURELYMAIL_SMTP_USER = "admin@jije.ca"
+RECRUITMENT_EMAIL_FROM = "admin@jije.ca"
+RECRUITMENT_EMAIL_TO = "admin@jije.ca"

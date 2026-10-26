@@ -1,1 +1,2 @@
 - [Jíjé pilot positioning](jije-pilot-positioning.md) — Toronto/GTA pilot is in preparation; recruitment captures interest only, and commercial terms remain unfinalized.
+- [Recruitment email provider](recruitment-email-provider.md) — use Jíjé's existing Purelymail service for recruitment notifications.
