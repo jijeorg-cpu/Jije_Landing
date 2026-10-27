@@ -16,6 +16,11 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
+import storeOwnerKaya from "@assets/Mascot__Store_Owner_Kaya_1793060137575.png";
+import catererKaya from "@assets/Mascot__Caterer_Kaya_1793060137561.png";
+import deliveryCarKaya from "@assets/Mascot__Delivery_Car_Kaya_1793060232160.png";
+import bikeKaya from "@assets/Mascot__Kaya_on_Bike_1793060232174.png";
+import bagKaya from "@assets/Mascot__Kaya_with_Bag_1793060232175.png";
 
 export type RecruitmentRole = "vendor" | "driver";
 
@@ -493,19 +498,32 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
           </div>
           <div className="relative mx-auto w-full max-w-[34rem] md:justify-self-end">
             {isVendor ? (
-              <div className="relative aspect-[.92] overflow-hidden rounded-[48%_48%_2rem_2rem] bg-primary">
-                <img src="/attached_assets/jije_jollof.JPEG" alt="African meal served with rice, vegetables, and plantain" className="absolute inset-0 h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#143c2a]/85 via-[#143c2a]/10 to-[#143c2a]/10" />
-                <div className="absolute bottom-[11%] left-[10%] right-[10%] rounded-[2rem] border border-white/25 bg-[#f9f4e6]/95 p-5 shadow-xl backdrop-blur-sm md:p-6">
+              <div>
+                <div className="relative aspect-[.92] overflow-hidden rounded-[48%_48%_2rem_2rem] bg-[#f4f1e8]">
+                  <img
+                    src={storeOwnerKaya}
+                    alt="Kaya, a welcoming Jíjé store owner standing beside an open shop door"
+                    width={1024}
+                    height={1024}
+                    className="absolute inset-0 h-full w-full object-contain p-3 sm:p-5"
+                  />
+                </div>
+                <div className="relative mx-auto -mt-6 w-[88%] rounded-[2rem] border border-primary/10 bg-[#f9f4e6] p-5 shadow-lg md:p-6">
                   <p className="recruit-eyebrow text-primary">Rooted in the GTA</p>
                   <p className="mt-2 font-display text-xl font-semibold leading-tight text-primary md:text-2xl">Good food deserves to be known.</p>
                   <div className="mt-4 flex items-center gap-2 text-sm font-medium text-foreground/60"><MapPin size={15} aria-hidden="true" /> Toronto & surrounding communities</div>
                 </div>
               </div>
             ) : (
-              <div className="relative overflow-hidden rounded-[2rem] bg-[#e7d49a] p-2">
-                <CourierIllustration className="relative z-10 w-full" />
-                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/60 bg-[#f9f4e6]/95 p-4 shadow-lg md:left-8 md:right-8">
+              <div className="relative overflow-hidden rounded-[2rem] bg-[#f4f1e8] p-3 sm:p-5">
+                <img
+                  src={deliveryCarKaya}
+                  alt="Kaya pictured beside a car in a hand-drawn Jíjé delivery illustration"
+                  width={1024}
+                  height={1024}
+                  className="block aspect-square h-auto w-full object-contain"
+                />
+                <div className="relative mx-auto -mt-2 w-[94%] rounded-2xl border border-primary/10 bg-[#f9f4e6] p-4 shadow-lg md:w-[88%]">
                   <p className="font-display text-xl font-semibold text-primary">A neighbourhood connection, made tangible.</p>
                   <div className="mt-2 flex items-center gap-2 text-sm font-medium text-foreground/60"><MapPin size={15} aria-hidden="true" /> Toronto & surrounding communities</div>
                 </div>
@@ -517,10 +535,35 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24" aria-labelledby="benefits-title">
-        <div className="mb-10 max-w-2xl">
-          <p className="recruit-eyebrow text-[#bd694d]">Why Jíjé</p>
-          <h2 id="benefits-title" className="recruit-display mt-3 text-4xl text-primary md:text-5xl">{isVendor ? "A marketplace that sees the whole table." : "A delivery experience shaped with care."}</h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-foreground/65">We’re building with local voices, not making promises before the details are in place.</p>
+        <div className={`mb-10 ${isVendor ? "flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between" : "max-w-2xl"}`}>
+          <div className="max-w-2xl">
+            <p className="recruit-eyebrow text-[#bd694d]">Why Jíjé</p>
+            <h2 id="benefits-title" className="recruit-display mt-3 text-4xl text-primary md:text-5xl">{isVendor ? "A marketplace that sees the whole table." : "A delivery experience shaped with care."}</h2>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-foreground/65">We’re building with local voices, not making promises before the details are in place.</p>
+          </div>
+          {isVendor ? (
+            <div className="w-full max-w-[13rem] shrink-0 self-center overflow-hidden rounded-[2rem] bg-[#f4f1e8] p-2 sm:w-[12rem] sm:self-auto md:w-[14rem]">
+              <img
+                src={catererKaya}
+                alt="Kaya the caterer presenting a pot of food alongside a smiling chef"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="block h-auto w-full object-contain"
+              />
+            </div>
+          ) : (
+            <div className="w-full max-w-[13rem] shrink-0 self-center overflow-hidden rounded-[2rem] bg-[#f4f1e8] p-2 sm:w-[12rem] sm:self-auto md:w-[14rem]">
+              <img
+                src={bikeKaya}
+                alt="Kaya riding a bicycle with a Jíjé parcel in a hand-drawn illustration"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="block h-auto w-full object-contain"
+              />
+            </div>
+          )}
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           {content.benefits.map((benefit, index) => {
@@ -563,8 +606,18 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
             <h2 className="recruit-display mt-3 text-4xl text-primary md:text-5xl">There’s room at the table.</h2>
             <p className="mt-5 max-w-md leading-relaxed text-foreground/65">We’re listening to Toronto and GTA businesses and delivery partners as we prepare. Share what you’d like us to know.</p>
             {role === "driver" && (
-              <div className="mt-6 rounded-xl border border-primary/10 bg-[#f0eee4] p-4 text-sm leading-relaxed text-foreground/65">
-                Vehicle eligibility and onboarding depend on local rules and delivery type. We’ll confirm details during the process. This form does not request sensitive ID or financial information.
+              <div className="mt-6 overflow-hidden rounded-xl border border-primary/10 bg-[#f4f1e8]">
+                <img
+                  src={bagKaya}
+                  alt="Kaya holding a Jíjé shopping bag in a hand-drawn illustration"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  className="mx-auto block h-auto w-36 object-contain sm:w-40"
+                />
+                <p className="border-t border-primary/10 bg-[#f0eee4] p-4 text-sm leading-relaxed text-foreground/65">
+                  Vehicle eligibility and onboarding depend on local rules and delivery type. We’ll confirm details during the process. This form does not request sensitive ID or financial information.
+                </p>
               </div>
             )}
             <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary/10 bg-[#f0eee4] p-4 text-sm leading-relaxed text-foreground/65">
