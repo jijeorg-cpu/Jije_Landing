@@ -5,7 +5,7 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { recruitmentApplicationInputSchema } from "@shared/schema";
 import { z } from "zod";
-import { notifyRecruitmentApplication } from "./recruitment-notifications";
+import { notifyRecruitmentApplication, sendRecruitmentReceipt } from "./recruitment-notifications";
 
 const applicationAttempts = new Map<string, number[]>();
 const APPLICATION_RATE_LIMIT = 5;
@@ -38,6 +38,7 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express,
   notifyApplication = notifyRecruitmentApplication,
+  sendReceipt = sendRecruitmentReceipt,
 ): Promise<Server> {
 
   app.post(api.waitlist.create.path, async (req, res) => {
@@ -101,6 +102,15 @@ export async function registerRoutes(
       } catch {
         // Do not log credentials, provider responses, or applicant personal information.
         console.error("Recruitment notification failed; application remains saved.", {
+          applicationId: application.id,
+          applicationType: application.applicationType,
+        });
+      }
+      // A team alert failure must not prevent the applicant's separate confirmation.
+      try {
+        await sendReceipt(application);
+      } catch {
+        console.error("Recruitment receipt failed; application remains saved.", {
           applicationId: application.id,
           applicationType: application.applicationType,
         });

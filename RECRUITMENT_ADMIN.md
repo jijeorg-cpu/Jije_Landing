@@ -50,7 +50,54 @@ team members because they contain personal information.
 
 New vendor and driver applications send a plain-text team notification using Purelymail,
 after the database insert succeeds. The sender and recipient are configured as the existing
-Jíjé admin mailbox. Applicant receipts are not enabled; their wording needs separate approval.
+Jíjé admin mailbox. Newly saved applicants also receive a separate, approved plain-text
+confirmation. The user approved both bodies and sender details before enablement.
+
+Applicant confirmations use `Jíjé Recruitment <admin@jije.ca>` as the sender, with replies
+going to `admin@jije.ca` (the configured `RECRUITMENT_EMAIL_FROM`). Subjects are
+`Jíjé — vendor interest registration received` and
+`Jíjé — driver interest registration received`. Vendor greetings use the submitted business
+name; driver greetings use the submitted first name.
+
+### Approved applicant copy
+
+Vendor body (`[Vendor Name]` is the business name):
+
+```text
+Hi [Vendor Name],
+
+Thanks for your interest in partnering with Jíjé!
+
+We’ve received your submission and are excited to explore how we can help your business reach more customers through our marketplace.
+
+Our team will review your information and be in touch with the next steps.
+
+We look forward to working with you!
+
+Please note: This confirms your interest registration only—not approval or account creation or activation. Commercial terms and launch timing are not yet finalized.
+
+The Jíjé Team
+```
+
+Driver body:
+
+```text
+Hi [First Name],
+
+Thanks for your interest in delivering with Jíjé!
+
+We’ve received your submission and are excited to explore how you could help connect customers with food and groceries through our marketplace.
+
+Our team will review your information and be in touch with the next steps.
+
+We look forward to exploring this opportunity with you!
+
+Please note: This confirms your interest registration only—not approval or account creation or activation. Commercial terms and launch timing are not yet finalized.
+
+The Jíjé Team
+```
+
+### Configuration and delivery
 
 Server-only configuration:
 
@@ -71,12 +118,19 @@ authorized reviewers.
 
 SMTP has bounded connection/socket timeouts. A delivery/configuration failure is logged as
 `Recruitment notification failed; application remains saved.` with the application ID/type
-only. The submission still returns success and the application stays in the database.
+only. Applicant receipt failures use
+`Recruitment receipt failed; application remains saved.` with the same non-personal fields.
+Team alerts and applicant confirmations are attempted independently, so either may succeed
+when the other fails. The submission still returns success and the application stays in the database.
 Duplicate, invalid, rate-limited, and honeypot submissions do not send mail.
+Database failures (including concurrent duplicate inserts rejected by the unique constraint)
+do not send either email. Duplicate submissions never resend a confirmation.
 
 There is no automatic retry or historical backfill. Review the database regularly; if an
 alert fails, use the logged ID to locate the saved application. SMTP acceptance is not a
 guarantee of inbox delivery: check spam and Purelymail delivery status when troubleshooting.
+Run the isolated mail and route tests without sending live email:
+`node --import tsx --test server/recruitment-notifications.test.ts`.
 
 ## Privacy review
 

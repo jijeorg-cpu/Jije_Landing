@@ -20,6 +20,52 @@ export function createRecruitmentMailTransport() {
 
 type MailSender = Pick<ReturnType<typeof createRecruitmentMailTransport>, "sendMail">;
 
+export async function sendRecruitmentReceipt(
+  application: RecruitmentApplication,
+  transport?: MailSender,
+): Promise<void> {
+  const from = z.string().email().parse(process.env.RECRUITMENT_EMAIL_FROM);
+  const to = z.string().email().parse(application.email);
+  const isVendor = application.applicationType === "vendor";
+  const kind = isVendor ? "vendor" : "driver";
+  // Plain text only: applicant names never become mail headers or HTML.
+  const name = (isVendor ? application.businessName : application.firstName)
+    ?.replace(/[\r\n]+/g, " ").trim() || "there";
+  const text = [
+    `Hi ${name},`,
+    "",
+    isVendor
+      ? "Thanks for your interest in partnering with Jíjé!"
+      : "Thanks for your interest in delivering with Jíjé!",
+    "",
+    isVendor
+      ? "We’ve received your submission and are excited to explore how we can help your business reach more customers through our marketplace."
+      : "We’ve received your submission and are excited to explore how you could help connect customers with food and groceries through our marketplace.",
+    "",
+    "Our team will review your information and be in touch with the next steps.",
+    "",
+    isVendor
+      ? "We look forward to working with you!"
+      : "We look forward to exploring this opportunity with you!",
+    "",
+    "Please note: This confirms your interest registration only—not approval or account creation or activation. Commercial terms and launch timing are not yet finalized.",
+    "",
+    "The Jíjé Team",
+  ].join("\n");
+  const result = await (transport ?? createRecruitmentMailTransport()).sendMail({
+    from: { name: "Jíjé Recruitment", address: from },
+    replyTo: from,
+    to,
+    subject: `Jíjé — ${kind} interest registration received`,
+    text,
+    disableFileAccess: true,
+    disableUrlAccess: true,
+  });
+  if (!result.accepted?.length || result.rejected?.length) {
+    throw new Error("Recruitment receipt recipient was not accepted");
+  }
+}
+
 export async function notifyRecruitmentApplication(
   application: RecruitmentApplication,
   transport?: MailSender,
