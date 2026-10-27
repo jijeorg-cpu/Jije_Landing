@@ -15,6 +15,7 @@ import {
   Utensils,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
+import { SiteFooter } from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
 import storeOwnerKaya from "@assets/Mascot__Store_Owner_Kaya_1793060137575.png";
 import catererKaya from "@assets/Mascot__Caterer_Kaya_1793060137561.png";
@@ -264,6 +265,18 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
         <span>I agree that Jíjé may use the information I provide to review my application and contact me about the Toronto/GTA pilot. I understand this is not a partnership or work guarantee, and I can ask Jíjé to stop contacting me.</span>
       </label>
 
+      <p className="text-sm leading-relaxed text-foreground/75">
+        Read our{" "}
+        <a href="/privacy" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline underline-offset-2">
+          Privacy Policy <span className="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span>
+        </a>
+        {" "}to understand how we handle personal information.{" "}
+        <a href="/terms" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline underline-offset-2">
+          Terms of Service <span className="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span>
+        </a>
+        {" "}apply to your interest form submission.
+      </p>
+
       <div className="sr-only" aria-hidden="true">
         <label htmlFor={`${role}-faxNumber`}>Fax number</label>
         <input id={`${role}-faxNumber`} name="faxNumber" type="text" tabIndex={-1} autoComplete="off" value="" readOnly />
@@ -275,7 +288,6 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
       </Button>
       <div className="space-y-2 text-xs leading-relaxed text-muted-foreground">
         <p>Jíjé is preparing its Toronto/GTA pilot. Submitting this form does not create a partnership, employment relationship, or obligation.</p>
-        <p>The Jíjé privacy policy link is not available on the current website. Please review this before launch.</p>
         {role === "driver" && <p>We will not ask for a government ID, SIN, banking details, or other financial information on this interest form.</p>}
       </div>
     </form>
@@ -409,17 +421,6 @@ export function CourierIllustration({ className = "" }: { className?: string }) 
       <circle cx="365" cy="151" r="6" fill="#BD694D" />
       <circle cx="201" cy="112" r="8" fill="#174D32" />
     </svg>
-  );
-}
-
-function RecruitmentFooter() {
-  return (
-    <footer className="border-t border-primary/10 bg-[#f4f1e8] py-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 text-sm text-foreground/65 sm:flex-row sm:items-center sm:justify-between md:px-10">
-        <Link href="/" className="font-semibold text-primary">Jíjé <span className="font-normal text-foreground/60">· Culture. Commerce. Community.</span></Link>
-        <p>Toronto / GTA pilot · © {new Date().getFullYear()} Jíjé Group Inc.</p>
-      </div>
-    </footer>
   );
 }
 
@@ -633,7 +634,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
           </div>
         </div>
       </section>
-      <RecruitmentFooter />
+      <SiteFooter />
     </main>
   );
 }

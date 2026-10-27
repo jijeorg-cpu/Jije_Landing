@@ -134,6 +134,8 @@ Run the isolated mail and route tests without sending live email:
 
 ## Privacy review
 
-The current website does not include a privacy policy route. Before deployment, Jíjé should
-publish or link an approved privacy policy covering recruitment application data, retention,
-access, and contact/marketing consent.
+The user-supplied Privacy Policy and Terms of Service (October 25, 2026) are available
+at `/privacy` and `/terms`, with original DOCX downloads. Links appear in the site
+footer, recruitment forms, and beside waitlist entry points. Application links open
+in a new tab to preserve entered details. Contact consent remains separate from marketing.
+Keep operational retention, access, and disposal practices consistent with the policy.

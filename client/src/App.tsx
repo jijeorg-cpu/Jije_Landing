@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LandingPage } from "@/pages/LandingPage";
 import { VendorsPage } from "@/pages/VendorsPage";
 import { DriversPage } from "@/pages/DriversPage";
+import { LegalPage } from "@/pages/LegalPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -14,6 +15,8 @@ function Router() {
       <Route path="/" component={LandingPage} />
       <Route path="/vendors" component={VendorsPage} />
       <Route path="/drivers" component={DriversPage} />
+      <Route path="/privacy">{() => <LegalPage kind="privacy" />}</Route>
+      <Route path="/terms">{() => <LegalPage kind="terms" />}</Route>
       <Route component={NotFound} />
     </Switch>
   );

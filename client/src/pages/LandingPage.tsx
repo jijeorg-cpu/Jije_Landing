@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { SiteFooter } from "@/components/SiteFooter";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
@@ -51,6 +52,11 @@ function HeroSection() {
           <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">We're building Jíjé; a culturally powered marketplace connecting communities to African and Afro-Caribbean meals, groceries, culinary services and events.</p>
 
           <WaitlistForm />
+          <p className="mt-3 text-xs leading-relaxed text-foreground/55">
+            Joining the waitlist is governed by our{" "}
+            <Link href="/privacy" className="underline underline-offset-2 hover:text-primary">Privacy Policy</Link>
+            {" "}and <Link href="/terms" className="underline underline-offset-2 hover:text-primary">Terms of Service</Link>.
+          </p>
         </motion.div>
 
       </div>
@@ -313,10 +319,16 @@ function FinalCTA() {
               <WaitlistForm />
             </div>
           </div>
-          
+          <p className="mt-4 text-xs leading-relaxed text-primary-foreground/70">
+            Waitlist submissions are subject to our{" "}
+            <Link href="/privacy" className="underline underline-offset-2 hover:text-white">Privacy Policy</Link>
+            {" "}and <Link href="/terms" className="underline underline-offset-2 hover:text-white">Terms of Service</Link>.
+          </p>
+
           <p className="mt-8 text-primary-foreground/60 text-sm">
             © {new Date().getFullYear()} Jíjé Group Inc. All rights reserved.
           </p>
+          
         </motion.div>
       </div>
     </section>
@@ -333,6 +345,7 @@ export function LandingPage() {
       <AudienceSection />
       <RecruitmentSection />
       <FinalCTA />
+      <SiteFooter />
     </main>
   );
 }
