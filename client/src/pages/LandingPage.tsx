@@ -2,7 +2,9 @@ import { Navbar } from "@/components/Navbar";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
-import { CourierIllustration, trackRecruitmentCTA } from "@/components/Recruitment";
+import { trackRecruitmentCTA } from "@/components/Recruitment";
+import storeOwnerKaya from "@assets/Mascot__Store_Owner_Kaya_1793060137575.png";
+import bicycleKaya from "@assets/Mascot__Kaya_on_Bike_1793060232174.png";
 import { 
   Utensils, 
   MapPin, 
@@ -239,10 +241,18 @@ function RecruitmentSection() {
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-foreground/70">We’re meeting the people who make the local food community what it is. Share your interest as a business or delivery partner.</p>
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-          <article className="group relative isolate overflow-hidden rounded-[1.75rem] bg-primary p-7 text-primary-foreground md:p-10">
-            <img src="/attached_assets/jije_jollof.JPEG" alt="A vibrant African meal served with rice and plantain" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20 transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary via-primary/90 to-[#163c2c]" />
-            <div className="relative">
+          <article className="group overflow-hidden rounded-[1.75rem] bg-primary text-primary-foreground shadow-sm">
+            <div className="relative flex h-56 items-center justify-center overflow-hidden bg-[#f5f0df] px-8 md:h-64">
+              <div className="absolute -right-8 -top-12 h-52 w-52 rounded-full border border-primary/10" />
+              <img
+                src={storeOwnerKaya}
+                alt="Kaya welcoming customers as a Jíjé food business owner"
+                width={1024}
+                height={1024}
+                className="relative h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="p-7 md:p-10">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#e3c979]"><ChefHat size={24} aria-hidden="true" /></span>
               <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#e3c979]">For vendors & food businesses</p>
               <h3 className="mt-2 max-w-md text-3xl font-display font-semibold text-primary-foreground md:text-4xl">Grow with Jíjé</h3>
@@ -252,15 +262,23 @@ function RecruitmentSection() {
               </Link>
             </div>
           </article>
-          <article className="group relative overflow-hidden rounded-[1.75rem] border border-primary/10 bg-[#fbf9f3] p-7 md:p-10">
-            <div className="absolute -right-10 -top-12 h-48 w-48 rounded-full border border-[#bd694d]/20 transition-transform duration-500 group-hover:scale-110" />
-            <div className="relative">
+          <article className="group overflow-hidden rounded-[1.75rem] border border-primary/10 bg-[#fbf9f3] shadow-sm">
+            <div className="relative flex h-56 items-center justify-center overflow-hidden bg-[#e9eee3] px-8 md:h-64">
+              <div className="absolute -right-10 -top-12 h-48 w-48 rounded-full border border-[#bd694d]/20 transition-transform duration-500 group-hover:scale-110" />
+              <img
+                src={bicycleKaya}
+                alt="Kaya riding a bicycle to deliver a Jíjé order"
+                width={1024}
+                height={1024}
+                className="relative h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="relative p-7 md:p-10">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e8eddf] text-primary"><Truck size={24} aria-hidden="true" /></span>
               <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#bd694d]">For delivery partners</p>
               <h3 className="mt-2 max-w-md text-3xl font-display font-semibold text-primary md:text-4xl">Deliver with Jíjé</h3>
               <p className="mt-4 max-w-lg leading-relaxed text-foreground/65">Join our growing delivery community and explore flexible earning opportunities.</p>
-              <div className="my-3 max-w-[15rem]"><CourierIllustration className="h-24 w-full" /></div>
-              <Link href="/drivers" onClick={() => trackRecruitmentCTA("driver", "Start Delivering")} className="mt-2 inline-flex min-h-12 items-center gap-3 rounded-full border border-primary/20 px-6 font-semibold text-primary transition-transform hover:-translate-y-0.5 hover:bg-primary/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+              <Link href="/drivers" onClick={() => trackRecruitmentCTA("driver", "Start Delivering")} className="mt-7 inline-flex min-h-12 items-center gap-3 rounded-full border border-primary/20 px-6 font-semibold text-primary transition-transform hover:-translate-y-0.5 hover:bg-primary/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
                 Start Delivering <ArrowRight size={17} aria-hidden="true" />
               </Link>
             </div>
