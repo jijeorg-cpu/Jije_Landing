@@ -521,7 +521,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
                   alt="Kaya pictured beside a car in a hand-drawn Jíjé delivery illustration"
                   width={1024}
                   height={1024}
-                  className="block aspect-square h-auto w-full object-contain"
+                  className="block aspect-square h-auto w-full -scale-x-100 object-contain"
                 />
                 <div className="relative mx-auto -mt-2 w-[94%] rounded-2xl border border-primary/10 bg-[#f9f4e6] p-4 shadow-lg md:w-[88%]">
                   <p className="font-display text-xl font-semibold text-primary">A neighbourhood connection, made tangible.</p>
