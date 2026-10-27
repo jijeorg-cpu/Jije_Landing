@@ -4,8 +4,6 @@ import { ArrowDownToLine, ArrowLeft, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import legalCopy from "@/content/legal.json";
-import privacyDocument from "@assets/Jije_Privacy_Policy_2026_No_Logo_1793061488904.docx?url";
-import termsDocument from "@assets/Jije_Terms_of_Service_2026_No_Logo_1793061488937.docx?url";
 
 type LegalKind = "privacy" | "terms";
 type LegalPageProps = { kind: LegalKind };
@@ -17,7 +15,7 @@ export function LegalPage({ kind }: LegalPageProps) {
   const metadata = paragraphs[1];
   const otherKind: LegalKind = kind === "privacy" ? "terms" : "privacy";
   const otherTitle = otherKind === "privacy" ? "Privacy Policy" : "Terms of Service";
-  const documentUrl = kind === "privacy" ? privacyDocument : termsDocument;
+  const documentUrl = kind === "privacy" ? "/legal/jije-privacy-policy.pdf" : "/legal/jije-terms-of-service.pdf";
   const sections = paragraphs.slice(2).reduce<{ heading: string; id: string; content: string[] }[]>((all, text, index) => {
     const headingMatch = text.match(/^(\d+)\.\s/);
     if (headingMatch) {
@@ -76,7 +74,7 @@ export function LegalPage({ kind }: LegalPageProps) {
                   download
                   className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full border border-primary/20 px-5 text-sm font-semibold text-primary transition-colors hover:bg-primary/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                 >
-                  <ArrowDownToLine size={16} aria-hidden="true" /> Download original DOCX
+                  <ArrowDownToLine size={16} aria-hidden="true" /> Download PDF
                 </a>
               </div>
               <div className="space-y-10">
