@@ -18,10 +18,10 @@ is part of this update.
 | Route | Purpose |
 | --- | --- |
 | `/` | Parent company; exact corporate headline, both businesses, story, evolving ecosystem |
-| `/about` | Company story and exact approved mission under Our Mission |
+| `/about` | Approved corporate introduction, exact mission, vision, approach, and both businesses |
 | `/marketplace` | Existing Marketplace experience, waitlist, Kaya recruitment cards |
-| `/intelligence` | Developing knowledge/technology initiative, clearly not a live public AI product |
-| `/partners` | Vendor, delivery partner, and other partnership selection |
+| `/intelligence` | Developing initiative, five focus areas, six intended audiences, and partnership CTA |
+| `/partnerships`, `/partners` | Same preserved vendor, delivery partner, and other partnership selection |
 | `/contact` | Existing general partnership inquiry path and recruitment entry points |
 | `/vendors`, `/drivers` | Existing native recruitment pages, unchanged forms |
 | `/privacy`, `/terms` | Existing approved legal text and PDF downloads |
@@ -45,7 +45,10 @@ Legacy homepage hashes `#mission`, `#how-it-works`, `#spotlight`, `#join`, and
 
 - TypeScript and production build.
 - Existing notification and failure-isolation regression tests.
-- Local browser checks of all ten routes at desktop, tablet, and mobile widths.
+- Local browser checks of all eleven routes at desktop, tablet, and mobile widths.
+- Every discovered internal link, PDF link, and anchor destination.
+- Supplied About introduction, vision, and approach; all Intelligence focus areas
+  and audiences; working Intelligence partnership CTA.
 - Complete vendor and driver UI submissions at desktop and mobile widths,
   verified through the actual DatabaseStorage implementation and PostgreSQL.
 - Valid submissions remain `New`; source and marketing-consent defaults retained.
@@ -79,3 +82,16 @@ delivery and external Tally form submission were not re-tested in this update.
 
 No new environment variables or integrations are required. Review the preview
 and public copy before approving any live deployment.
+
+## Intelligence capability review
+
+Inspection of this website's backend and frontend found recruitment/waitlist
+submission implementations, but no verified Intelligence public API, production
+AI system, enterprise subscription, or prototype implementation. This does not
+establish the status of systems outside this repository. Public Intelligence
+copy therefore describes developing and exploratory work, not available
+products or existing commercial partnerships.
+
+The user requested that the existing partnership page design and content remain
+unchanged. `/partnerships` serves that same component, with `/partners` retained
+for compatibility. Navigation and the Intelligence CTA use `/partnerships`.

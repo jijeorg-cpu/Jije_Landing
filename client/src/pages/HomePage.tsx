@@ -134,7 +134,7 @@ export function HomePage() {
             <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-[-.04em] text-white md:text-5xl">The next chapter is built together.</h2>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link href="/partners" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#e3c979] px-6 font-semibold text-primary hover:bg-[#edd995]">Explore Partnerships <ArrowRight size={17} /></Link>
+            <Link href="/partnerships" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#e3c979] px-6 font-semibold text-primary hover:bg-[#edd995]">Explore Partnerships <ArrowRight size={17} /></Link>
             <Link href="/marketplace#pilot" id="pilot" className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/35 px-6 font-semibold text-white hover:bg-white/10">Join the Pilot</Link>
           </div>
         </div>

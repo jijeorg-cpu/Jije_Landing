@@ -132,12 +132,16 @@ try {
     };
     await command("Runtime.enable");
     await command("Page.enable");
+    const routes = ["/", "/about", "/marketplace", "/intelligence", "/partners", "/partnerships", "/contact", "/vendors", "/drivers", "/privacy", "/terms"];
+    const internalLinks = new Set<string>();
     for (const width of [1440, 390, 768]) {
       await command("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 768 });
-      for (const route of ["/", "/about", "/marketplace", "/intelligence", "/partners", "/contact", "/vendors", "/drivers", "/privacy", "/terms"]) {
+      for (const route of routes) {
         await navigate(route);
         assert.ok(await evaluate("document.documentElement.scrollWidth <= innerWidth + 1"), `No overflow at ${width}: ${route}`);
         assert.equal(await evaluate("document.querySelectorAll('h1').length"), 1, `One primary heading: ${route}`);
+        const links = await evaluate(`Array.from(document.querySelectorAll('a[href]')).map(a=>new URL(a.href)).filter(u=>u.origin===location.origin).map(u=>u.pathname+u.search+u.hash)`) as string[];
+        links.forEach((href) => internalLinks.add(href));
       }
       await navigate("/");
       if (width < 1024) {
@@ -147,9 +151,48 @@ try {
         assert.ok(await evaluate(`Array.from(document.querySelectorAll('nav a')).some(a => a.getAttribute('href') === '/intelligence' && a.getBoundingClientRect().height > 0)`));
       }
     }
+    for (const href of internalLinks) {
+      const target = new URL(href, origin);
+      if (target.pathname.startsWith("/legal/") && target.pathname.endsWith(".pdf")) {
+        const response = await fetch(target);
+        assert.equal(response.status, 200, `PDF link ${href}`);
+        assert.ok(response.headers.get("content-type")?.includes("application/pdf"));
+      } else {
+        assert.ok(routes.includes(target.pathname), `Registered internal link ${href}`);
+        if (target.hash) {
+          await navigate(target.pathname);
+          assert.ok(await evaluate(`!!document.getElementById(${JSON.stringify(target.hash.slice(1))})`), `Anchor exists: ${href}`);
+        }
+      }
+    }
+    await navigate("/intelligence");
+    for (const text of [
+      "Areas of Focus", "Cultural Food Knowledge", "Intelligent Discovery", "Data and Research",
+      "Applied AI and Technology", "Enterprise and Ecosystem Intelligence",
+      "Who We're Building For", "Food businesses", "Researchers and academic institutions",
+      "Food manufacturers", "Technology and AI companies", "Cultural and community organizations",
+      "Potential strategic partners",
+    ]) {
+      assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `Intelligence content: ${text}`);
+    }
+    await evaluate(`Array.from(document.querySelectorAll('a')).find(a => a.textContent.includes('Explore a Partnership')).click()`);
+    await waitFor(`location.pathname === '/partnerships' && !!document.querySelector('h1')`);
+    console.log("PASS: every discovered internal link, PDF and anchor; expanded Intelligence content and working partnership CTA.");
     const mission = "To preserve, connect and advance African and Afro-Caribbean food culture by building the digital and intelligence infrastructure that strengthens cultural preservation, expands access to its foods, knowledge and traditions, and makes them more understandable to technology.";
     await navigate("/about");
     assert.ok(await evaluate(`document.body.innerText.includes(${JSON.stringify(mission)})`), "Exact official mission");
+    for (const text of [
+      "Rooted in Culture. Powered by Intelligence.",
+      "JÍJÉ is building the infrastructure to connect African and Afro-Caribbean food, cultural knowledge, commerce, and innovation.",
+      "Our work begins with making culturally relevant food and commerce more accessible. Our larger vision is to help organize, understand, and unlock the value of cultural knowledge through technology.",
+      "Our Vision",
+      "A world where culturally specific foods, businesses, and knowledge are easier to discover, understand, and connect across communities and industries.",
+      "Our Approach",
+      "We bring together commerce, community knowledge, and intelligent technology.",
+      "Our Businesses",
+    ]) {
+      assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `About content: ${text}`);
+    }
     for (const hash of ["#mission", "#how-it-works", "#spotlight", "#join", "#pilot"]) {
       await command("Page.navigate", { url: origin + "/" + hash });
       await waitFor(`location.pathname === '/marketplace' && location.hash === '${hash}' && !!document.getElementById('${hash.slice(1)}')`);

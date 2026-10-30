@@ -49,6 +49,7 @@ function Router() {
       <Route path="/marketplace" component={MarketplacePage} />
       <Route path="/intelligence" component={IntelligencePage} />
       <Route path="/partners" component={PartnersPage} />
+      <Route path="/partnerships" component={PartnersPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/vendors" component={VendorsPage} />
       <Route path="/drivers" component={DriversPage} />

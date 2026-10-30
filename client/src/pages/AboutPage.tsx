@@ -15,8 +15,11 @@ export function AboutPage() {
         <div className="absolute -right-28 -top-12 h-[34rem] w-[34rem] rounded-full border border-primary/10" />
         <div className="container relative mx-auto max-w-7xl px-5 md:px-10">
           <p className="text-xs font-bold uppercase tracking-[.2em] text-[#a75c43]">About JÍJÉ Group</p>
-          <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.03] tracking-[-.06em] md:text-7xl">Culture has always held the knowledge.</h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-foreground/70">We are building the connections that help African and Afro-Caribbean food culture travel further—through commerce, knowledge, and technology.</p>
+          <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.03] tracking-[-.06em] md:text-7xl">Rooted in Culture. Powered by Intelligence.</h1>
+          <div className="mt-7 max-w-2xl space-y-4 text-lg leading-8 text-foreground/70">
+            <p>JÍJÉ is building the infrastructure to connect African and Afro-Caribbean food, cultural knowledge, commerce, and innovation.</p>
+            <p>Our work begins with making culturally relevant food and commerce more accessible. Our larger vision is to help organize, understand, and unlock the value of cultural knowledge through technology.</p>
+          </div>
         </div>
       </header>
       <section id="mission" className="scroll-mt-24 bg-primary py-20 text-primary-foreground md:py-28">
@@ -31,19 +34,19 @@ export function AboutPage() {
       <section className="py-20 md:py-28">
         <div className="container mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-[.7fr_1.3fr] md:px-10">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-[#a75c43]">Our Story</p>
-            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-.05em] md:text-5xl">A living culture deserves better systems.</h2>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-[#a75c43]">Our Vision</p>
+            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-.05em] md:text-5xl">A world where cultural knowledge connects.</h2>
           </div>
-          <div className="space-y-6 text-lg leading-8 text-foreground/70">
-            <p>African and Afro-Caribbean food and cultural knowledge are rich, diverse, and deeply connected to identity and community. Yet the systems used to discover, organize, understand, and distribute them remain fragmented.</p>
-            <p>JÍJÉ is working to connect these worlds through commerce, structured knowledge, and intelligent technology. We are starting with food commerce through JÍJÉ Marketplace while building a broader foundation for cultural intelligence, research, and future technology applications.</p>
-            <p>This work is grounded in respect for the people, traditions, and expertise that carry culture forward. Our ambition is to make those connections more visible, useful, and durable.</p>
+          <div className="flex items-start gap-5 text-lg leading-8 text-foreground/70">
+            <span className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#e9eee3] text-primary"><BookOpen size={22} /></span>
+            <p>A world where culturally specific foods, businesses, and knowledge are easier to discover, understand, and connect across communities and industries.</p>
           </div>
         </div>
       </section>
       <section className="bg-[#e9eee3] py-20 md:py-24">
         <div className="container mx-auto max-w-7xl px-5 md:px-10">
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-[#a75c43]">Our approach</p>
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-[#a75c43]">Our Approach</p>
+          <p className="mt-4 max-w-3xl font-display text-2xl font-medium leading-relaxed tracking-[-.02em] md:text-3xl">We bring together commerce, community knowledge, and intelligent technology.</p>
           <div className="mt-7 grid gap-7 md:grid-cols-3">
             {[
               { icon: HeartHandshake, heading: "Rooted in people", copy: "Culture is lived, shared, and carried by communities. We build with that reality at the centre." },
@@ -60,11 +63,20 @@ export function AboutPage() {
         </div>
       </section>
       <section className="py-16">
-        <div className="container mx-auto flex max-w-7xl flex-col gap-6 px-5 sm:flex-row sm:items-center sm:justify-between md:px-10">
-          <div><p className="text-xs font-bold uppercase tracking-[.2em] text-[#a75c43]">The work in motion</p><p className="mt-3 font-display text-3xl font-semibold">Explore the JÍJÉ ecosystem.</p></div>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/marketplace" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 font-semibold text-primary-foreground">Marketplace <ArrowRight size={17} /></Link>
-            <Link href="/intelligence" className="inline-flex min-h-12 items-center gap-2 rounded-full border border-primary/20 px-6 font-semibold text-primary">Intelligence <ArrowRight size={17} /></Link>
+        <div className="container mx-auto max-w-7xl px-5 md:px-10">
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-[#a75c43]">Our Businesses</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold">Two businesses, one cultural foundation.</h2>
+          <div className="mt-8 grid gap-8 md:grid-cols-2">
+            <article className="flex flex-col items-start border-t border-primary/15 pt-5">
+              <h3 className="font-display text-2xl font-semibold">JÍJÉ Marketplace</h3>
+              <p className="mt-3 max-w-lg leading-7 text-foreground/65">JÍJÉ’s first business, beginning with culturally relevant food and commerce.</p>
+              <Link href="/marketplace" className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 font-semibold text-primary-foreground">Explore Marketplace <ArrowRight size={17} /></Link>
+            </article>
+            <article className="flex flex-col items-start border-t border-primary/15 pt-5">
+              <h3 className="font-display text-2xl font-semibold">JÍJÉ Intelligence</h3>
+              <p className="mt-3 max-w-lg leading-7 text-foreground/65">A developing initiative exploring cultural food knowledge, research, and intelligent technology.</p>
+              <Link href="/intelligence" className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-full border border-primary/20 px-6 font-semibold text-primary">Explore Intelligence <ArrowRight size={17} /></Link>
+            </article>
           </div>
         </div>
       </section>

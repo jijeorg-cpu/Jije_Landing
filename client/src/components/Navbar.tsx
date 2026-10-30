@@ -8,7 +8,7 @@ const links = [
   { name: "About JÍJÉ", to: "/about" },
   { name: "Marketplace", to: "/marketplace" },
   { name: "Intelligence", to: "/intelligence" },
-  { name: "Partnerships", to: "/partners" },
+  { name: "Partnerships", to: "/partnerships" },
   { name: "Contact", to: "/contact" },
 ];
 
@@ -42,7 +42,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-5 xl:flex">
           {links.map((link) => (
-            <RouteLink key={link.to} href={link.to} className={`text-sm font-medium transition-colors hover:text-primary ${location === link.to ? "text-primary" : "text-foreground/75"}`}>
+            <RouteLink key={link.to} href={link.to} className={`text-sm font-medium transition-colors hover:text-primary ${location === link.to || (location === "/partners" && link.to === "/partnerships") ? "text-primary" : "text-foreground/75"}`}>
               {link.name}
             </RouteLink>
           ))}
