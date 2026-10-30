@@ -32,22 +32,6 @@ export function LegalPage({ kind }: LegalPageProps) {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [kind]);
 
-  useEffect(() => {
-    const previousTitle = document.title;
-    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    const previousDescription = description?.content;
-    document.title = `${title} | Jíjé`;
-    if (description) {
-      description.content = kind === "privacy"
-        ? "Read Jíjé Group Inc.'s Privacy Policy, including how personal information is collected, used, shared, and protected."
-        : "Read the Jíjé Group Inc. Terms of Service for the Jíjé website, marketplace, and public interest forms.";
-    }
-    return () => {
-      document.title = previousTitle;
-      if (description && previousDescription !== undefined) description.content = previousDescription;
-    };
-  }, [kind, title]);
-
   return (
     <div className="min-h-[100dvh] bg-[#f9f7f2] text-foreground">
       <Navbar />
@@ -55,10 +39,10 @@ export function LegalPage({ kind }: LegalPageProps) {
         <div className="pointer-events-none absolute -right-32 top-20 h-96 w-96 rounded-full border border-primary/10" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl">
           <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-primary/75 transition-colors hover:text-primary">
-            <ArrowLeft size={16} aria-hidden="true" /> Back to Jíjé
+            <ArrowLeft size={16} aria-hidden="true" /> Back to JÍJÉ
           </Link>
           <header className="mt-8 max-w-3xl border-l-4 border-[#bd694d] pl-6 md:pl-8">
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-[#bd694d]">Jíjé Group Inc. · Toronto / GTA</p>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-[#705335]">JÍJÉ Group Inc. · Toronto / GTA</p>
             <h1 className="mt-3 font-display text-5xl font-bold leading-[1.02] text-primary sm:text-6xl md:text-7xl">{title}</h1>
             <p className="mt-5 text-sm font-medium tracking-wide text-foreground/55">{metadata}</p>
           </header>
@@ -67,7 +51,7 @@ export function LegalPage({ kind }: LegalPageProps) {
             <article className="min-w-0 rounded-[1.75rem] border border-primary/10 bg-[#fffdf7] px-6 py-8 shadow-[0_14px_50px_rgba(29,62,42,.06)] sm:px-10 sm:py-12">
               <div className="mb-9 flex flex-col gap-4 border-b border-primary/10 pb-7 sm:flex-row sm:items-center sm:justify-between">
                 <p className="max-w-xl text-sm leading-relaxed text-foreground/65">
-                  Official Jíjé document. The text below is reproduced from the approved source.
+                  Official JÍJÉ document. The text below is reproduced from the approved source.
                 </p>
                 <a
                   href={documentUrl}

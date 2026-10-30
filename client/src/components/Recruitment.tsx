@@ -43,13 +43,13 @@ const copy: Record<RecruitmentRole, RecruitmentCopy> = {
   vendor: {
     eyebrow: "Toronto & GTA food businesses",
     headline: "Grow Your Business",
-    emphasis: "with Jíjé",
-    intro: "Bring your African and Afro-Caribbean food, groceries, and products to more customers. We're inviting restaurants, grocery stores, chefs, and caterers across Toronto and the GTA to join Jíjé.",
+    emphasis: "with JÍJÉ",
+    intro: "Bring your African and Afro-Caribbean food, groceries, and products to more customers. We're inviting restaurants, grocery stores, chefs, and caterers across Toronto and the GTA to join JÍJÉ.",
     audience: "Restaurants, grocery and market owners, chefs, caterers, and other food businesses.",
     benefits: [
       { title: "Reach new customers", body: "Connect with people looking for authentic African and Afro-Caribbean foods and products.", icon: Compass },
       { title: "Grow your visibility", body: "Help more customers discover your business through a marketplace built around this community.", icon: Utensils },
-      { title: "Get onboarding support", body: "If invited to continue, the Jíjé team will guide you through initial onboarding and store setup.", icon: Handshake },
+      { title: "Get onboarding support", body: "If invited to continue, the JÍJÉ team will guide you through initial onboarding and store setup.", icon: Handshake },
       { title: "Prepare for online ordering", body: "Explore access to online ordering and delivery opportunities as these features launch in your area.", icon: Store },
     ],
     steps: [
@@ -60,13 +60,13 @@ const copy: Record<RecruitmentRole, RecruitmentCopy> = {
     ],
     formTitle: "List your business",
     formIntro: "Tell us a little about your business. This is an expression of interest in the Toronto/GTA pilot, not a commitment.",
-    pageTitle: "Grow Your Business with Jíjé | Vendor Pilot",
-    metaDescription: "Introduce your Toronto or GTA food business to Jíjé. Share your interest in the African and Afro-Caribbean food marketplace pilot.",
+    pageTitle: "Grow Your Business with JÍJÉ | Vendor Pilot",
+    metaDescription: "Introduce your Toronto or GTA food business to JÍJÉ. Share your interest in the African and Afro-Caribbean food marketplace pilot.",
   },
   driver: {
     eyebrow: "Delivery partners · Toronto & GTA",
     headline: "Deliver",
-    emphasis: "with Jíjé",
+    emphasis: "with JÍJÉ",
     intro: "Explore flexible delivery opportunities while helping connect people with the African and Afro-Caribbean food and groceries they love. We're inviting delivery partners in Toronto and the GTA to register their interest.",
     audience: "For people interested in helping local food businesses bring orders to their neighbours.",
     benefits: [
@@ -83,8 +83,8 @@ const copy: Record<RecruitmentRole, RecruitmentCopy> = {
     ],
     formTitle: "Start your driver application",
     formIntro: "Share a few details so we can understand your interest in the Toronto/GTA delivery pilot. No sensitive ID or financial information is requested.",
-    pageTitle: "Deliver with Jíjé | Driver Pilot",
-    metaDescription: "Register your interest in delivering with Jíjé in Toronto and the GTA. Learn about the community-first delivery partner pilot.",
+    pageTitle: "Deliver with JÍJÉ | Driver Pilot",
+    metaDescription: "Register your interest in delivering with JÍJÉ in Toronto and the GTA. Learn about the community-first delivery partner pilot.",
   },
 };
 
@@ -216,7 +216,7 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
       track("recruitment_application_success", role);
     } catch (caught) {
       setError(caught instanceof TypeError
-        ? "We couldn’t reach Jíjé just now. Check your connection and try again."
+        ? "We couldn’t reach JÍJÉ just now. Check your connection and try again."
         : caught instanceof Error
           ? caught.message
           : "We couldn’t submit your application. Please try again.");
@@ -228,8 +228,8 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
   if (submitted) {
     const confirmation =
       role === "vendor"
-        ? "Thank you for your interest in partnering with Jíjé. We've received your information and our team will be in touch regarding next steps."
-        : "Thanks for your interest in delivering with Jíjé! Your application has been received. Our team will reach out about eligibility and next steps.";
+        ? "Thank you for your interest in partnering with JÍJÉ. We've received your information and our team will be in touch regarding next steps."
+        : "Thanks for your interest in delivering with JÍJÉ! Your application has been received. Our team will reach out about eligibility and next steps.";
     return (
       <div className="rounded-2xl border border-primary/15 bg-[#f4f6ed] p-7 md:p-9" role="status" aria-live="polite">
         <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
@@ -252,7 +252,7 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
         <p className="mt-3 leading-relaxed text-foreground/65">{intro}</p>
       </div>
       {error && (
-        <div role="alert" className="rounded-xl border border-[#bd694d]/50 bg-[#fbefea] px-4 py-3 text-sm text-[#713a2a]">
+        <div role="alert" className="rounded-xl border border-[#d64550]/35 bg-[#faeaeb] px-4 py-3 text-sm text-[#713a2a]">
           <p>{error}</p>
           <p className="mt-1">Your form details are still here. Review them, then try again.</p>
         </div>
@@ -262,7 +262,7 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
 
       <label className="flex cursor-pointer items-start gap-3 rounded-xl bg-secondary/50 p-4 text-sm leading-relaxed text-foreground/75">
         <input className="mt-1 h-4 w-4 accent-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" type="checkbox" name="contactConsent" value="true" required />
-        <span>I agree that Jíjé may use the information I provide to review my application and contact me about the Toronto/GTA pilot. I understand this is not a partnership or work guarantee, and I can ask Jíjé to stop contacting me.</span>
+        <span>I agree that JÍJÉ may use the information I provide to review my application and contact me about the Toronto/GTA pilot. I understand this is not a partnership or work guarantee, and I can ask JÍJÉ to stop contacting me.</span>
       </label>
 
       <p className="text-sm leading-relaxed text-foreground/75">
@@ -287,7 +287,7 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
         {!submitting && <ArrowRight aria-hidden="true" size={17} />}
       </Button>
       <div className="space-y-2 text-xs leading-relaxed text-muted-foreground">
-        <p>Jíjé is preparing its Toronto/GTA pilot. Submitting this form does not create a partnership, employment relationship, or obligation.</p>
+        <p>JÍJÉ is preparing its Toronto/GTA pilot. Submitting this form does not create a partnership, employment relationship, or obligation.</p>
         {role === "driver" && <p>We will not ask for a government ID, SIN, banking details, or other financial information on this interest form.</p>}
       </div>
     </form>
@@ -399,8 +399,8 @@ function TextArea(props: { label: string; name: string; required?: boolean; rows
 export function CourierIllustration({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 560 500" role="img" aria-labelledby="courier-title courier-desc">
-      <title id="courier-title">Jíjé delivery partner illustration</title>
-      <desc id="courier-desc">A cheerful courier rides a bicycle with a Jíjé delivery bag through a warm, abstract city scene.</desc>
+      <title id="courier-title">JÍJÉ delivery partner illustration</title>
+      <desc id="courier-desc">A cheerful courier rides a bicycle with a JÍJÉ delivery bag through a warm, abstract city scene.</desc>
       <circle cx="293" cy="240" r="193" fill="#D9BF78" />
       <path d="M67 375c49-69 111-103 187-103 82 0 137 35 198 102H67Z" fill="#557A57" />
       <path d="M85 179h88v156H85zM102 147h54v32h-54zM403 212h65v125h-65zM414 179h44v33h-44z" fill="#F5EBD3" />
@@ -430,37 +430,11 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
   const pageViewTracked = useRef<RecruitmentRole | null>(null);
 
   useEffect(() => {
-    const previousTitle = document.title;
-    let description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    const createdDescription = !description;
-    if (!description) {
-      description = document.createElement("meta");
-      description.name = "description";
-      document.head.appendChild(description);
-    }
-    const previousDescription = description.content;
-    const socialTitle = document.querySelector<HTMLMetaElement>('meta[property="og:title"]');
-    const socialDescription = document.querySelector<HTMLMetaElement>('meta[property="og:description"]');
-    const previousSocialTitle = socialTitle?.content;
-    const previousSocialDescription = socialDescription?.content;
-    document.title = content.pageTitle;
-    description.content = content.metaDescription;
-    if (socialTitle) socialTitle.content = content.pageTitle;
-    if (socialDescription) socialDescription.content = content.metaDescription;
     if (pageViewTracked.current !== role) {
       pageViewTracked.current = role;
       track("page_view", role);
     }
-    return () => {
-      document.title = previousTitle;
-      if (createdDescription) description.remove();
-      else description.content = previousDescription;
-      if (socialTitle && previousSocialTitle !== undefined) socialTitle.content = previousSocialTitle;
-      if (socialDescription && previousSocialDescription !== undefined) {
-        socialDescription.content = previousSocialDescription;
-      }
-    };
-  }, [content.metaDescription, content.pageTitle, role]);
+  }, [role]);
 
   function onCta(action: string) {
     trackRecruitmentCTA(role, action);
@@ -475,10 +449,10 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
           <div className="relative z-10">
             <p className="recruit-eyebrow recruit-rise text-primary">{content.eyebrow}</p>
             <h1 className="recruit-display recruit-rise recruit-delay-1 mt-5 max-w-3xl text-5xl leading-[.98] text-primary sm:text-6xl md:text-[5.2rem]">
-              {content.headline}<br /><span className="text-[#bd694d]">{content.emphasis}</span>
+              {content.headline}<br /><span className="text-[#705335]">{content.emphasis}</span>
             </h1>
             <p className="recruit-rise recruit-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-foreground/75 md:text-xl">{content.intro}</p>
-            <p className="mt-5 max-w-lg border-l-2 border-[#bd694d] pl-4 text-sm leading-relaxed text-foreground/70">{content.audience}</p>
+            <p className="mt-5 max-w-lg border-l-2 border-[#705335] pl-4 text-sm leading-relaxed text-foreground/70">{content.audience}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#apply"
@@ -503,7 +477,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
                 <div className="relative aspect-[.92] overflow-hidden rounded-[48%_48%_2rem_2rem] bg-[#f4f1e8]">
                   <img
                     src={storeOwnerKaya}
-                    alt="Kaya, a welcoming Jíjé store owner standing beside an open shop door"
+                    alt="Kaya, a welcoming JÍJÉ store owner standing beside an open shop door"
                     width={1024}
                     height={1024}
                     className="absolute inset-0 h-full w-full object-contain p-3 sm:p-5"
@@ -519,7 +493,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
               <div className="relative overflow-hidden rounded-[2rem] bg-[#f4f1e8] p-3 sm:p-5">
                 <img
                   src={deliveryCarKaya}
-                  alt="Kaya pictured beside a car in a hand-drawn Jíjé delivery illustration"
+                  alt="Kaya pictured beside a car in a hand-drawn JÍJÉ delivery illustration"
                   width={1024}
                   height={1024}
                   className="block aspect-square h-auto w-full -scale-x-100 object-contain"
@@ -538,7 +512,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24" aria-labelledby="benefits-title">
         <div className={`mb-10 ${isVendor ? "flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between" : "max-w-2xl"}`}>
           <div className="max-w-2xl">
-            <p className="recruit-eyebrow text-[#bd694d]">Why Jíjé</p>
+            <p className="recruit-eyebrow text-[#705335]">Why JÍJÉ</p>
             <h2 id="benefits-title" className="recruit-display mt-3 text-4xl text-primary md:text-5xl">{isVendor ? "A marketplace that sees the whole table." : "A delivery experience shaped with care."}</h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-foreground/65">We’re building with local voices, not making promises before the details are in place.</p>
           </div>
@@ -557,7 +531,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
             <div className="w-full max-w-[13rem] shrink-0 self-center overflow-hidden rounded-[2rem] bg-[#f4f1e8] p-2 sm:w-[12rem] sm:self-auto md:w-[14rem]">
               <img
                 src={bikeKaya}
-                alt="Kaya riding a bicycle with a Jíjé parcel in a hand-drawn illustration"
+                alt="Kaya riding a bicycle with a JÍJÉ parcel in a hand-drawn illustration"
                 width={1024}
                 height={1024}
                 loading="lazy"
@@ -584,14 +558,14 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <div className="grid gap-10 md:grid-cols-[.8fr_1.2fr]">
             <div>
-              <p className="recruit-eyebrow text-[#e3c979]">The process</p>
+              <p className="recruit-eyebrow text-[#ffcc33]">The process</p>
               <h2 className="recruit-display mt-3 text-4xl leading-tight text-primary-foreground md:text-5xl">An open door, not a fine-print surprise.</h2>
               <p className="mt-5 max-w-sm leading-relaxed text-primary-foreground/70">The pilot is taking shape. Here’s what sharing your interest means.</p>
             </div>
             <div className="space-y-0">
               {content.steps.map((step, index) => (
                 <div key={step.title} className="flex gap-5 border-b border-white/15 py-6 first:pt-0 last:border-0">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#e3c979]/60 font-mono text-sm text-[#e3c979]">0{index + 1}</span>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#ffcc33]/60 font-mono text-sm text-[#ffcc33]">0{index + 1}</span>
                   <div><h3 className="text-xl font-semibold text-primary-foreground">{step.title}</h3><p className="mt-2 max-w-lg leading-relaxed text-primary-foreground/70">{step.body}</p></div>
                 </div>
               ))}
@@ -603,14 +577,14 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
       <section id="apply" className="scroll-mt-24 py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-[.8fr_1.2fr] md:px-10">
           <aside className="md:pt-4">
-            <p className="recruit-eyebrow text-[#bd694d]">Start a conversation</p>
+            <p className="recruit-eyebrow text-[#705335]">Start a conversation</p>
             <h2 className="recruit-display mt-3 text-4xl text-primary md:text-5xl">There’s room at the table.</h2>
             <p className="mt-5 max-w-md leading-relaxed text-foreground/65">We’re listening to Toronto and GTA businesses and delivery partners as we prepare. Share what you’d like us to know.</p>
             {role === "driver" && (
               <div className="mt-6 overflow-hidden rounded-xl border border-primary/10 bg-[#f4f1e8]">
                 <img
                   src={bagKaya}
-                  alt="Kaya holding a Jíjé shopping bag in a hand-drawn illustration"
+                  alt="Kaya holding a JÍJÉ shopping bag in a hand-drawn illustration"
                   width={1024}
                   height={1024}
                   loading="lazy"

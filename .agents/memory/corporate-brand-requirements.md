@@ -29,3 +29,17 @@ Before implementation, inspect pending changes and relevant branches and establi
 **Why:** the user explicitly supplied these requirements and official wording in the corporate restructuring clarification.
 
 **How to apply:** retain these constraints when scoping and implementing corporate pages, navigation, mission copy, and any relocation of Marketplace recruitment.
+
+## Brand-guide precedence
+
+Use the supplied brand guide for visual standards, while retaining the newer
+approved corporate mission, three taglines, and Toronto/GTA prelaunch positioning.
+Do not import the guide's older marketplace-only mission or availability claims.
+Approved legal document bodies and PDFs remain verbatim; apply website branding
+in their surrounding interface rather than silently rewriting legal text.
+
+**Why:** the guide predates the explicitly approved corporate wording, and visual
+brand normalization is not approval to revise legal documents.
+
+**How to apply:** distinguish visual guidance from current business copy whenever
+the guide or other historical material conflicts with approved website wording.

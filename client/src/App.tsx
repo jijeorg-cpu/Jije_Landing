@@ -13,6 +13,7 @@ import { ContactPage } from "@/pages/ContactPage";
 import { VendorsPage } from "@/pages/VendorsPage";
 import { DriversPage } from "@/pages/DriversPage";
 import { LegalPage } from "@/pages/LegalPage";
+import { PageMeta } from "@/components/PageMeta";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -64,6 +65,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <PageMeta />
         <Router />
         <Toaster />
       </TooltipProvider>

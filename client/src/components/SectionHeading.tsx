@@ -5,9 +5,10 @@ interface SectionHeadingProps {
   title: string;
   description?: string;
   centered?: boolean;
+  inverse?: boolean;
 }
 
-export function SectionHeading({ title, description, centered = true }: SectionHeadingProps) {
+export function SectionHeading({ title, description, centered = true, inverse = false }: SectionHeadingProps) {
   return (
     <div className={`mb-12 md:mb-16 ${centered ? "text-center" : "text-left"}`}>
       <motion.h2
@@ -15,7 +16,7 @@ export function SectionHeading({ title, description, centered = true }: SectionH
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight text-[#008431]"
+        className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight ${inverse ? "text-primary-foreground" : "text-primary"}`}
       >
         {title}
       </motion.h2>
@@ -25,7 +26,7 @@ export function SectionHeading({ title, description, centered = true }: SectionH
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl max-w-2xl leading-relaxed mx-auto text-[#008431]"
+          className={`text-lg md:text-xl max-w-2xl leading-relaxed mx-auto ${inverse ? "text-primary-foreground/85" : "text-foreground/75"}`}
         >
           {description}
         </motion.p>

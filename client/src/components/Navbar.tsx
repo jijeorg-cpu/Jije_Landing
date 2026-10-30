@@ -29,31 +29,33 @@ export function Navbar() {
   return (
     <nav
       aria-label="Main navigation"
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen
-          ? "bg-background/95 py-3 shadow-sm backdrop-blur-md"
-          : "bg-background/85 py-4 backdrop-blur-sm md:bg-transparent md:py-5"
+      className={`fixed left-0 right-0 top-0 z-50 border-b border-primary/10 transition-all duration-300 ${
+        isScrolled || isMobileMenuOpen ? "bg-background/98 shadow-sm backdrop-blur-md" : "bg-background/95 backdrop-blur-md"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-4 md:px-6">
-        <RouteLink href="/" aria-label="Jíjé home" className="flex shrink-0 items-center">
-          <img src="/jije-icon-v2.png" alt="Jíjé" className="h-12 w-auto object-contain md:h-14" />
+      <div className="container mx-auto flex min-h-[5.5rem] items-center justify-between gap-3 px-4 md:px-6">
+        <RouteLink href="/" aria-label="JÍJÉ home" className="relative flex h-[5.25rem] w-[9.5rem] shrink-0 items-center overflow-hidden">
+          <img
+            src="/jije-icon-v2.png"
+            alt="JÍJÉ"
+            className="absolute left-0 top-1/2 h-[9.5rem] w-[9.5rem] max-w-none -translate-y-1/2 object-contain"
+          />
         </RouteLink>
 
-        <div className="hidden items-center gap-5 xl:flex">
+        <div className="hidden items-center gap-4 xl:flex">
           {links.map((link) => (
-            <RouteLink key={link.to} href={link.to} className={`text-sm font-medium transition-colors hover:text-primary ${location === link.to || (location === "/partners" && link.to === "/partnerships") ? "text-primary" : "text-foreground/75"}`}>
+            <RouteLink key={link.to} href={link.to} className={`whitespace-nowrap text-sm font-semibold transition-colors hover:text-primary focus-visible:rounded-sm ${location === link.to || (location === "/partners" && link.to === "/partnerships") ? "text-primary" : "text-foreground/80"}`}>
               {link.name}
             </RouteLink>
           ))}
         </div>
 
         <div className="hidden items-center gap-2 xl:flex">
-          <RouteLink href="/marketplace" className="inline-flex min-h-10 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90">Explore Marketplace</RouteLink>
+          <RouteLink href="/marketplace" className="inline-flex min-h-10 items-center whitespace-nowrap rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90">Explore Marketplace</RouteLink>
           <Button
             variant="outline"
             onClick={() => window.open(partnerUrl, "_blank", "noopener,noreferrer")}
-            className="min-h-10 rounded-full border-primary/25 px-4 text-sm font-semibold text-primary"
+            className="min-h-10 whitespace-nowrap rounded-full border-primary/25 px-4 text-sm font-semibold text-primary"
           >
             Enquire
           </Button>
@@ -63,7 +65,7 @@ export function Navbar() {
           type="button"
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
-          className="rounded-full p-2 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary xl:hidden"
+          className="rounded-full p-2 text-primary xl:hidden"
           onClick={() => setIsMobileMenuOpen((open) => !open)}
         >
           {isMobileMenuOpen ? <X size={23} aria-hidden="true" /> : <Menu size={23} aria-hidden="true" />}
@@ -71,7 +73,7 @@ export function Navbar() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="absolute left-0 top-full flex max-h-[calc(100dvh-5rem)] w-full flex-col gap-3 overflow-y-auto border-b border-border bg-background p-5 shadow-xl backdrop-blur-xl xl:hidden">
+        <div className="absolute left-0 top-full flex max-h-[calc(100dvh-5.5rem)] w-full flex-col gap-3 overflow-y-auto border-b border-border bg-background p-5 shadow-xl backdrop-blur-xl xl:hidden">
           {links.map((link) => (
             <RouteLink key={link.to} href={link.to} onClick={closeMenu} className="border-b border-border/50 py-2 text-lg font-medium text-foreground">
               {link.name}

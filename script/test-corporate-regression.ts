@@ -18,6 +18,9 @@ import WebSocket from "ws";
 import { pool } from "../server/db";
 import { storage } from "../server/storage";
 import { registerRoutes } from "../server/routes";
+import { registerSiteSeo } from "../server/site-seo";
+import { serveStatic } from "../server/static";
+import { getSiteMetadata, sitePages, SITE_ORIGIN } from "../shared/site-metadata";
 
 assert.ok(process.argv.includes("--development-test"), "Explicit --development-test required");
 assert.notEqual(process.env.NODE_ENV, "production", "Never run against production");
@@ -47,12 +50,37 @@ try {
     assert.equal(saved?.id, entry.id, "Team notification occurs after persistence");
     sent.push(`team:${entry.email}`);
   }, async (entry) => { sent.push(`receipt:${entry.email}`); });
-  app.use(express.static(path.resolve("dist/public")));
-  app.use((_req, res) => res.sendFile(path.resolve("dist/public/index.html")));
+  registerSiteSeo(app);
+  serveStatic(app, path.resolve("dist/public"));
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
   const address = server.address();
   assert.ok(address && typeof address !== "string");
   const origin = `http://127.0.0.1:${address.port}`;
+  for (const route of [...Object.keys(sitePages), "/partners"]) {
+    const response = await fetch(origin + route);
+    assert.equal(response.status, 200, `Direct route ${route}`);
+    const html = await response.text();
+    const meta = getSiteMetadata(route);
+    assert.ok(html.includes(`<title>${meta.title}</title>`), `Initial HTML title ${route}`);
+    assert.ok(html.includes(`rel="canonical" href="${SITE_ORIGIN}${meta.canonicalPath}"`), `Canonical ${route}`);
+    assert.equal((html.match(/property="og:title"/g) ?? []).length, 1);
+    assert.equal((html.match(/name="description"/g) ?? []).length, 1);
+    assert.ok(html.includes("/jije-social.png"));
+    assert.ok(html.includes('<noscript>'), "Crawlable no-JavaScript navigation");
+  }
+  const missing = await fetch(origin + "/this-page-does-not-exist");
+  assert.equal(missing.status, 404);
+  assert.ok((await missing.text()).includes('content="noindex, follow"'));
+  assert.equal((await fetch(origin + "/api/not-an-endpoint")).status, 404);
+  assert.equal((await fetch(origin + "/missing-file.png")).status, 404);
+  const sitemap = await (await fetch(origin + "/sitemap.xml")).text();
+  for (const route of Object.keys(sitePages)) assert.ok(sitemap.includes(`<loc>${SITE_ORIGIN}${route}</loc>`));
+  assert.ok(!sitemap.includes("<loc>https://jije.ca/partners</loc>"));
+  assert.ok((await (await fetch(origin + "/robots.txt")).text()).includes("Disallow: /api/"));
+  const social = Buffer.from(await (await fetch(origin + "/jije-social.png")).arrayBuffer());
+  assert.equal(social.readUInt32BE(16), 1200);
+  assert.equal(social.readUInt32BE(20), 630);
+  console.log("PASS: initial HTML metadata and canonicals, social image, sitemap/robots, direct routes, and real HTTP 404s.");
   const email = (role: string) => `corporate-${run}-${role}@example.invalid`;
   const post = (body: unknown) => fetch(`${origin}/api/applications`, {
     method: "POST",
@@ -134,12 +162,19 @@ try {
     await command("Page.enable");
     const routes = ["/", "/about", "/marketplace", "/intelligence", "/partners", "/partnerships", "/contact", "/vendors", "/drivers", "/privacy", "/terms"];
     const internalLinks = new Set<string>();
-    for (const width of [1440, 390, 768]) {
+    for (const width of [1440, 375, 390, 430, 768]) {
       await command("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 768 });
       for (const route of routes) {
         await navigate(route);
         assert.ok(await evaluate("document.documentElement.scrollWidth <= innerWidth + 1"), `No overflow at ${width}: ${route}`);
         assert.equal(await evaluate("document.querySelectorAll('h1').length"), 1, `One primary heading: ${route}`);
+        assert.ok(await evaluate("document.querySelector('h1').scrollWidth <= document.querySelector('h1').clientWidth + 1"), `Hero text not clipped at ${width}: ${route}`);
+        await waitFor(`document.title === ${JSON.stringify(getSiteMetadata(route).title)}`);
+        assert.equal(await evaluate("document.querySelector('link[rel=\"canonical\"]').href"), SITE_ORIGIN + getSiteMetadata(route).canonicalPath);
+        assert.ok(await evaluate("getComputedStyle(document.body).fontFamily.includes('Quicksand')"), "Brand typeface");
+        await evaluate("document.fonts.ready");
+        assert.ok(await evaluate(`document.fonts.check('16px Quicksand')`), "Self-hosted font loaded");
+        await waitFor(`Array.from(document.querySelectorAll('img')).filter(i=>i.loading!=='lazy').every(i=>i.complete && i.naturalWidth>0)`);
         const links = await evaluate(`Array.from(document.querySelectorAll('a[href]')).map(a=>new URL(a.href)).filter(u=>u.origin===location.origin).map(u=>u.pathname+u.search+u.hash)`) as string[];
         links.forEach((href) => internalLinks.add(href));
       }
@@ -151,6 +186,10 @@ try {
         assert.ok(await evaluate(`Array.from(document.querySelectorAll('nav a')).some(a => a.getAttribute('href') === '/intelligence' && a.getBoundingClientRect().height > 0)`));
       }
     }
+    await navigate("/this-page-does-not-exist");
+    assert.ok(await evaluate("document.body.textContent.includes('404')"));
+    assert.ok(await evaluate(`!!document.querySelector('a[href="/"]') && !!document.querySelector('a[href="/marketplace"]')`));
+    assert.equal(await evaluate("document.querySelector('meta[name=\"robots\"]').content"), "noindex, follow");
     for (const href of internalLinks) {
       const target = new URL(href, origin);
       if (target.pathname.startsWith("/legal/") && target.pathname.endsWith(".pdf")) {
@@ -197,6 +236,7 @@ try {
       await command("Page.navigate", { url: origin + "/" + hash });
       await waitFor(`location.pathname === '/marketplace' && location.hash === '${hash}' && !!document.getElementById('${hash.slice(1)}')`);
     }
+    await command("Emulation.setDeviceMetricsOverride", { width: 768, height: 900, deviceScaleFactor: 1, mobile: false });
     await navigate("/marketplace");
     await evaluate(`document.querySelector('button[aria-label="Open navigation menu"]')?.click()`);
     await waitFor(`!!document.querySelector('a[href="/marketplace#pilot"]')`);

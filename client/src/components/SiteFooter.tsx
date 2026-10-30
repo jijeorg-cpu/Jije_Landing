@@ -8,7 +8,7 @@ export function SiteFooter() {
           <Link href="/" className="w-fit font-display text-xl font-bold text-primary">JÍJÉ Group</Link>
           <p className="font-medium text-foreground/80">Rooted in Culture. Powered by Intelligence.</p>
           <p className="text-sm text-foreground/60">Building connections between culture, commerce, knowledge and technology.</p>
-          <p className="mt-2 text-xs text-foreground/55">© {new Date().getFullYear()} Jíjé Group Inc. All rights reserved.</p>
+          <p className="mt-2 text-xs text-foreground/70">© {new Date().getFullYear()} JÍJÉ Group Inc. All rights reserved.</p>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
           <nav aria-label="Company" className="flex flex-col gap-3 text-sm font-medium text-foreground/70">

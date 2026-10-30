@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/SiteFooter";
-import { PageMeta } from "@/components/PageMeta";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import { trackRecruitmentCTA } from "@/components/Recruitment";
@@ -11,6 +10,7 @@ import {
   MapPin, 
   Calendar, 
   ShoppingBag, 
+  Store,
   ChefHat, 
   Users,
   Truck,
@@ -23,7 +23,7 @@ import { Link } from "wouter";
 
 function HeroSection() {
   return (
-    <section  className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-[#F9F7F2]">
+    <section className="relative min-h-[90vh] flex items-center pt-24 overflow-hidden bg-background">
       {/* Abstract Background Shapes */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
@@ -34,7 +34,7 @@ function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-left"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border shadow-sm text-sm font-semibold text-primary mb-8 animate-in fade-in zoom-in duration-700 delay-200">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background border border-border shadow-sm text-sm font-semibold text-primary mb-8 animate-in fade-in zoom-in duration-700 delay-200">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -42,12 +42,12 @@ function HeroSection() {
             JÍJÉ Marketplace
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-display font-extrabold leading-[1.1] mb-6 tracking-tight text-[#008431]">
+          <h1 className="text-5xl md:text-7xl font-display font-extrabold leading-[1.1] mb-6 tracking-tight text-primary">
             Your Culture, <br />
-            <span className="text-[#bd694d]">Delivered.</span>
+            <span className="text-[#705335]">Delivered.</span>
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">A culturally connected marketplace making African and Afro-Caribbean groceries, meals, and food businesses easier to discover and access.</p>
+          <p className="text-xl text-foreground/75 mb-8 max-w-lg leading-relaxed">A culturally connected marketplace making African and Afro-Caribbean groceries, meals, and food businesses easier to discover and access.</p>
 
           <WaitlistForm />
           <p className="mt-3 text-xs leading-relaxed text-foreground/55">
@@ -65,7 +65,7 @@ function HeroSection() {
 
 function SolutionSection() {
   return (
-    <section id= "mission" className="py-24 bg-[#F9F7F2]">
+    <section id="mission" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading
           label="The Marketplace"
@@ -77,34 +77,37 @@ function SolutionSection() {
           {/* Card 1: Food */}
           <motion.div
             whileHover={{ y: -8 }}
-            className="group relative h-[400px] rounded-3xl overflow-hidden shadow-lg cursor-pointer"
+            className="group relative h-[400px] rounded-3xl overflow-hidden shadow-lg"
           >
             {/* Unsplash: Jollof rice */}
             {/* <!-- https://unsplash.com/photos/top-view-delicious-food-table-xMh_ww8k6yo --> */}
             <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105" 
               style={{ backgroundImage: `url('/attached_assets/jije_jollof.JPEG')` }} />
-            <div 
-              className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-  transparent"
-              />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#17271d]/85 via-[#17271d]/25 to-transparent" />
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <Utensils className="mb-4 h-8 w-8 text-accent" />
-              <h3 className="text-2xl font-bold mb-2 text-[#008431]">Authentic Food</h3>
-              <p className="text-white/80">Discover meals and food businesses from across African and Afro-Caribbean communities.</p>
+              <h3 className="text-2xl font-bold mb-2 text-white">Authentic Food</h3>
+              <p className="text-white/90">Discover meals and food businesses from across African and Afro-Caribbean communities.</p>
             </div>
           </motion.div>
 
           {/* Card 2: Discovery */}
           <motion.div
             whileHover={{ y: -8 }}
-            className="group relative h-[400px] rounded-3xl overflow-hidden shadow-lg cursor-pointer"
+            className="group relative h-[400px] rounded-3xl overflow-hidden shadow-lg"
           >
-            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                 style={{ backgroundImage: `url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop')` }} />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 text-white">
-              <ShoppingBag className="mb-4 h-8 w-8 text-accent" />
-              <h3 className="text-2xl font-bold mb-2 text-[#008431]">Grocery Discovery</h3>
-              <p className="text-white/80">Find the ingredients and essentials that bring familiar dishes to life.</p>
+            <div className="absolute inset-0 bg-[#e8efd9]" style={{ backgroundImage: "repeating-linear-gradient(135deg, transparent 0 21px, rgba(0,132,49,.045) 21px 22px)" }} />
+            <div className="absolute inset-x-8 top-10 flex justify-center" aria-hidden="true">
+              <div className="relative flex h-48 w-48 items-center justify-center rounded-full border border-primary/15 bg-background/65">
+                <div className="absolute inset-5 rounded-full border border-primary/15" />
+                <div className="absolute inset-10 rounded-full border border-primary/15" />
+                <Store className="relative text-primary" size={76} strokeWidth={1.1} />
+                <span className="absolute -right-1 top-8 flex h-10 w-10 items-center justify-center rounded-full bg-[#ffcc33] text-primary"><ShoppingBag size={18} /></span>
+              </div>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#203529]/95 via-[#203529]/55 to-transparent p-8 pt-28 text-white">
+              <h3 className="mb-2 text-2xl font-bold text-white">Grocery Discovery</h3>
+              <p className="text-white/90">Find the ingredients and essentials that bring familiar dishes to life.</p>
             </div>
           </motion.div>
 
@@ -120,8 +123,8 @@ function SolutionSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <Calendar className="mb-4 h-8 w-8 text-accent" />
-              <h3 className="text-2xl font-bold mb-2 text-[#008431]">A table of traditions</h3>
-              <p className="text-white/80">Explore the food stories, flavours, and traditions that connect community.</p>
+              <h3 className="text-2xl font-bold mb-2 text-white">A table of traditions</h3>
+              <p className="text-white/90">Explore the food stories, flavours, and traditions that connect community.</p>
             </div>
           </motion.div>
         </div>
@@ -141,14 +144,14 @@ function HowItWorksSection() {
 
   return (
     <section id="how-it-works" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
-      {/* Texture overlay */}
-      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
+      <div className="pointer-events-none absolute inset-0 opacity-[.08]" aria-hidden="true" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #f9f9f9 1px, transparent 0)", backgroundSize: "18px 18px" }} />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <SectionHeading
           label="How It Works"
           title="Bringing Culture Closer"
           description="A marketplace vision grounded in the everyday foodways that bring people together."
           centered
+          inverse
         />
         
         <div className="grid md:grid-cols-3 gap-12 mt-16">
@@ -165,7 +168,7 @@ function HowItWorksSection() {
                 {step.num}
               </div>
               <div className="relative z-10 mt-8">
-                <h3 className="text-2xl font-bold mb-4 bg-[transparent] text-[#008431]">{step.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 bg-[transparent] text-white">{step.title}</h3>
                 <p className="text-primary-foreground/80 leading-relaxed text-lg">{step.desc}</p>
               </div>
               
@@ -216,14 +219,14 @@ function AudienceSection() {
             <motion.div
               key={i}
               whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all"
+              className="bg-background p-8 rounded-3xl shadow-sm border border-border hover:shadow-lg transition-all"
             >
               <div className="flex items-center gap-3 mb-4 text-primary">
                 <div className="p-2 bg-primary/10 rounded-lg">{card.icon}</div>
                 <span className="font-semibold text-sm uppercase tracking-wide opacity-70">{card.role}</span>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-[#008431]">{card.title}</h3>
-              <p className="text-muted-foreground">{card.desc}</p>
+              <h3 className="text-2xl font-bold mb-3 text-primary">{card.title}</h3>
+              <p className="text-foreground/75">{card.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -238,7 +241,7 @@ function RecruitmentSection() {
       <div className="pointer-events-none absolute -right-24 -top-28 h-80 w-80 rounded-full border border-primary/10 md:h-[30rem] md:w-[30rem]" />
       <div className="container relative mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-10 max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[.18em] text-[#bd694d]">Toronto / GTA pilot</p>
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Toronto / GTA pilot</p>
           <h2 id="pilot-title" className="mt-3 text-4xl font-display font-bold leading-tight text-primary md:text-6xl">Let’s build the next chapter together.</h2>
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-foreground/70">We’re meeting the people who make the local food community what it is. Share your interest as a business or delivery partner.</p>
         </div>
@@ -248,28 +251,28 @@ function RecruitmentSection() {
               <div className="absolute -right-8 -top-12 h-52 w-52 rounded-full border border-primary/10" />
               <img
                 src={storeOwnerKaya}
-                alt="Kaya welcoming customers as a Jíjé food business owner"
+                alt="Kaya welcoming customers as a JÍJÉ food business owner"
                 width={1024}
                 height={1024}
                 className="relative h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
               />
             </div>
             <div className="p-7 md:p-10">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#e3c979]"><ChefHat size={24} aria-hidden="true" /></span>
-              <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#e3c979]">For vendors & food businesses</p>
-              <h3 className="mt-2 max-w-md text-3xl font-display font-semibold text-primary-foreground md:text-4xl">Grow with Jíjé</h3>
-              <p className="mt-4 max-w-lg leading-relaxed text-primary-foreground/80">Reach more customers and grow your business with Jíjé.</p>
-              <Link href="/vendors" onClick={() => trackRecruitmentCTA("vendor", "List Your Business")} className="mt-7 inline-flex min-h-12 items-center gap-3 rounded-full bg-[#e3c979] px-6 font-semibold text-primary transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#ffcc33]"><ChefHat size={24} aria-hidden="true" /></span>
+              <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">For vendors & food businesses</p>
+              <h3 className="mt-2 max-w-md text-3xl font-display font-semibold text-primary-foreground md:text-4xl">Grow with JÍJÉ</h3>
+              <p className="mt-4 max-w-lg leading-relaxed text-primary-foreground/80">Reach more customers and grow your business with JÍJÉ.</p>
+              <Link href="/vendors" onClick={() => trackRecruitmentCTA("vendor", "List Your Business")} className="mt-7 inline-flex min-h-12 items-center gap-3 rounded-full bg-[#ffcc33] px-6 font-semibold text-primary transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                 List Your Business <ArrowRight size={17} aria-hidden="true" />
               </Link>
             </div>
           </article>
           <article className="group overflow-hidden rounded-[1.75rem] border border-primary/10 bg-[#fbf9f3] shadow-sm">
             <div className="relative flex h-56 items-center justify-center overflow-hidden bg-[#e9eee3] px-8 md:h-64">
-              <div className="absolute -right-10 -top-12 h-48 w-48 rounded-full border border-[#bd694d]/20 transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute -right-10 -top-12 h-48 w-48 rounded-full border border-[#705335]/20 transition-transform duration-500 group-hover:scale-110" />
               <img
                 src={bicycleKaya}
-                alt="Kaya riding a bicycle to deliver a Jíjé order"
+                alt="Kaya riding a bicycle to deliver a JÍJÉ order"
                 width={1024}
                 height={1024}
                 className="relative h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
@@ -277,8 +280,8 @@ function RecruitmentSection() {
             </div>
             <div className="relative p-7 md:p-10">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e8eddf] text-primary"><Truck size={24} aria-hidden="true" /></span>
-              <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#bd694d]">For delivery partners</p>
-              <h3 className="mt-2 max-w-md text-3xl font-display font-semibold text-primary md:text-4xl">Deliver with Jíjé</h3>
+              <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#705335]">For delivery partners</p>
+              <h3 className="mt-2 max-w-md text-3xl font-display font-semibold text-primary md:text-4xl">Deliver with JÍJÉ</h3>
               <p className="mt-4 max-w-lg leading-relaxed text-foreground/65">Join our growing delivery community and explore flexible earning opportunities.</p>
               <Link href="/drivers" onClick={() => trackRecruitmentCTA("driver", "Start Delivering")} className="mt-7 inline-flex min-h-12 items-center gap-3 rounded-full border border-primary/20 px-6 font-semibold text-primary transition-transform hover:-translate-y-0.5 hover:bg-primary/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
                 Start Delivering <ArrowRight size={17} aria-hidden="true" />
@@ -322,7 +325,7 @@ function FinalCTA() {
           </p>
 
           <p className="mt-8 text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Jíjé Group Inc. All rights reserved.
+            © {new Date().getFullYear()} JÍJÉ Group Inc. All rights reserved.
           </p>
           
         </motion.div>
@@ -334,7 +337,6 @@ function FinalCTA() {
 export function MarketplacePage() {
   return (
     <main className="min-h-screen font-sans bg-background text-foreground selection:bg-primary/20">
-      <PageMeta title="JÍJÉ Marketplace | Your Culture, Delivered." description="Discover African and Afro-Caribbean groceries, meals, and food businesses through JÍJÉ Marketplace." />
       <Navbar />
       <HeroSection />
       <SolutionSection />

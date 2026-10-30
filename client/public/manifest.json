@@ -1,10 +1,10 @@
 {
-  "name": "Jije",
-  "short_name": "Jije",
+  "name": "JÍJÉ",
+  "short_name": "JÍJÉ",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#F9F9F9",
+  "theme_color": "#008431",
   "icons": [
     {
       "src": "/jije-icon-v2.png",

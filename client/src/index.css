@@ -1,49 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/quicksand-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/quicksand-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Earthy Palette */
-  --font-sans: 'DM Sans', sans-serif;
-  --font-display: 'Outfit', sans-serif;
-
-  /* Deep Green Primary */
-  --primary: 146 49% 20%;      /* #1A4D2E */
-  --primary-foreground: 40 33% 96%;
-
-  /* Soft Off-White Background */
-  --background: 40 33% 96%;    /* #F9F7F2 */
-  --foreground: 146 49% 15%;
-
-  /* Accent / Secondary */
-  --secondary: 34 20% 88%;     /* #EBE6DC */
-  --secondary-foreground: 146 49% 20%;
-  
-  --muted: 34 20% 92%;
-  --muted-foreground: 25 10% 45%;
-
-  --accent: 38 45% 78%;        /* Warm accent (Sand/Gold) */
-  --accent-foreground: 146 49% 15%;
-
-  --destructive: 0 84% 60%;
+  --font-sans: 'Quicksand', sans-serif;
+  --font-display: 'Quicksand', sans-serif;
+  --jije-green: 140 100% 25.7%;
+  --jije-lime: 74 75% 44%;
+  --jije-charcoal: 0 0% 23%;
+  --jije-ivory: 0 0% 97.8%;
+  --jije-plantain: 45 100% 60%;
+  --jije-pepper: 355 63% 56%;
+  --jije-cocoa: 31 36% 32%;
+  --primary: var(--jije-green);
+  --primary-foreground: 0 0% 98%;
+  --background: var(--jije-ivory);
+  --foreground: var(--jije-charcoal);
+  --secondary: 74 35% 91%;
+  --secondary-foreground: var(--jije-charcoal);
+  --muted: 74 24% 93%;
+  --muted-foreground: 0 0% 36%;
+  --accent: var(--jije-plantain);
+  --accent-foreground: 0 0% 20%;
+  --destructive: var(--jije-pepper);
   --destructive-foreground: 0 0% 98%;
-
-  --border: 34 15% 85%;
-  --input: 34 15% 85%;
-  --ring: 146 49% 20%;
-  
-  --card: 0 0% 100%;
-  --card-foreground: 146 49% 15%;
-
+  --border: 75 18% 83%;
+  --input: 75 18% 78%;
+  --ring: var(--jije-green);
+  --card: 0 0% 97.8%;
+  --card-foreground: var(--jije-charcoal);
   --radius: 1rem;
-
-  --recruit-ink: 146 49% 15%;
-  --recruit-paper: 42 38% 95%;
-  --recruit-leaf: 145 55% 28%;
-  --recruit-citrus: 39 76% 72%;
-  --recruit-clay: 15 48% 58%;
+  --recruit-ink: var(--jije-charcoal);
+  --recruit-paper: var(--jije-ivory);
+  --recruit-leaf: var(--jije-green);
+  --recruit-citrus: var(--jije-plantain);
+  --recruit-clay: var(--jije-cocoa);
 }
 
 @layer base {
@@ -53,11 +61,40 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    line-height: 1.5;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply tracking-tight font-bold text-primary;
+    letter-spacing: -0.018em;
+    @apply font-bold text-primary;
   }
+  a, button, input, select, textarea, summary { -webkit-tap-highlight-color: transparent; }
+  :focus-visible {
+    outline: 3px solid hsl(var(--jije-cocoa));
+    outline-offset: 3px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  letter-spacing: -0.015em !important;
+}
+
+p[class*="text-foreground/"] {
+  color: hsl(var(--foreground) / .82) !important;
+}
+
+/* Market Green needs full-strength light text for normal-size copy. */
+[class~="bg-primary"] p,
+[class~="bg-primary"] a:not([class*="bg-"]),
+[class~="bg-primary"] span.font-mono {
+  color: hsl(var(--primary-foreground));
+}
+[class~="bg-primary"] :focus-visible {
+  outline-color: hsl(var(--jije-plantain));
+}
+a[class~="bg-[#ffcc33]"],
+button[class~="bg-[#ffcc33]"] {
+  color: hsl(var(--jije-charcoal));
 }
 
 /* Custom Scrollbar */
@@ -80,7 +117,7 @@ html { scroll-behavior: smooth; }
 
 .recruit-display {
   font-family: var(--font-display);
-  letter-spacing: -0.055em;
+  letter-spacing: -0.018em;
 }
 
 .recruit-eyebrow {
@@ -117,6 +154,20 @@ html { scroll-behavior: smooth; }
   border-color: hsl(var(--recruit-leaf));
 }
 .recruit-field[aria-invalid="true"] { border-color: hsl(0 64% 48%); }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-180%);
+  border-radius: 999px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: .75rem 1rem;
+  font-weight: 700;
+}
+.skip-link:focus { transform: translateY(0); }
 
 @keyframes recruit-rise {
   from { opacity: 0; transform: translateY(16px); }
