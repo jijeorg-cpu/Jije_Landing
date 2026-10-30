@@ -3,17 +3,19 @@ import { Link as RouteLink, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const landingLinks = [
-  { name: "Our mission", to: "mission" },
-  { name: "How it works", to: "how-it-works" },
-  { name: "Community", to: "spotlight" },
+const links = [
+  { name: "Home", to: "/" },
+  { name: "About JÍJÉ", to: "/about" },
+  { name: "Marketplace", to: "/marketplace" },
+  { name: "Intelligence", to: "/intelligence" },
+  { name: "Partnerships", to: "/partners" },
+  { name: "Contact", to: "/contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
-  const isHome = location === "/";
   const partnerUrl = "https://tally.so/r/rjKA6p";
 
   useEffect(() => {
@@ -23,16 +25,7 @@ export function Navbar() {
   }, []);
 
   const closeMenu = () => setIsMobileMenuOpen(false);
-  const renderLandingLink = (link: (typeof landingLinks)[number], mobile = false) =>
-    <a
-      key={link.to}
-      href={isHome ? `#${link.to}` : `/#${link.to}`}
-      onClick={mobile ? closeMenu : undefined}
-      className={`${mobile ? "border-b border-border/50 py-2 text-lg" : "text-sm"} font-medium text-foreground/75 transition-colors hover:text-primary`}
-    >
-      {link.name}
-    </a>;
-
+  useEffect(() => { setIsMobileMenuOpen(false); }, [location]);
   return (
     <nav
       aria-label="Main navigation"
@@ -47,20 +40,22 @@ export function Navbar() {
           <img src="/jije-icon-v2.png" alt="Jíjé" className="h-12 w-auto object-contain md:h-14" />
         </RouteLink>
 
-        <div className="hidden items-center gap-6 lg:flex">
-          {landingLinks.map((link) => renderLandingLink(link))}
-          <RouteLink href="/vendors" className="text-sm font-medium text-foreground/75 transition-colors hover:text-primary">For vendors</RouteLink>
-          <RouteLink href="/drivers" className="text-sm font-medium text-foreground/75 transition-colors hover:text-primary">For drivers</RouteLink>
+        <div className="hidden items-center gap-5 xl:flex">
+          {links.map((link) => (
+            <RouteLink key={link.to} href={link.to} className={`text-sm font-medium transition-colors hover:text-primary ${location === link.to ? "text-primary" : "text-foreground/75"}`}>
+              {link.name}
+            </RouteLink>
+          ))}
         </div>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <RouteLink href="/vendors" className="inline-flex min-h-10 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90">Join the pilot</RouteLink>
+        <div className="hidden items-center gap-2 xl:flex">
+          <RouteLink href="/marketplace" className="inline-flex min-h-10 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90">Explore Marketplace</RouteLink>
           <Button
             variant="outline"
             onClick={() => window.open(partnerUrl, "_blank", "noopener,noreferrer")}
             className="min-h-10 rounded-full border-primary/25 px-4 text-sm font-semibold text-primary"
           >
-            Partnership enquiry
+            Enquire
           </Button>
         </div>
 
@@ -68,7 +63,7 @@ export function Navbar() {
           type="button"
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
-          className="rounded-full p-2 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:hidden"
+          className="rounded-full p-2 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary xl:hidden"
           onClick={() => setIsMobileMenuOpen((open) => !open)}
         >
           {isMobileMenuOpen ? <X size={23} aria-hidden="true" /> : <Menu size={23} aria-hidden="true" />}
@@ -76,11 +71,16 @@ export function Navbar() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="absolute left-0 top-full flex w-full flex-col gap-3 border-b border-border bg-background/98 p-5 shadow-xl backdrop-blur-xl md:hidden">
-          {landingLinks.map((link) => renderLandingLink(link, true))}
+        <div className="absolute left-0 top-full flex max-h-[calc(100dvh-5rem)] w-full flex-col gap-3 overflow-y-auto border-b border-border bg-background p-5 shadow-xl backdrop-blur-xl xl:hidden">
+          {links.map((link) => (
+            <RouteLink key={link.to} href={link.to} onClick={closeMenu} className="border-b border-border/50 py-2 text-lg font-medium text-foreground">
+              {link.name}
+            </RouteLink>
+          ))}
           <RouteLink href="/vendors" onClick={closeMenu} className="border-b border-border/50 py-2 text-lg font-medium text-foreground">For vendors</RouteLink>
           <RouteLink href="/drivers" onClick={closeMenu} className="border-b border-border/50 py-2 text-lg font-medium text-foreground">For drivers</RouteLink>
-          <RouteLink href="/vendors" onClick={closeMenu} className="mt-2 inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-5 font-semibold text-primary-foreground">Join the pilot</RouteLink>
+          <RouteLink href="/marketplace" onClick={closeMenu} className="mt-2 inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-primary px-5 font-semibold text-primary-foreground">Explore Marketplace</RouteLink>
+          <RouteLink href="/marketplace#pilot" onClick={closeMenu} className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full border border-primary/25 px-5 font-semibold text-primary">Join the Pilot</RouteLink>
           <Button
             variant="outline"
             onClick={() => {
@@ -89,7 +89,7 @@ export function Navbar() {
             }}
             className="min-h-12 rounded-full border-primary/25 text-primary"
           >
-            Existing partnership enquiry
+            Partnership enquiry
           </Button>
         </div>
       )}

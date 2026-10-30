@@ -1,8 +1,8 @@
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/SiteFooter";
+import { PageMeta } from "@/components/PageMeta";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SectionHeading } from "@/components/SectionHeading";
-import { Button } from "@/components/ui/button";
 import { trackRecruitmentCTA } from "@/components/Recruitment";
 import storeOwnerKaya from "@assets/Mascot__Store_Owner_Kaya_1793060137575.png";
 import bicycleKaya from "@assets/Mascot__Kaya_on_Bike_1793060232174.png";
@@ -39,17 +39,15 @@ function HeroSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
-            Coming Soon to Your City
+            JÍJÉ Marketplace
           </div>
           
           <h1 className="text-5xl md:text-7xl font-display font-extrabold leading-[1.1] mb-6 tracking-tight text-[#008431]">
-            Culture. Commerce. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600 text-center">
-              Community.
-            </span>
+            Your Culture, <br />
+            <span className="text-[#bd694d]">Delivered.</span>
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">We're building Jíjé; a culturally powered marketplace connecting communities to African and Afro-Caribbean meals, groceries, culinary services and events.</p>
+          <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">A culturally connected marketplace making African and Afro-Caribbean groceries, meals, and food businesses easier to discover and access.</p>
 
           <WaitlistForm />
           <p className="mt-3 text-xs leading-relaxed text-foreground/55">
@@ -70,9 +68,9 @@ function SolutionSection() {
     <section id= "mission" className="py-24 bg-[#F9F7F2]">
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading
-          label="The Solution"
-          title="One Place for Culture & Community"
-          description="Jíjé brings the entire ecosystem together. Eat, shop, and connect without the hassle."
+          label="The Marketplace"
+          title="Food culture, closer to home"
+          description="JÍJÉ Marketplace is building easier ways to discover African and Afro-Caribbean groceries, meals, and food businesses."
         />
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -91,7 +89,7 @@ function SolutionSection() {
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <Utensils className="mb-4 h-8 w-8 text-accent" />
               <h3 className="text-2xl font-bold mb-2 text-[#008431]">Authentic Food</h3>
-              <p className="text-white/80">Order meals and book culinary services from top rated African and Afro-Caribbean restaurants, vendors, chefs and caterers.</p>
+              <p className="text-white/80">Discover meals and food businesses from across African and Afro-Caribbean communities.</p>
             </div>
           </motion.div>
 
@@ -100,15 +98,13 @@ function SolutionSection() {
             whileHover={{ y: -8 }}
             className="group relative h-[400px] rounded-3xl overflow-hidden shadow-lg cursor-pointer"
           >
-            {/* Unsplash: Spices market */}
-            {/* <!-- https://unsplash.com/photos/variety-of-spices-on-brown-wooden-spoons-U-k7v2P3nKQ --> */}
             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
                  style={{ backgroundImage: `url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop')` }} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <ShoppingBag className="mb-4 h-8 w-8 text-accent" />
               <h3 className="text-2xl font-bold mb-2 text-[#008431]">Grocery Discovery</h3>
-              <p className="text-white/80">Shop cultural ingredients, spices, and essentials.</p>
+              <p className="text-white/80">Find the ingredients and essentials that bring familiar dishes to life.</p>
             </div>
           </motion.div>
 
@@ -124,8 +120,8 @@ function SolutionSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 p-8 text-white">
               <Calendar className="mb-4 h-8 w-8 text-accent" />
-              <h3 className="text-2xl font-bold mb-2 text-[#008431]">Cultural Events</h3>
-              <p className="text-white/80">Never miss a concert, festival, or community meetup again.</p>
+              <h3 className="text-2xl font-bold mb-2 text-[#008431]">A table of traditions</h3>
+              <p className="text-white/80">Explore the food stories, flavours, and traditions that connect community.</p>
             </div>
           </motion.div>
         </div>
@@ -136,9 +132,9 @@ function SolutionSection() {
 
 function HowItWorksSection() {
   const steps = [
-    { num: "1", title: "Discover", desc: "Explore curated meals, groceries, culinary services and events  tailored to your culture and interests." },
-    { num: "2", title: "Order / Book", desc: "Seamlessly order meals, culinary services, or purchase event tickets in just a few taps." },
-    { num: "3", title: "Experience", desc: "Enjoy authentic delivery to your door or step out to connect with your community." }
+    { num: "1", title: "Discover", desc: "Explore African and Afro-Caribbean foods, ingredients, and food businesses." },
+    { num: "2", title: "Find your fit", desc: "Learn about the vendors and offerings shaping a culturally connected marketplace." },
+    { num: "3", title: "Stay connected", desc: "Follow the Marketplace as the Toronto/GTA pilot takes shape." }
   ];
 
   
@@ -151,7 +147,7 @@ function HowItWorksSection() {
         <SectionHeading
           label="How It Works"
           title="Bringing Culture Closer"
-          description="We've made it simple to access the things that make you feel at home."
+          description="A marketplace vision grounded in the everyday foodways that bring people together."
           centered
         />
         
@@ -201,19 +197,19 @@ function AudienceSection() {
             {
               role: "For You",
               title: "The Community",
-              desc: "Reconnect with the flavors and vibes you miss. Easy access to everything that feels like home.",
+              desc: "Explore culturally relevant food discovery built around the flavours and traditions of home.",
               icon: <Users className="w-6 h-6" />
             },
             {
               role: "For Businesses",
               title: "Vendors & Chefs",
-              desc: "Reach customers who are actively searching for what you offer. Grow your business with purpose.",
+              desc: "Share what you make and help shape a marketplace rooted in African and Afro-Caribbean food.",
               icon: <ChefHat className="w-6 h-6" />
             },
             {
               role: "For Creators",
               title: "Event Organizers",
-              desc: "Sell tickets and manage events seamlessly. Fill the room with the right crowd.",
+              desc: "Bring people together around African and Afro-Caribbean food culture.",
               icon: <Calendar className="w-6 h-6" />
             }
           ].map((card, i) => (
@@ -238,7 +234,7 @@ function AudienceSection() {
 
 function RecruitmentSection() {
   return (
-    <section className="relative overflow-hidden bg-[#e9eee3] py-20 md:py-28" aria-labelledby="pilot-title">
+    <section id="pilot" className="relative overflow-hidden bg-[#e9eee3] py-20 md:py-28" aria-labelledby="pilot-title">
       <div className="pointer-events-none absolute -right-24 -top-28 h-80 w-80 rounded-full border border-primary/10 md:h-[30rem] md:w-[30rem]" />
       <div className="container relative mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-10 max-w-2xl">
@@ -311,8 +307,8 @@ function FinalCTA() {
             <MapPin className="w-8 h-8 text-white" />
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Be First to Experience Jíjé</h2>
-          <p className="text-xl text-primary-foreground/90 mb-10">We're launching city by city. Join the waitlist to bring Jíjé to your area and get exclusive early access perks.</p>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Follow the Marketplace pilot</h2>
+          <p className="text-xl text-primary-foreground/90 mb-10">Join the waitlist to share your interest and stay connected as the JÍJÉ Marketplace pilot takes shape.</p>
 
           <div className="bg-white p-2 rounded-[2rem] shadow-2xl">
             <div className="bg-secondary/30 rounded-[1.5rem] p-6 md:p-8">
@@ -335,9 +331,10 @@ function FinalCTA() {
   );
 }
 
-export function LandingPage() {
+export function MarketplacePage() {
   return (
     <main className="min-h-screen font-sans bg-background text-foreground selection:bg-primary/20">
+      <PageMeta title="JÍJÉ Marketplace | Your Culture, Delivered." description="Discover African and Afro-Caribbean groceries, meals, and food businesses through JÍJÉ Marketplace." />
       <Navbar />
       <HeroSection />
       <SolutionSection />
