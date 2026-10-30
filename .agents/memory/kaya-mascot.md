@@ -5,6 +5,7 @@ description: Brand identity and approved recruitment illustration context.
 
 Kaya is Jíjé’s mascot. The user supplied caterer and store-owner artwork for the “For vendors” page.
 The user supplied car, bicycle, and bag-carrying Kaya artwork for the driver page.
+The user also supplied and approved multi-role Kaya artwork for the Marketplace page.
 
 **Why:** the user identified these as Jíjé mascot assets and asked to use them for vendor recruitment.
 

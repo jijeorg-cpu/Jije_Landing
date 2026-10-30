@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { trackRecruitmentCTA } from "@/components/Recruitment";
 import storeOwnerKaya from "@assets/Mascot__Store_Owner_Kaya_1793060137575.png";
 import bicycleKaya from "@assets/Mascot__Kaya_on_Bike_1793060232174.png";
+import multiKaya from "@assets/Mascot__Multi_Kaya_1793379336675.png";
 import { 
   Utensils, 
   MapPin, 
@@ -27,13 +28,14 @@ function HeroSection() {
       {/* Abstract Background Shapes */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
-      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-left"
-        >
+      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-7xl">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-left"
+          >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background border border-border shadow-sm text-sm font-semibold text-primary mb-8 animate-in fade-in zoom-in duration-700 delay-200">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -55,8 +57,22 @@ function HeroSection() {
             <Link href="/privacy" className="underline underline-offset-2 hover:text-primary">Privacy Policy</Link>
             {" "}and <Link href="/terms" className="underline underline-offset-2 hover:text-primary">Terms of Service</Link>.
           </p>
-        </motion.div>
-
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.12 }}
+            className="mx-auto w-full max-w-2xl rounded-[2rem] bg-[#f5f0df] p-3 sm:p-5"
+          >
+            <img
+              src={multiKaya}
+              alt="Six Kaya characters representing a chef, storekeeper, shopper, bicycle courier, driver, and caterer"
+              width={1024}
+              height={768}
+              className="h-auto max-h-[460px] w-full object-contain"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
