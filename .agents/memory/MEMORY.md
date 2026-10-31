@@ -2,3 +2,4 @@
 - [Jíjé pilot positioning](jije-pilot-positioning.md) — Toronto/GTA pilot is in preparation; recruitment captures interest only, and commercial terms remain unfinalized.
 - [Recruitment email provider](recruitment-email-provider.md) — use Jíjé's existing Purelymail service for recruitment notifications.
 - [Kaya mascot](kaya-mascot.md) — Kaya is Jíjé’s mascot; supplied business and delivery artwork is approved for the corresponding recruitment pages.
+- [Publishing path](publishing-path.md) — update the existing GitHub-backed jije.ca/Netlify site, not a new Replit deployment; verify recruitment backend compatibility.
