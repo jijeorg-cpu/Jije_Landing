@@ -54,7 +54,16 @@ for (const file of [
     /  \/\/ Seed with a test entry if empty[\s\S]*?(?=  return httpServer;)/, "",
   );
   const working = readFileSync(file, "utf8");
-  assert.equal(file === "server/routes.ts" ? removeLegacySeed(working) : working,
-    file === "server/routes.ts" ? removeLegacySeed(saved) : saved, `Preserved: ${file}`);
+  // Asset relocation changes only import paths; retain the strict comparison
+  // for all approved recruitment markup, forms, behavior and artwork selections.
+  const normalizeKayaImports = (source: string) => source
+    .replace("@assets/Mascot__Store_Owner_Kaya_1793060137575.png", "@/assets/kaya/store-owner.webp")
+    .replace("@assets/Mascot__Caterer_Kaya_1793060137561.png", "@/assets/kaya/caterer.webp")
+    .replace("@assets/Mascot__Delivery_Car_Kaya_1793060232160.png", "@/assets/kaya/delivery-car.webp")
+    .replace("@assets/Mascot__Kaya_on_Bike_1793060232174.png", "@/assets/kaya/bicycle.webp")
+    .replace("@assets/Mascot__Kaya_with_Bag_1793060232175.png", "@/assets/kaya/shopping-bag.webp");
+  const normalize = (source: string) => file === "server/routes.ts" ? removeLegacySeed(source)
+    : file === "client/src/components/Recruitment.tsx" ? normalizeKayaImports(source) : source;
+  assert.equal(normalize(working), normalize(saved), `Preserved: ${file}`);
 }
 console.log("PASS: updated Marketplace restored except original photo-section copy/assets; simplified corporate pages, recruitment, forms, data, mail, legal, navigation and footer unchanged.");

@@ -3,9 +3,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import { trackRecruitmentCTA } from "@/components/Recruitment";
-import storeOwnerKaya from "@assets/Mascot__Store_Owner_Kaya_1793060137575.png";
-import bicycleKaya from "@assets/Mascot__Kaya_on_Bike_1793060232174.png";
-import multiKaya from "@assets/Mascot__Multi_Kaya_1793379336675.png";
+import storeOwnerKaya from "@/assets/kaya/store-owner.webp";
+import bicycleKaya from "@/assets/kaya/bicycle.webp";
+import multiKaya from "@/assets/kaya/multi-kaya.webp";
 import { 
   Utensils, 
   MapPin, 

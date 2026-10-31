@@ -50,3 +50,12 @@ Netlify could not resolve, causing dependency installation to fail.
 lockfile, use the corresponding public npm tarball URLs with unchanged versions
 and integrity hashes, and verify those hashes before release. Changing a registry
 setting alone does not repair absolute URLs already stored in the lockfile.
+
+Verify external releases using Git-included files, not only the full workspace.
+
+**Why:** Replit's global Git ignore excludes uploaded assets. Local builds passed
+using uploaded Kaya images that were absent from GitHub, so Netlify failed.
+
+**How to apply:** retain approved, reasonably sized website assets in the
+application's versioned asset directories rather than depending on uploads.
+Test a source-only checkout without ignored files before asking for another push.

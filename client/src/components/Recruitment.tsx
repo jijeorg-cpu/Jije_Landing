@@ -17,11 +17,11 @@ import {
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
-import storeOwnerKaya from "@assets/Mascot__Store_Owner_Kaya_1793060137575.png";
-import catererKaya from "@assets/Mascot__Caterer_Kaya_1793060137561.png";
-import deliveryCarKaya from "@assets/Mascot__Delivery_Car_Kaya_1793060232160.png";
-import bikeKaya from "@assets/Mascot__Kaya_on_Bike_1793060232174.png";
-import bagKaya from "@assets/Mascot__Kaya_with_Bag_1793060232175.png";
+import storeOwnerKaya from "@/assets/kaya/store-owner.webp";
+import catererKaya from "@/assets/kaya/caterer.webp";
+import deliveryCarKaya from "@/assets/kaya/delivery-car.webp";
+import bikeKaya from "@/assets/kaya/bicycle.webp";
+import bagKaya from "@/assets/kaya/shopping-bag.webp";
 
 export type RecruitmentRole = "vendor" | "driver";
 

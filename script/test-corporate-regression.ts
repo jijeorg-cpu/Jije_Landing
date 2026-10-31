@@ -246,7 +246,7 @@ try {
       "Bringing Culture Closer", "Building the Ecosystem", "Follow the Marketplace pilot",
       "Let’s build the next chapter together.", "Grow with JÍJÉ", "Deliver with JÍJÉ",
     ]) assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `Restored Marketplace copy: ${text}`);
-    assert.ok(await evaluate(`!document.body.textContent.includes('A table of traditions') && !document.body.textContent.includes('Culture. Commerce.') && !!document.querySelector('img[src*="Mascot__Multi_Kaya"]')`), "Updated multi-Kaya hero without old headline or replacement photo-card title");
+    assert.ok(await evaluate(`!document.body.textContent.includes('A table of traditions') && !document.body.textContent.includes('Culture. Commerce.') && !!document.querySelector('img[src*="multi-kaya"]')`), "Updated multi-Kaya hero without old headline or replacement photo-card title");
     const photos = await evaluate(`Array.from(document.querySelectorAll('#mission [style]')).map(e=>e.style.backgroundImage).filter(s=>s.startsWith('url(')).map(s=>s.slice(5,-2))`) as string[];
     assert.deepEqual(photos, ["/attached_assets/jije_jollof.JPEG", "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop", "/jije_cultural.JPG"]);
     assert.ok(await evaluate(`Promise.all(${JSON.stringify(photos)}.map(src=>new Promise(resolve=>{const image=new Image();const timer=setTimeout(()=>resolve(false),20000);image.onload=()=>{clearTimeout(timer);resolve(image.naturalWidth>0)};image.onerror=()=>{clearTimeout(timer);resolve(false)};image.src=src}))).then(results=>results.every(Boolean))`), "All three original photographs load");
