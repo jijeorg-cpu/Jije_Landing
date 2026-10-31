@@ -14,7 +14,7 @@ export function ContactPage() {
         <div className="container relative mx-auto max-w-7xl px-5 md:px-10">
           <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Contact</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.02] tracking-[-.06em] md:text-7xl">Let’s start a conversation.</h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-foreground/70">For a general or partnership enquiry, use the existing JÍJÉ inquiry form. For Marketplace vendor or delivery partner interest, go directly to the relevant application.</p>
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-foreground/70">Choose a Marketplace application or send a general or partnership inquiry.</p>
         </div>
       </section>
       <section className="py-16 md:py-24">
@@ -22,8 +22,8 @@ export function ContactPage() {
           <article className="rounded-[1.75rem] bg-primary p-8 text-primary-foreground md:p-12">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#ffcc33]"><MessageCircle size={22} /></span>
             <p className="mt-8 text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">General & partnership enquiries</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-white md:text-4xl">Use our existing inquiry form.</h2>
-            <p className="mt-4 max-w-xl leading-7 text-white/75">Tell us about your organization, idea, or collaboration through our partnership inquiry form.</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-white md:text-4xl">General & partnership inquiries</h2>
+            <p className="mt-4 max-w-xl leading-7 text-white/75">For company, research, or technology inquiries, use our established form.</p>
             <a href={inquiryUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-[#ffcc33] px-6 font-semibold text-primary hover:bg-[#f4bd20]">Open Partnership Inquiry <ArrowUpRight size={17} /></a>
           </article>
           <div className="grid gap-5">

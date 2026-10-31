@@ -13,7 +13,7 @@ export function PartnersPage() {
         <div className="container mx-auto max-w-7xl px-5 md:px-10">
           <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Make meaningful connections</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.02] tracking-[-.06em] md:text-7xl">Partnerships begin with people.</h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-foreground/70">Whether you are a food business, delivery partner, or exploring a broader collaboration, find the right way to connect with JÍJÉ.</p>
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-foreground/70">Choose the right path for Marketplace opportunities or a broader company inquiry.</p>
         </div>
       </header>
       <section className="py-16 md:py-24">
@@ -24,21 +24,21 @@ export function PartnersPage() {
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#ffcc33]"><ChefHat size={23} /></span>
               <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">JÍJÉ Marketplace</p>
               <h2 className="mt-2 font-display text-3xl font-semibold text-white">Food businesses</h2>
-              <p className="mt-4 leading-7 text-white/75">Share your interest in bringing your African or Afro-Caribbean food business to the Marketplace pilot.</p>
+              <p className="mt-4 leading-7 text-white/75">For African and Afro-Caribbean food businesses interested in Marketplace.</p>
               <Link href="/vendors" className="mt-auto inline-flex items-center gap-2 pt-7 font-semibold text-[#ffcc33]">List Your Business <ArrowRight size={17} /></Link>
             </article>
             <article className="flex min-h-[330px] flex-col rounded-[1.75rem] border border-primary/10 bg-[#e9eee3] p-7 md:p-8">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-[#ffcc33]"><Truck size={23} /></span>
               <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#705335]">JÍJÉ Marketplace</p>
               <h2 className="mt-2 font-display text-3xl font-semibold">Delivery partners</h2>
-              <p className="mt-4 leading-7 text-foreground/65">Register your interest in the delivery partner pilot and learn about possible next steps.</p>
+              <p className="mt-4 leading-7 text-foreground/65">For delivery partners interested in Marketplace.</p>
               <Link href="/drivers" className="mt-auto inline-flex items-center gap-2 pt-7 font-semibold text-primary">Start Delivering <ArrowRight size={17} /></Link>
             </article>
             <article className="flex min-h-[330px] flex-col rounded-[1.75rem] border border-primary/10 bg-[#fbf9f3] p-7 md:p-8">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f0f4e6] text-[#705335]"><BriefcaseBusiness size={23} /></span>
               <p className="mt-7 text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Beyond the Marketplace</p>
-              <h2 className="mt-2 font-display text-3xl font-semibold">Other partnerships</h2>
-              <p className="mt-4 leading-7 text-foreground/65">For research, technology, community, and other partnership enquiries, use our existing enquiry form.</p>
+              <h2 className="mt-2 font-display text-3xl font-semibold">Research, technology & company inquiries</h2>
+              <p className="mt-4 leading-7 text-foreground/65">Use our existing inquiry for research, technology, community partnerships, or general company matters.</p>
               <a href={partnerInquiry} target="_blank" rel="noreferrer" className="mt-auto inline-flex items-center gap-2 pt-7 font-semibold text-primary">Partnership Inquiry <ArrowRight size={17} /></a>
             </article>
           </div>

@@ -28,3 +28,17 @@ mtime_ms = 1793062195296
 storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:ad300ab9-bacf-402e-ba39-ea1ca2a5b251/9dd6c933-18e5-4122-9c07-ba3d8cb6331f/9dabefa7-19f3-4af0-a9ed-0c71e1813e3f"
 storage_version_token = "1793062237485678"
 content_type = "application/pdf"
+
+[[outputs]]
+id = "myML53oSzcwEyQZwyr-Ml"
+uri = "file://generated-artifacts/jije-correction-before-after.html"
+type = "html"
+title = "JÍJÉ — Before & After Review"
+description = "Side-by-side local previews of the restored Marketplace and five simplified corporate pages. Includes full-resolution screenshots; nothing deployed."
+logical_id = "69d87e4b-9237-489d-867b-f7051dfa08a0"
+content_hash = "sha256:7918d93ba624b8d686eb557f9a17b0d795314b9af333cdcf13ff008d9e42b6a5"
+size = 4059666
+mtime_ms = 1793407251228
+storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:ad300ab9-bacf-402e-ba39-ea1ca2a5b251/69d87e4b-9237-489d-867b-f7051dfa08a0/14242b52-2b51-4a88-8b90-f902d8a23345"
+storage_version_token = "1793407256218037"
+content_type = "text/html"

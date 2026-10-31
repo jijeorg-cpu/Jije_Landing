@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, Compass, Layers3, Network, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Compass, Layers3, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -22,7 +22,7 @@ export function HomePage() {
               Rooted in <span className="text-[#705335]">Culture.</span><br />Powered by<br />Intelligence.
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-foreground/75 md:text-xl">
-              JÍJÉ Group Inc. is the parent company behind JÍJÉ Marketplace and developing JÍJÉ Intelligence. We connect African and Afro-Caribbean food culture, commerce, knowledge, and technology.
+              Building the commerce and intelligence infrastructure for African and Afro-Caribbean food.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href="/marketplace" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-primary px-7 font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">
@@ -32,7 +32,6 @@ export function HomePage() {
                 Discover JÍJÉ Intelligence <ArrowUpRight size={17} />
               </Link>
             </div>
-            <p className="mt-7 max-w-xl text-sm font-semibold tracking-wide text-foreground/70">JÍJÉ operates the Marketplace, preparing for a Toronto / GTA pilot, while developing Intelligence for the future.</p>
           </div>
           <div className="relative mx-auto w-full max-w-[590px]">
             <div className="relative aspect-[.92] overflow-hidden rounded-t-[48%] rounded-b-[2rem] bg-[#d9dfc9] shadow-[0_30px_80px_rgba(26,77,46,.12)]">
@@ -62,7 +61,7 @@ export function HomePage() {
               <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">One company · two connected ventures</p>
               <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-.05em] md:text-6xl">Our Businesses</h2>
             </div>
-              <p className="max-w-md text-base leading-7 text-foreground/75">JÍJÉ Group operates Marketplace, preparing for a Toronto / GTA pilot, and is developing Intelligence as a second business.</p>
+              <p className="max-w-md text-base leading-7 text-foreground/75">Two connected businesses, grounded in African and Afro-Caribbean food culture.</p>
           </div>
           <div className="grid gap-5 lg:grid-cols-2">
             <article className="relative flex min-h-[380px] flex-col overflow-hidden rounded-[2rem] bg-primary p-8 text-primary-foreground md:p-11">
@@ -71,7 +70,7 @@ export function HomePage() {
               <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ffcc33] text-primary"><Layers3 size={23} /></span>
               <p className="relative mt-9 text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">JÍJÉ Marketplace · Toronto / GTA pilot in preparation</p>
               <h3 className="relative mt-3 font-display text-3xl font-semibold text-white md:text-4xl">Your Culture, Delivered.</h3>
-              <p className="relative mt-4 max-w-lg leading-7 text-white/75">A culturally connected marketplace making African and Afro-Caribbean groceries, meals, and food businesses easier to discover and access.</p>
+              <p className="relative mt-4 max-w-lg leading-7 text-white/75">The first JÍJÉ business, connecting people with African and Afro-Caribbean food and food businesses.</p>
               <Link href="/marketplace" className="relative mt-auto inline-flex w-fit items-center gap-3 pt-8 font-semibold text-[#ffcc33] transition-colors hover:text-white">Explore Marketplace <ArrowRight size={17} /></Link>
             </article>
             <article className="relative flex min-h-[380px] flex-col overflow-hidden rounded-[2rem] border border-primary/10 bg-[#e9eee3] p-8 md:p-11">
@@ -80,7 +79,7 @@ export function HomePage() {
               <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-[#ffcc33]"><Sparkles size={23} /></span>
               <p className="relative mt-9 text-xs font-bold uppercase tracking-[.16em] text-[#705335]">JÍJÉ Intelligence · Developing initiative</p>
               <h3 className="relative mt-3 font-display text-3xl font-semibold text-primary md:text-4xl">Cultural Knowledge.<br className="hidden md:block" /> Real-World Intelligence.</h3>
-              <p className="relative mt-4 max-w-lg leading-7 text-foreground/70">Building the cultural knowledge and intelligent technology infrastructure to improve food discovery, understanding, and decision-making.</p>
+              <p className="relative mt-4 max-w-lg leading-7 text-foreground/70">A developing initiative connecting cultural food knowledge with research and intelligent technology.</p>
               <Link href="/intelligence" className="relative mt-auto inline-flex w-fit items-center gap-3 pt-8 font-semibold text-primary transition-colors hover:text-[#705335]">Explore Intelligence <ArrowRight size={17} /></Link>
             </article>
           </div>
@@ -95,9 +94,8 @@ export function HomePage() {
             <Link href="/about" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-[#705335]">Read our story <ArrowRight size={16} /></Link>
           </div>
           <div className="max-w-3xl">
-            <p className="font-display text-2xl leading-[1.45] tracking-[-.025em] text-primary md:text-4xl">African and Afro-Caribbean food and cultural knowledge are rich, diverse, and deeply connected to identity and community.</p>
-            <p className="mt-7 text-lg leading-8 text-foreground/70">Yet the systems used to discover, organize, understand, and distribute them remain fragmented. JÍJÉ is working to connect these worlds through commerce, structured knowledge, and intelligent technology.</p>
-            <p className="mt-5 text-lg leading-8 text-foreground/70">We are starting with food commerce through JÍJÉ Marketplace while building a broader foundation for cultural intelligence, research, and future technology applications.</p>
+            <p className="font-display text-2xl leading-[1.45] tracking-[-.025em] text-primary md:text-4xl">African and Afro-Caribbean food carries knowledge, identity, and community.</p>
+            <p className="mt-7 text-lg leading-8 text-foreground/70">JÍJÉ connects that culture through its first business, Marketplace, and the developing knowledge infrastructure of Intelligence.</p>
           </div>
         </div>
       </section>
@@ -105,23 +103,21 @@ export function HomePage() {
       <section id="how-it-works" className="scroll-mt-24 bg-[#f9f7f2] py-24 md:py-28">
         <div className="container mx-auto max-w-7xl px-5 md:px-10">
           <div className="mb-14 max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">An evolving ecosystem</p>
-            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-.05em] md:text-5xl">Different work.<br />One shared foundation.</h2>
+            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">One shared foundation</p>
+            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-.05em] md:text-5xl">Commerce meets knowledge.</h2>
           </div>
-          <div className="grid gap-0 border-y border-primary/15 md:grid-cols-3">
+          <div className="grid gap-0 border-y border-primary/15 md:grid-cols-2">
             {[
-              { number: "01", title: "Commerce, in the real world", copy: "Marketplace connects people, merchants, products, and real-world commerce.", icon: Layers3 },
-              { number: "02", title: "Knowledge with context", copy: "Intelligence develops the knowledge and technology to understand culturally specific foods, ingredients, terminology, and relationships.", icon: Sparkles },
-              { number: "03", title: "A connected future", copy: "Together, these initiatives create opportunities for consumers, businesses, researchers, and technology partners.", icon: Network },
+              { number: "01", title: "Marketplace", copy: "Our first business connects people, food, and merchants.", icon: Layers3 },
+              { number: "02", title: "Intelligence", copy: "A developing foundation for culturally grounded food knowledge and technology.", icon: Sparkles },
             ].map(({ number, title, copy, icon: Icon }) => (
-              <article key={number} className="border-b border-primary/15 py-8 md:border-b-0 md:border-r md:px-8 md:py-10 first:md:pl-0 last:md:border-r-0 last:pb-0">
+              <article key={number} className="border-b border-primary/15 py-8 md:border-b-0 md:border-r md:px-8 md:py-10 first:md:pl-0 last:border-b-0 last:md:border-r-0 last:pb-0">
                 <div className="flex items-center justify-between text-primary/70"><span className="font-mono text-sm">{number}</span><Icon size={20} className="text-[#705335]" /></div>
-              <h3 className="mt-10 font-display text-2xl font-semibold">{title}</h3>
+                <h3 className="mt-10 font-display text-2xl font-semibold">{title}</h3>
                 <p className="mt-3 max-w-sm leading-7 text-foreground/65">{copy}</p>
               </article>
             ))}
           </div>
-          <p className="mt-6 text-xs text-foreground/60">Our ecosystem is evolving. Planned data integrations and AI products are still in development, not publicly available services.</p>
         </div>
       </section>
 

@@ -19,8 +19,8 @@ Afro-Caribbean food knowledge, cultural data, AI, contextual understanding, and
 future research and enterprise applications. Do not imply planned integrations
 or AI products are already publicly available.
 
-The user approved the existing Partnerships page's content and design and asked
-that it remain unchanged while expanding the corporate business pages.
+Preserve Partnerships/Contact inquiry destinations and functionality. The user
+subsequently requested shorter, non-duplicated corporate copy on those pages.
 
 Corporate restructuring is an enhancement, not a rebuild. Preserve all existing and unpublished functionality, including recruitment cards and their complete submission workflows, Join the Pilot, and Partnership Inquiry. Recruitment remains associated with Marketplace and may appear on its page with links elsewhere. The working project, not just the deployed site, is the source of truth.
 
@@ -32,7 +32,7 @@ Before implementation, inspect pending changes and relevant branches and establi
 
 ## Brand-guide precedence
 
-Use the supplied brand guide for visual standards, while retaining the newer
+Use the supplied brand guide for corporate-page and shared-shell visual standards, while retaining the newer
 approved corporate mission, three taglines, and Toronto/GTA prelaunch positioning.
 Do not import the guide's older marketplace-only mission or availability claims.
 Approved legal document bodies and PDFs remain verbatim; apply website branding
@@ -43,3 +43,24 @@ brand normalization is not approval to revise legal documents.
 
 **How to apply:** distinguish visual guidance from current business copy whenever
 the guide or other historical material conflicts with approved website wording.
+
+## Marketplace preservation and corporate brevity
+
+The user clarified: moving the original one-page website under Marketplace did
+not authorize redesigning, rewriting, or removing its sections. Preserve that
+original experience, its three original photographs and descriptions, plus the
+approved Toronto/GTA recruitment section. Keep corporate navigation/footer.
+Do not apply corporate typography, copy simplification, or new visual treatments
+to the original Marketplace sections or vendor/driver application pages.
+
+The corporate pages should introduce and route visitors, not repeatedly explain
+the entire business strategy. About has four main sections: Who We Are, the exact
+official mission, What We're Building, and Our Vision. Intelligence presents
+three focus groups, retaining its developing status without repeated disclaimers.
+
+**Why:** the user said the original Marketplace was unintentionally changed and
+explicitly requested restoration, not a rebuild or a whole-project rollback.
+
+**How to apply:** use historical original Marketplace content as the preservation
+reference; scope corporate refinements separately, retain complete working
+recruitment/waitlist/inquiry flows, and ask before additional design changes.

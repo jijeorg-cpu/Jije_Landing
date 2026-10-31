@@ -174,6 +174,11 @@ try {
         assert.ok(await evaluate("getComputedStyle(document.body).fontFamily.includes('Quicksand')"), "Brand typeface");
         await evaluate("document.fonts.ready");
         assert.ok(await evaluate(`document.fonts.check('16px Quicksand')`), "Self-hosted font loaded");
+        if (route === "/marketplace") {
+          assert.ok(await evaluate("getComputedStyle(document.querySelector('h1')).fontFamily.includes('Marketplace Outfit')"), "Original Marketplace heading font");
+          assert.ok(await evaluate("getComputedStyle(document.querySelector('.marketplace-original')).fontFamily.includes('Marketplace DM Sans')"), "Original Marketplace body font");
+          assert.ok(await evaluate("getComputedStyle(document.querySelector('#pilot')).fontFamily.includes('Quicksand')"), "Recruitment section retains its current typography");
+        }
         await waitFor(`Array.from(document.querySelectorAll('img')).filter(i=>i.loading!=='lazy').every(i=>i.complete && i.naturalWidth>0)`);
         const links = await evaluate(`Array.from(document.querySelectorAll('a[href]')).map(a=>new URL(a.href)).filter(u=>u.origin===location.origin).map(u=>u.pathname+u.search+u.hash)`) as string[];
         links.forEach((href) => internalLinks.add(href));
@@ -206,32 +211,46 @@ try {
     }
     await navigate("/intelligence");
     for (const text of [
-      "Areas of Focus", "Cultural Food Knowledge", "Intelligent Discovery", "Data and Research",
-      "Applied AI and Technology", "Enterprise and Ecosystem Intelligence",
-      "Who We're Building For", "Food businesses", "Researchers and academic institutions",
-      "Food manufacturers", "Technology and AI companies", "Cultural and community organizations",
-      "Potential strategic partners",
+      "Areas of Focus", "Cultural Knowledge", "Intelligent Discovery",
+      "Research, Insights & Applied Technology", "Food businesses and manufacturers",
+      "Researchers and institutions", "Technology and AI companies",
+      "Cultural and community organizations", "Strategic partners",
+      "AI assistants", "integrations", "commerce and enterprise decisions",
     ]) {
       assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `Intelligence content: ${text}`);
     }
+    assert.equal(await evaluate("document.querySelectorAll('article').length"), 3, "Three consolidated Intelligence groups");
     await evaluate(`Array.from(document.querySelectorAll('a')).find(a => a.textContent.includes('Explore a Partnership')).click()`);
     await waitFor(`location.pathname === '/partnerships' && !!document.querySelector('h1')`);
-    console.log("PASS: every discovered internal link, PDF and anchor; expanded Intelligence content and working partnership CTA.");
+    console.log("PASS: every discovered internal link, PDF and anchor; consolidated Intelligence concepts and working partnership CTA.");
     const mission = "To preserve, connect and advance African and Afro-Caribbean food culture by building the digital and intelligence infrastructure that strengthens cultural preservation, expands access to its foods, knowledge and traditions, and makes them more understandable to technology.";
     await navigate("/about");
     assert.ok(await evaluate(`document.body.innerText.includes(${JSON.stringify(mission)})`), "Exact official mission");
     for (const text of [
       "Rooted in Culture. Powered by Intelligence.",
-      "JÍJÉ is building the infrastructure to connect African and Afro-Caribbean food, cultural knowledge, commerce, and innovation.",
-      "Our work begins with making culturally relevant food and commerce more accessible. Our larger vision is to help organize, understand, and unlock the value of cultural knowledge through technology.",
-      "Our Vision",
-      "A world where culturally specific foods, businesses, and knowledge are easier to discover, understand, and connect across communities and industries.",
-      "Our Approach",
-      "We bring together commerce, community knowledge, and intelligent technology.",
-      "Our Businesses",
+      "Who We Are", "Our Mission", "What We’re Building", "Our Vision",
     ]) {
       assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `About content: ${text}`);
     }
+    assert.ok(await evaluate(`!document.body.textContent.includes("Our Approach")`), "Redundant Our Approach removed");
+    assert.equal(await evaluate("document.querySelectorAll('main > header, main > section').length"), 4, "Four ordered About sections");
+    await navigate("/marketplace");
+    for (const text of [
+      "Culture. Commerce.", "Community.", "Coming Soon to Your City",
+      "One Place for Culture & Community",
+      "Jíjé brings the entire ecosystem together. Eat, shop, and connect without the hassle.",
+      "Authentic Food", "Grocery Discovery", "Cultural Events",
+      "Order meals and book culinary services from top rated African and Afro-Caribbean restaurants, vendors, chefs and caterers.",
+      "Shop cultural ingredients, spices, and essentials.",
+      "Never miss a concert, festival, or community meetup again.",
+      "Order / Book", "Experience", "Be First to Experience Jíjé",
+      "Let’s build the next chapter together.", "Grow with JÍJÉ", "Deliver with JÍJÉ",
+    ]) assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `Restored Marketplace copy: ${text}`);
+    assert.ok(await evaluate(`!document.body.textContent.includes('A table of traditions') && !document.querySelector('img[alt^="Six Kaya"]')`));
+    const photos = await evaluate(`Array.from(document.querySelectorAll('#mission [style]')).map(e=>e.style.backgroundImage).filter(s=>s.startsWith('url(')).map(s=>s.slice(5,-2))`) as string[];
+    assert.deepEqual(photos, ["/attached_assets/jije_jollof.JPEG", "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop", "/jije_cultural.JPG"]);
+    assert.ok(await evaluate(`Promise.all(${JSON.stringify(photos)}.map(src=>new Promise(resolve=>{const image=new Image();const timer=setTimeout(()=>resolve(false),20000);image.onload=()=>{clearTimeout(timer);resolve(image.naturalWidth>0)};image.onerror=()=>{clearTimeout(timer);resolve(false)};image.src=src}))).then(results=>results.every(Boolean))`), "All three original photographs load");
+    console.log("PASS: original Marketplace copy, all three exact photographs loaded, original fonts and unchanged recruitment presentation.");
     for (const hash of ["#mission", "#how-it-works", "#spotlight", "#join", "#pilot"]) {
       await command("Page.navigate", { url: origin + "/" + hash });
       await waitFor(`location.pathname === '/marketplace' && location.hash === '${hash}' && !!document.getElementById('${hash.slice(1)}')`);
