@@ -42,3 +42,17 @@ mtime_ms = 1793407251228
 storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:ad300ab9-bacf-402e-ba39-ea1ca2a5b251/69d87e4b-9237-489d-867b-f7051dfa08a0/14242b52-2b51-4a88-8b90-f902d8a23345"
 storage_version_token = "1793407256218037"
 content_type = "text/html"
+
+[[outputs]]
+id = "Xf-laKJnZn6OtYIC04-LR"
+uri = "file://generated-artifacts/jije-marketplace-scoped-correction.html"
+type = "html"
+title = "Marketplace — Corrected Before & After"
+description = "Updated Marketplace design restored, with only the original three-photo section retained. Full-page comparison for local review; nothing deployed."
+logical_id = "71fc3ac7-1969-48a2-9c83-9204726ff20a"
+content_hash = "sha256:8df5c6e4d19be7bba3a3014e74a7dad5ab4ab0ccd09ce91ec23ebe810d9b8314"
+size = 1286316
+mtime_ms = 1793408551499
+storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:ad300ab9-bacf-402e-ba39-ea1ca2a5b251/71fc3ac7-1969-48a2-9c83-9204726ff20a/39d695e8-7e2d-422d-b4b8-780c7677fa03"
+storage_version_token = "1793408582306111"
+content_type = "text/html"

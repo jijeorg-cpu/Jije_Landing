@@ -1,5 +1,10 @@
 # Marketplace restoration and corporate refinement
 
+> Historical review, superseded by `MARKETPLACE_SCOPE_REVIEW.md`. The user
+> clarified that ONLY the original three-photo section should be restored within
+> the updated Marketplace; the whole-page original-design restoration below was
+> too broad. The simplified corporate pages remain approved and unchanged.
+
 ## Recovery and scope
 
 - Inspected the current unpublished state; the working tree was clean.

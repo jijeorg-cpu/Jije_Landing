@@ -175,8 +175,8 @@ try {
         await evaluate("document.fonts.ready");
         assert.ok(await evaluate(`document.fonts.check('16px Quicksand')`), "Self-hosted font loaded");
         if (route === "/marketplace") {
-          assert.ok(await evaluate("getComputedStyle(document.querySelector('h1')).fontFamily.includes('Marketplace Outfit')"), "Original Marketplace heading font");
-          assert.ok(await evaluate("getComputedStyle(document.querySelector('.marketplace-original')).fontFamily.includes('Marketplace DM Sans')"), "Original Marketplace body font");
+          assert.ok(await evaluate("getComputedStyle(document.querySelector('h1')).fontFamily.includes('Quicksand')"), "Updated Marketplace heading font");
+          assert.ok(await evaluate("!document.querySelector('.marketplace-original')"), "No old theme wrappers");
           assert.ok(await evaluate("getComputedStyle(document.querySelector('#pilot')).fontFamily.includes('Quicksand')"), "Recruitment section retains its current typography");
         }
         await waitFor(`Array.from(document.querySelectorAll('img')).filter(i=>i.loading!=='lazy').every(i=>i.complete && i.naturalWidth>0)`);
@@ -236,21 +236,21 @@ try {
     assert.equal(await evaluate("document.querySelectorAll('main > header, main > section').length"), 4, "Four ordered About sections");
     await navigate("/marketplace");
     for (const text of [
-      "Culture. Commerce.", "Community.", "Coming Soon to Your City",
+      "Your Culture,", "Delivered.", "Find your fit", "Stay connected",
       "One Place for Culture & Community",
       "Jíjé brings the entire ecosystem together. Eat, shop, and connect without the hassle.",
       "Authentic Food", "Grocery Discovery", "Cultural Events",
       "Order meals and book culinary services from top rated African and Afro-Caribbean restaurants, vendors, chefs and caterers.",
       "Shop cultural ingredients, spices, and essentials.",
       "Never miss a concert, festival, or community meetup again.",
-      "Order / Book", "Experience", "Be First to Experience Jíjé",
+      "Bringing Culture Closer", "Building the Ecosystem", "Follow the Marketplace pilot",
       "Let’s build the next chapter together.", "Grow with JÍJÉ", "Deliver with JÍJÉ",
     ]) assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `Restored Marketplace copy: ${text}`);
-    assert.ok(await evaluate(`!document.body.textContent.includes('A table of traditions') && !document.querySelector('img[alt^="Six Kaya"]')`));
+    assert.ok(await evaluate(`!document.body.textContent.includes('A table of traditions') && !document.body.textContent.includes('Culture. Commerce.') && !!document.querySelector('img[src*="Mascot__Multi_Kaya"]')`), "Updated multi-Kaya hero without old headline or replacement photo-card title");
     const photos = await evaluate(`Array.from(document.querySelectorAll('#mission [style]')).map(e=>e.style.backgroundImage).filter(s=>s.startsWith('url(')).map(s=>s.slice(5,-2))`) as string[];
     assert.deepEqual(photos, ["/attached_assets/jije_jollof.JPEG", "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop", "/jije_cultural.JPG"]);
     assert.ok(await evaluate(`Promise.all(${JSON.stringify(photos)}.map(src=>new Promise(resolve=>{const image=new Image();const timer=setTimeout(()=>resolve(false),20000);image.onload=()=>{clearTimeout(timer);resolve(image.naturalWidth>0)};image.onerror=()=>{clearTimeout(timer);resolve(false)};image.src=src}))).then(results=>results.every(Boolean))`), "All three original photographs load");
-    console.log("PASS: original Marketplace copy, all three exact photographs loaded, original fonts and unchanged recruitment presentation.");
+    console.log("PASS: updated Marketplace hero/process/ecosystem/waitlist, original three-photo copy and assets, updated fonts and unchanged recruitment presentation.");
     for (const hash of ["#mission", "#how-it-works", "#spotlight", "#join", "#pilot"]) {
       await command("Page.navigate", { url: origin + "/" + hash });
       await waitFor(`location.pathname === '/marketplace' && location.hash === '${hash}' && !!document.getElementById('${hash.slice(1)}')`);

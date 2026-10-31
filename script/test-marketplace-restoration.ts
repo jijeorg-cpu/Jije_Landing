@@ -18,10 +18,25 @@ function compiledFunction(source: string, name: string) {
     compilerOptions: { jsx: ts.JsxEmit.ReactJSX, removeComments: true, target: ts.ScriptTarget.ES2022 },
   }).outputText;
 }
-for (const name of ["HeroSection", "SolutionSection", "HowItWorksSection", "AudienceSection", "FinalCTA"]) {
-  assert.equal(compiledFunction(current, name), compiledFunction(original, name), `${name} matches pre-corporate source`);
+for (const name of ["HeroSection", "HowItWorksSection", "AudienceSection", "FinalCTA", "RecruitmentSection", "MarketplacePage"]) {
+  assert.equal(compiledFunction(current, name), compiledFunction(before, name), `${name} matches UPDATED Marketplace baseline`);
 }
-assert.equal(compiledFunction(current, "RecruitmentSection"), compiledFunction(before, "RecruitmentSection"), "Current approved recruitment unchanged");
+function photoSectionContent(source: string) {
+  const file = ts.createSourceFile("page.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const section = file.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === "SolutionSection");
+  assert.ok(section);
+  const values: string[] = [];
+  function visit(node: ts.Node) {
+    if (ts.isJsxText(node) && node.text.trim()) values.push(node.text.trim().replace(/\s+/g, " "));
+    if (ts.isStringLiteral(node) && ts.isJsxAttribute(node.parent) && ["title", "description"].includes(node.parent.name.getText(file))) values.push(node.text);
+    if (ts.isNoSubstitutionTemplateLiteral(node) && node.text.startsWith("url(")) values.push(node.text);
+    ts.forEachChild(node, visit);
+  }
+  visit(section);
+  return values;
+}
+assert.deepEqual(photoSectionContent(current), photoSectionContent(original), "Only photo section uses original heading, wording and photograph URLs");
+assert.ok(!current.includes("marketplace-original"), "No legacy Marketplace theme or wrapper");
 
 for (const file of [
   "client/src/components/Recruitment.tsx", "client/src/components/WaitlistForm.tsx",
@@ -30,8 +45,11 @@ for (const file of [
   "client/src/pages/LegalPage.tsx", "client/src/content/legal.json",
   "server/routes.ts", "server/storage.ts", "shared/schema.ts",
   "server/recruitment-notifications.ts",
+  "client/src/pages/HomePage.tsx", "client/src/pages/AboutPage.tsx",
+  "client/src/pages/IntelligencePage.tsx", "client/src/pages/PartnersPage.tsx",
+  "client/src/pages/ContactPage.tsx",
 ]) {
-  const saved = execFileSync("git", ["show", `backup/pre-targeted-marketplace-correction-2026-10-30:${file}`], { encoding: "utf8" });
+  const saved = execFileSync("git", ["show", `backup/pre-marketplace-scope-clarification-2026-10-30:${file}`], { encoding: "utf8" });
   assert.equal(readFileSync(file, "utf8"), saved, `Preserved: ${file}`);
 }
-console.log("PASS: original Marketplace section source restored; current recruitment and protected forms, data, mail, legal, navigation and footer code unchanged.");
+console.log("PASS: updated Marketplace restored except original photo-section copy/assets; simplified corporate pages, recruitment, forms, data, mail, legal, navigation and footer unchanged.");

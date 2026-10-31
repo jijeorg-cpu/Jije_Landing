@@ -58,6 +58,7 @@ try {
     marketplace: "/marketplace", home: "/", about: "/about",
     intelligence: "/intelligence", partnerships: "/partnerships", contact: "/contact",
   })) {
+    if (process.argv.includes("--marketplace-only") && name !== "marketplace") continue;
     await command("Page.navigate", { url: `http://127.0.0.1:${address.port}${route}` });
     for (let i = 0; i < 100; i++) {
       if (await evaluate(`location.pathname === ${JSON.stringify(route)} && document.readyState === 'complete' && !!document.querySelector('h1')`)) break;

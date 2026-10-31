@@ -46,21 +46,26 @@ the guide or other historical material conflicts with approved website wording.
 
 ## Marketplace preservation and corporate brevity
 
-The user clarified: moving the original one-page website under Marketplace did
-not authorize redesigning, rewriting, or removing its sections. Preserve that
-original experience, its three original photographs and descriptions, plus the
-approved Toronto/GTA recruitment section. Keep corporate navigation/footer.
-Do not apply corporate typography, copy simplification, or new visual treatments
-to the original Marketplace sections or vendor/driver application pages.
+The user clarified that the updated, redesigned Marketplace is the approved
+baseline—not the old whole-page design. Keep the “Your Culture, Delivered.”
+hero, multi-Kaya illustration, updated typography/colours/spacing, updated
+Discover / Find your fit / Stay connected flow, updated ecosystem section,
+Toronto/GTA recruitment, and “Follow the Marketplace pilot” waitlist.
+Restore ONLY the original three-photograph section: “One Place for Culture &
+Community,” its original supporting description, Authentic Food, Grocery
+Discovery (spices photograph, not an illustration), and Cultural Events, with
+their original descriptions and photographic treatment within the updated theme.
+Do not restore the “Culture. Commerce. Community.” hero or other old sections.
 
 The corporate pages should introduce and route visitors, not repeatedly explain
 the entire business strategy. About has four main sections: Who We Are, the exact
 official mission, What We're Building, and Our Vision. Intelligence presents
 three focus groups, retaining its developing status without repeated disclaimers.
 
-**Why:** the user said the original Marketplace was unintentionally changed and
-explicitly requested restoration, not a rebuild or a whole-project rollback.
+**Why:** the user said “The last correction restored too much” and explicitly
+limited the original-design restoration to the three photographic cards and
+associated heading/wording. The whole updated Marketplace design must stay.
 
-**How to apply:** use historical original Marketplace content as the preservation
-reference; scope corporate refinements separately, retain complete working
-recruitment/waitlist/inquiry flows, and ask before additional design changes.
+**How to apply:** use the updated Marketplace as the baseline, consult the original
+version only for that photographic section, and leave approved corporate content,
+navigation/footer, recruitment cards and form/backend functionality untouched.
