@@ -28,11 +28,14 @@ configure runtime database/mail credentials securely in Netlify, independently o
 local secrets. Confirm the approved recruitment database and schema before release.
 Do not seed sample records or run migrations during function startup or builds.
 
-Use Canadian hosting for the production recruitment database.
+Use Supabase Free in Canada Central for the production recruitment database.
 
-**Why:** the user chose “Use Canadian hosting instead” rather than the proposed
-Ohio database.
+**Why:** the user chose Canadian hosting, then selected “Supabase Free in Canada”
+after comparing free Canadian and US database options.
 
 **How to apply:** verify the database's Canadian region before provisioning;
-do not silently substitute a US region. This choice concerns the database and
-does not establish Canadian residency for Netlify processing or email services.
+do not silently substitute a US region or paid plan. Use PostgreSQL with the
+existing backend, not a replacement authentication or marketplace integration.
+This choice concerns the database and does not establish Canadian residency for
+Netlify processing or email services. Account for free-plan inactivity pausing
+and the lack of automatic backups before relying on it for applications.
