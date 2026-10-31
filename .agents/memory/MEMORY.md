@@ -3,3 +3,4 @@
 - [Recruitment email provider](recruitment-email-provider.md) — use Jíjé's existing Purelymail service for recruitment notifications.
 - [Kaya mascot](kaya-mascot.md) — Kaya is Jíjé’s mascot; supplied business and delivery artwork is approved for the corresponding recruitment pages.
 - [Publishing path](publishing-path.md) — update the existing GitHub-backed jije.ca/Netlify site, not a new Replit deployment; verify recruitment backend compatibility.
+- [External secret entry](external-secret-entry.md) — enter Netlify credentials directly in its secure UI; avoid MCP environment-variable payloads and logs.
