@@ -50,6 +50,11 @@ for (const file of [
   "client/src/pages/ContactPage.tsx",
 ]) {
   const saved = execFileSync("git", ["show", `backup/pre-marketplace-scope-clarification-2026-10-30:${file}`], { encoding: "utf8" });
-  assert.equal(readFileSync(file, "utf8"), saved, `Preserved: ${file}`);
+  const removeLegacySeed = (source: string) => source.replace(
+    /  \/\/ Seed with a test entry if empty[\s\S]*?(?=  return httpServer;)/, "",
+  );
+  const working = readFileSync(file, "utf8");
+  assert.equal(file === "server/routes.ts" ? removeLegacySeed(working) : working,
+    file === "server/routes.ts" ? removeLegacySeed(saved) : saved, `Preserved: ${file}`);
 }
 console.log("PASS: updated Marketplace restored except original photo-section copy/assets; simplified corporate pages, recruitment, forms, data, mail, legal, navigation and footer unchanged.");

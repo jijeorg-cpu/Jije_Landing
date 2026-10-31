@@ -44,14 +44,22 @@ export function renderSiteHtml(template: string, pathname: string) {
   return html;
 }
 
+export function siteRobots() {
+  return `User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n`;
+}
+
+export function siteSitemap() {
+  const urls = Object.keys(sitePages).map((route) =>
+    `<url><loc>${SITE_ORIGIN}${route}</loc></url>`).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
+}
+
 export function registerSiteSeo(app: Express) {
   app.get("/robots.txt", (_req, res) => {
-    res.type("text/plain").send(`User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n`);
+    res.type("text/plain").send(siteRobots());
   });
   app.get("/sitemap.xml", (_req, res) => {
-    const urls = Object.keys(sitePages).map((route) =>
-      `<url><loc>${SITE_ORIGIN}${route}</loc></url>`).join("\n");
-    res.type("application/xml").send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
+    res.type("application/xml").send(siteSitemap());
   });
   // Unknown API URLs must not masquerade as successful HTML pages.
   app.use("/api", (_req, res) => res.status(404).json({ message: "API endpoint not found." }));

@@ -143,13 +143,5 @@ export async function registerRoutes(
     }
   });
 
-  // Seed with a test entry if empty
-  const testEmail = "test@example.com";
-  const existing = await storage.getWaitlistEntryByEmail(testEmail);
-  if (!existing) {
-    await storage.createWaitlistEntry({ email: testEmail });
-    console.log("Seeded database with test waitlist entry");
-  }
-
   return httpServer;
 }

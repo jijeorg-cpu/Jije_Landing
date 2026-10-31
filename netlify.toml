@@ -1,0 +1,29 @@
+[build]
+  command = "npm run build:netlify"
+  publish = "dist/public"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["express", "pg", "nodemailer", "serverless-http", "drizzle-orm", "drizzle-zod", "zod"]
+
+# Keep API calls on jije.ca and send them to the existing Express routes.
+# All other pages/assets are served from the CDN, with per-page SEO HTML.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+  [redirects.rate_limit]
+    window_limit = 5
+    window_size = 180
+    aggregate_by = ["ip", "domain"]
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Content-Type-Options = "nosniff"
