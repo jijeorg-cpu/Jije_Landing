@@ -27,3 +27,12 @@ approved backend and existing domain without introducing a replacement platform.
 configure runtime database/mail credentials securely in Netlify, independently of
 local secrets. Confirm the approved recruitment database and schema before release.
 Do not seed sample records or run migrations during function startup or builds.
+
+Use Canadian hosting for the production recruitment database.
+
+**Why:** the user chose “Use Canadian hosting instead” rather than the proposed
+Ohio database.
+
+**How to apply:** verify the database's Canadian region before provisioning;
+do not silently substitute a US region. This choice concerns the database and
+does not establish Canadian residency for Netlify processing or email services.
