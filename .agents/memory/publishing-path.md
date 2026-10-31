@@ -39,3 +39,14 @@ existing backend, not a replacement authentication or marketplace integration.
 This choice concerns the database and does not establish Canadian residency for
 Netlify processing or email services. Account for free-plan inactivity pausing
 and the lack of automatic backups before relying on it for applications.
+
+Check lockfile download URLs before external hosting releases, especially after
+adding packages through Replit's package tools.
+
+**Why:** package additions recorded Replit-internal firewall tarball URLs that
+Netlify could not resolve, causing dependency installation to fail.
+
+**How to apply:** keep Replit's package security checks enabled. For the portable
+lockfile, use the corresponding public npm tarball URLs with unchanged versions
+and integrity hashes, and verify those hashes before release. Changing a registry
+setting alone does not repair absolute URLs already stored in the lockfile.
