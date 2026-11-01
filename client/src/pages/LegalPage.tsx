@@ -33,7 +33,7 @@ export function LegalPage({ kind }: LegalPageProps) {
   }, [kind]);
 
   return (
-    <div className="min-h-[100dvh] bg-[#f9f7f2] text-foreground">
+    <div className="min-h-[100dvh] bg-white text-foreground">
       <Navbar />
       <main className="relative overflow-hidden px-5 pb-16 pt-28 md:px-8 md:pt-36">
         <div className="pointer-events-none absolute -right-32 top-20 h-96 w-96 rounded-full border border-primary/10" aria-hidden="true" />
@@ -41,14 +41,14 @@ export function LegalPage({ kind }: LegalPageProps) {
           <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-primary/75 transition-colors hover:text-primary">
             <ArrowLeft size={16} aria-hidden="true" /> Back to JÍJÉ
           </Link>
-          <header className="mt-8 max-w-3xl border-l-4 border-[#bd694d] pl-6 md:pl-8">
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-[#705335]">JÍJÉ Group Inc. · Toronto / GTA</p>
+          <header className="mt-8 max-w-3xl border-l-4 border-[#c32d39] pl-6 md:pl-8">
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-[#c32d39]">JÍJÉ Group Inc. · Toronto / GTA</p>
             <h1 className="mt-3 font-display text-5xl font-bold leading-[1.02] text-primary sm:text-6xl md:text-7xl">{title}</h1>
             <p className="mt-5 text-sm font-medium tracking-wide text-foreground/55">{metadata}</p>
           </header>
 
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_17rem] lg:gap-12">
-            <article className="min-w-0 rounded-[1.75rem] border border-primary/10 bg-[#fffdf7] px-6 py-8 shadow-[0_14px_50px_rgba(29,62,42,.06)] sm:px-10 sm:py-12">
+            <article className="min-w-0 rounded-[1.75rem] border border-primary/10 bg-white px-6 py-8 shadow-[0_14px_50px_rgba(29,62,42,.06)] sm:px-10 sm:py-12">
               <div className="mb-9 flex flex-col gap-4 border-b border-primary/10 pb-7 sm:flex-row sm:items-center sm:justify-between">
                 <p className="max-w-xl text-sm leading-relaxed text-foreground/65">
                   Official JÍJÉ document. The text below is reproduced from the approved source.
@@ -71,7 +71,7 @@ export function LegalPage({ kind }: LegalPageProps) {
                     )}
                     <div className="space-y-4 text-[1.02rem] leading-[1.85] text-foreground/80">
                       {section.content.map((paragraph, index) => paragraph.startsWith("• ") ? (
-                        <ul key={`${section.id}-${index}`} className="list-disc space-y-3 pl-6 marker:text-[#bd694d]">
+                        <ul key={`${section.id}-${index}`} className="list-disc space-y-3 pl-6 marker:text-[#c32d39]">
                           <li>{paragraph.slice(2)}</li>
                         </ul>
                       ) : (
@@ -83,14 +83,14 @@ export function LegalPage({ kind }: LegalPageProps) {
               </div>
               <div className="mt-12 flex flex-col gap-3 border-t border-primary/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm text-foreground/60">Also read our {otherTitle}.</p>
-                <Link href={`/${otherKind}`} className="inline-flex items-center gap-2 font-semibold text-primary hover:text-[#bd694d]">
+                <Link href={`/${otherKind}`} className="inline-flex items-center gap-2 font-semibold text-primary hover:text-[#c32d39]">
                   {otherTitle} <ArrowRight size={16} aria-hidden="true" />
                 </Link>
               </div>
             </article>
 
             <aside className="order-first rounded-2xl border border-primary/10 bg-[#e9eee3] p-5 lg:order-last lg:sticky lg:top-28">
-              <p className="text-xs font-bold uppercase tracking-[.16em] text-[#bd694d]">On this page</p>
+              <p className="text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">On this page</p>
               <nav aria-label={`${title} sections`} className="mt-4 max-h-[55vh] space-y-1 overflow-auto pr-1">
                 {sections.filter((section) => section.heading).map((section) => (
                   <a

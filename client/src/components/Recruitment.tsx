@@ -8,7 +8,6 @@ import {
   Compass,
   Handshake,
   Leaf,
-  MapPin,
   ShieldCheck,
   Store,
   Truck,
@@ -26,14 +25,11 @@ import bagKaya from "@/assets/kaya/shopping-bag.webp";
 export type RecruitmentRole = "vendor" | "driver";
 
 type RecruitmentCopy = {
-  eyebrow: string;
   headline: string;
   emphasis: string;
   intro: string;
-  audience: string;
   benefits: { title: string; body: string; icon: typeof Store }[];
   steps: { title: string; body: string }[];
-  formTitle: string;
   formIntro: string;
   pageTitle: string;
   metaDescription: string;
@@ -41,11 +37,9 @@ type RecruitmentCopy = {
 
 const copy: Record<RecruitmentRole, RecruitmentCopy> = {
   vendor: {
-    eyebrow: "Toronto & GTA food businesses",
     headline: "Grow Your Business",
     emphasis: "with JÍJÉ",
-    intro: "Bring your African and Afro-Caribbean food, groceries, and products to more customers. We're inviting restaurants, grocery stores, chefs, and caterers across Toronto and the GTA to join JÍJÉ.",
-    audience: "Restaurants, grocery and market owners, chefs, caterers, and other food businesses.",
+    intro: "Bring your African and Afro-Caribbean food, groceries, and products to more customers. We're inviting restaurants and grocery stores across Toronto and the GTA to join JÍJÉ.",
     benefits: [
       { title: "Reach new customers", body: "Connect with people looking for authentic African and Afro-Caribbean foods and products.", icon: Compass },
       { title: "Grow your visibility", body: "Help more customers discover your business through a marketplace built around this community.", icon: Utensils },
@@ -58,20 +52,17 @@ const copy: Record<RecruitmentRole, RecruitmentCopy> = {
       { title: "Complete onboarding when invited", body: "If invited to continue, work with our team on onboarding and business setup." },
       { title: "Prepare for service launch", body: "Get ready to reach customers when the service launches in your area." },
     ],
-    formTitle: "List your business",
-    formIntro: "Tell us a little about your business. This is an expression of interest in the Toronto/GTA pilot, not a commitment.",
+    formIntro: "Tell us a little about your business. Register your interest in our initial pilot or future opportunities.",
     pageTitle: "Grow Your Business with JÍJÉ | Vendor Pilot",
     metaDescription: "Introduce your Toronto or GTA food business to JÍJÉ. Share your interest in the African and Afro-Caribbean food marketplace pilot.",
   },
   driver: {
-    eyebrow: "Delivery partners · Toronto & GTA",
     headline: "Deliver",
     emphasis: "with JÍJÉ",
     intro: "Explore flexible delivery opportunities while helping connect people with the African and Afro-Caribbean food and groceries they love. We're inviting delivery partners in Toronto and the GTA to register their interest.",
-    audience: "For people interested in helping local food businesses bring orders to their neighbours.",
     benefits: [
       { title: "Flexible opportunities", body: "Share your availability and explore delivery opportunities as the Toronto/GTA pilot takes shape.", icon: Compass },
-      { title: "Potential to earn per delivery", body: "The model is still being developed; details will be shared before any onboarding or commitment.", icon: Truck },
+      { title: "Earn through completed deliveries", body: "Deliver food and groceries for local businesses. Compensation terms will be shared before you decide whether to join.", icon: Truck },
       { title: "Support local communities", body: "Help connect people with the African and Afro-Caribbean businesses in their neighbourhoods.", icon: Store },
       { title: "Guidance through onboarding", body: "Our team will explain eligibility requirements and next steps if you’re invited to continue.", icon: ShieldCheck },
     ],
@@ -81,7 +72,6 @@ const copy: Record<RecruitmentRole, RecruitmentCopy> = {
       { title: "Complete eligibility checks and onboarding", body: "Vehicle eligibility and onboarding depend on local rules and the type of delivery work." },
       { title: "Deliver when approved and active", body: "Begin accepting deliveries only once you’re approved and service is active in your area." },
     ],
-    formTitle: "Start your driver application",
     formIntro: "Share a few details so we can understand your interest in the Toronto/GTA delivery pilot. No sensitive ID or financial information is requested.",
     pageTitle: "Deliver with JÍJÉ | Driver Pilot",
     metaDescription: "Register your interest in delivering with JÍJÉ in Toronto and the GTA. Learn about the community-first delivery partner pilot.",
@@ -172,7 +162,7 @@ function makePayload(role: RecruitmentRole, formData: FormData) {
   };
 }
 
-function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: string; intro: string }) {
+function InterestForm({ role, intro }: { role: RecruitmentRole; intro: string }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -246,13 +236,9 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
 
   return (
     <form onSubmit={submitApplication} onFocusCapture={markFormStarted} onChangeCapture={markFormStarted} className="space-y-5" aria-label={`${role} application form`}>
-      <div>
-        <p className="recruit-eyebrow text-primary">A quick introduction</p>
-        <h3 className="mt-2 text-3xl recruit-display">{title}</h3>
-        <p className="mt-3 leading-relaxed text-foreground/65">{intro}</p>
-      </div>
+      <p className="leading-relaxed text-foreground/65">{intro}</p>
       {error && (
-        <div role="alert" className="rounded-xl border border-[#d64550]/35 bg-[#faeaeb] px-4 py-3 text-sm text-[#713a2a]">
+        <div role="alert" className="rounded-xl border border-[#d64550]/35 bg-[#faeaeb] px-4 py-3 text-sm text-[#a32631]">
           <p>{error}</p>
           <p className="mt-1">Your form details are still here. Review them, then try again.</p>
         </div>
@@ -262,7 +248,7 @@ function InterestForm({ role, title, intro }: { role: RecruitmentRole; title: st
 
       <label className="flex cursor-pointer items-start gap-3 rounded-xl bg-secondary/50 p-4 text-sm leading-relaxed text-foreground/75">
         <input className="mt-1 h-4 w-4 accent-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" type="checkbox" name="contactConsent" value="true" required />
-        <span>I agree that JÍJÉ may use the information I provide to review my application and contact me about the Toronto/GTA pilot. I understand this is not a partnership or work guarantee, and I can ask JÍJÉ to stop contacting me.</span>
+        <span>I agree that JÍJÉ may use the information I provide to review my application and contact me about {role === "vendor" ? "relevant current or future opportunities" : "the Toronto/GTA pilot"}. I understand this is not a partnership or work guarantee, and I can ask JÍJÉ to stop contacting me.</span>
       </label>
 
       <p className="text-sm leading-relaxed text-foreground/75">
@@ -299,7 +285,7 @@ function VendorFields() {
     <>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Business name" name="businessName" required placeholder="The name customers know" />
-        <SelectField label="Business type" name="businessType" required options={["Restaurant", "Grocery/Market", "Chef", "Caterer", "Other"]} />
+        <SelectField label="Business type" name="businessType" required options={["Restaurant", "Grocery/Market", { value: "Chef", label: "Chef — future opportunities" }, { value: "Caterer", label: "Caterer — future opportunities" }, "Other"]} />
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="First name" name="firstName" required autoComplete="given-name" placeholder="First name" />
@@ -342,7 +328,7 @@ function DriverFields() {
         <Field label="City or area" name="cityArea" required placeholder="e.g. North York" />
         <SelectField label="Vehicle type" name="vehicleType" required options={["Car", "Bicycle", "E-bike", "Scooter/Motorcycle", "Other"]} />
       </div>
-      <fieldset className="rounded-xl border border-primary/10 bg-[#f4f2e9] p-4">
+      <fieldset className="rounded-xl border border-primary/10 bg-white p-4">
         <legend className="px-1 text-sm font-semibold">Availability (optional)</legend>
         <div className="mt-2 grid grid-cols-2 gap-3">
           {["Weekdays", "Weekends", "Evenings", "Flexible"].map((option) => (
@@ -358,7 +344,7 @@ function DriverFields() {
         <SelectField label="Delivery interest (optional)" name="deliveryInterest" options={["Delivery only", "Shopping and delivery", "Either"]} />
       </div>
       <TextArea label="Additional comments (optional)" name="additionalComments" rows={3} placeholder="Anything else you would like us to know?" />
-      <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-primary/10 bg-[#f4f2e9] p-4 text-sm leading-relaxed text-foreground/75">
+      <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-primary/10 bg-white p-4 text-sm leading-relaxed text-foreground/75">
         <input className="mt-1 h-4 w-4 accent-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" type="checkbox" name="isAtLeast18" value="true" required />
         <span>I confirm that I am at least 18 years old.</span>
       </label>
@@ -375,13 +361,16 @@ function Field(props: { label: string; name: string; type?: string; required?: b
   );
 }
 
-function SelectField({ label, name, options, required = false }: { label: string; name: string; options: string[]; required?: boolean }) {
+function SelectField({ label, name, options, required = false }: { label: string; name: string; options: Array<string | { value: string; label: string }>; required?: boolean }) {
   return (
     <label className="block">
       <span className="mb-2 block text-sm font-semibold">{label}{required && <span aria-hidden="true" className="text-primary"> *</span>}</span>
       <select className="recruit-field" name={name} required={required} defaultValue="">
         <option value="">{required ? "Select an option" : "Prefer not to say"}</option>
-        {options.map((option) => <option key={option} value={option}>{option}</option>)}
+        {options.map((option) => {
+          const { value, label } = typeof option === "string" ? { value: option, label: option } : option;
+          return <option key={value} value={value}>{label}</option>;
+        })}
       </select>
     </label>
   );
@@ -443,16 +432,13 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
   return (
     <main className="recruit-page min-h-[100dvh]">
       <Navbar />
-      <section className="relative overflow-hidden bg-[#e9eee3] pt-28 md:pt-36">
-        <div className="recruit-grain pointer-events-none absolute inset-0" aria-hidden="true" />
+      <section className="relative overflow-hidden bg-white pt-28 md:pt-36">
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 md:grid-cols-[1.05fr_.95fr] md:px-10 md:pb-24">
           <div className="relative z-10">
-            <p className="recruit-eyebrow recruit-rise text-primary">{content.eyebrow}</p>
-            <h1 className="recruit-display recruit-rise recruit-delay-1 mt-5 max-w-3xl text-5xl leading-[.98] text-primary sm:text-6xl md:text-[5.2rem]">
-              {content.headline}<br /><span className="text-[#705335]">{content.emphasis}</span>
+            <h1 className="recruit-display recruit-rise recruit-delay-1 max-w-3xl text-5xl leading-[.98] text-primary sm:text-6xl md:text-[5.2rem]">
+              {content.headline}<br /><span className="text-primary">{content.emphasis}</span>
             </h1>
             <p className="recruit-rise recruit-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-foreground/75 md:text-xl">{content.intro}</p>
-            <p className="mt-5 max-w-lg border-l-2 border-[#705335] pl-4 text-sm leading-relaxed text-foreground/70">{content.audience}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#apply"
@@ -469,12 +455,11 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
                 How It Works
               </a>
             </div>
-            <p className="mt-5 text-xs font-medium tracking-wide text-foreground/55">TORONTO / GTA PILOT · CURRENTLY IN PREPARATION</p>
           </div>
           <div className="relative mx-auto w-full max-w-[34rem] md:justify-self-end">
             {isVendor ? (
               <div>
-                <div className="relative aspect-[.92] overflow-hidden rounded-[48%_48%_2rem_2rem] bg-[#f4f1e8]">
+                <div className="relative aspect-[.92] overflow-hidden rounded-[48%_48%_2rem_2rem] bg-white">
                   <img
                     src={storeOwnerKaya}
                     alt="Kaya, a welcoming JÍJÉ store owner standing beside an open shop door"
@@ -483,14 +468,12 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
                     className="absolute inset-0 h-full w-full object-contain p-3 sm:p-5"
                   />
                 </div>
-                <div className="relative mx-auto -mt-6 w-[88%] rounded-[2rem] border border-primary/10 bg-[#f9f4e6] p-5 shadow-lg md:p-6">
-                  <p className="recruit-eyebrow text-primary">Rooted in the GTA</p>
-                  <p className="mt-2 font-display text-xl font-semibold leading-tight text-primary md:text-2xl">Good food deserves to be known.</p>
-                  <div className="mt-4 flex items-center gap-2 text-sm font-medium text-foreground/60"><MapPin size={15} aria-hidden="true" /> Toronto & surrounding communities</div>
+                <div className="relative mx-auto -mt-6 w-[88%] rounded-[2rem] bg-primary p-5 shadow-lg md:p-6">
+                  <p className="font-display text-xl font-semibold leading-tight text-primary-foreground md:text-2xl">Good food deserves to be known.</p>
                 </div>
               </div>
             ) : (
-              <div className="relative overflow-hidden rounded-[2rem] bg-[#f4f1e8] p-3 sm:p-5">
+              <div className="relative overflow-hidden rounded-[2rem] bg-white p-3 sm:p-5">
                 <img
                   src={deliveryCarKaya}
                   alt="Kaya pictured beside a car in a hand-drawn JÍJÉ delivery illustration"
@@ -498,13 +481,12 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
                   height={1024}
                   className="block aspect-square h-auto w-full -scale-x-100 object-contain"
                 />
-                <div className="relative mx-auto -mt-2 w-[94%] rounded-2xl border border-primary/10 bg-[#f9f4e6] p-4 shadow-lg md:w-[88%]">
+                <div className="relative mx-auto -mt-2 w-[94%] rounded-2xl border border-primary/10 bg-white p-4 shadow-lg md:w-[88%]">
                   <p className="font-display text-xl font-semibold text-primary">A neighbourhood connection, made tangible.</p>
-                  <div className="mt-2 flex items-center gap-2 text-sm font-medium text-foreground/60"><MapPin size={15} aria-hidden="true" /> Toronto & surrounding communities</div>
                 </div>
               </div>
             )}
-            <div className="absolute -bottom-4 -left-1 hidden rounded-full bg-[#d6b965] px-5 py-3 text-sm font-semibold text-primary shadow-lg sm:block">A pilot built with community</div>
+             <div className="absolute -bottom-4 -left-1 hidden rounded-full border border-primary/15 bg-white px-5 py-3 text-sm font-semibold text-primary shadow-lg sm:block">A pilot built with community</div>
           </div>
         </div>
       </section>
@@ -512,12 +494,11 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24" aria-labelledby="benefits-title">
         <div className={`mb-10 ${isVendor ? "flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between" : "max-w-2xl"}`}>
           <div className="max-w-2xl">
-            <p className="recruit-eyebrow text-[#705335]">Why JÍJÉ</p>
+            <p className="recruit-eyebrow text-[#c32d39]">Why JÍJÉ</p>
             <h2 id="benefits-title" className="recruit-display mt-3 text-4xl text-primary md:text-5xl">{isVendor ? "A marketplace that sees the whole table." : "A delivery experience shaped with care."}</h2>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-foreground/65">We’re building with local voices, not making promises before the details are in place.</p>
           </div>
           {isVendor ? (
-            <div className="w-full max-w-[13rem] shrink-0 self-center overflow-hidden rounded-[2rem] bg-[#f4f1e8] p-2 sm:w-[12rem] sm:self-auto md:w-[14rem]">
+            <div className="w-full max-w-[13rem] shrink-0 self-center overflow-hidden rounded-[2rem] bg-white p-2 sm:w-[12rem] sm:self-auto md:w-[14rem]">
               <img
                 src={catererKaya}
                 alt="Kaya the caterer presenting a pot of food alongside a smiling chef"
@@ -528,7 +509,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
               />
             </div>
           ) : (
-            <div className="w-full max-w-[13rem] shrink-0 self-center overflow-hidden rounded-[2rem] bg-[#f4f1e8] p-2 sm:w-[12rem] sm:self-auto md:w-[14rem]">
+            <div className="w-full max-w-[13rem] shrink-0 self-center overflow-hidden rounded-[2rem] bg-white p-2 sm:w-[12rem] sm:self-auto md:w-[14rem]">
               <img
                 src={bikeKaya}
                 alt="Kaya riding a bicycle with a JÍJÉ parcel in a hand-drawn illustration"
@@ -544,7 +525,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
           {content.benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <article key={benefit.title} className={`group rounded-2xl border border-primary/10 bg-[#fbf9f3] p-6 transition-transform duration-300 hover:-translate-y-1 md:p-7 ${index % 2 ? "md:translate-y-7" : ""}`}>
+              <article key={benefit.title} className={`group rounded-2xl border border-primary/10 bg-white p-6 transition-transform duration-300 hover:-translate-y-1 md:p-7 ${index % 2 ? "md:translate-y-7" : ""}`}>
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#e8eddf] text-primary"><Icon size={21} aria-hidden="true" /></span>
                 <h3 className="mt-6 text-2xl font-semibold text-primary">{benefit.title}</h3>
                 <p className="mt-3 leading-relaxed text-foreground/65">{benefit.body}</p>
@@ -558,9 +539,7 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <div className="grid gap-10 md:grid-cols-[.8fr_1.2fr]">
             <div>
-              <p className="recruit-eyebrow text-[#ffcc33]">The process</p>
-              <h2 className="recruit-display mt-3 text-4xl leading-tight text-primary-foreground md:text-5xl">An open door, not a fine-print surprise.</h2>
-              <p className="mt-5 max-w-sm leading-relaxed text-primary-foreground/70">The pilot is taking shape. Here’s what sharing your interest means.</p>
+              <h2 className="recruit-display text-4xl leading-tight text-primary-foreground md:text-5xl">The Process</h2>
             </div>
             <div className="space-y-0">
               {content.steps.map((step, index) => (
@@ -577,11 +556,15 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
       <section id="apply" className="scroll-mt-24 py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-[.8fr_1.2fr] md:px-10">
           <aside className="md:pt-4">
-            <p className="recruit-eyebrow text-[#705335]">Start a conversation</p>
-            <h2 className="recruit-display mt-3 text-4xl text-primary md:text-5xl">There’s room at the table.</h2>
-            <p className="mt-5 max-w-md leading-relaxed text-foreground/65">We’re listening to Toronto and GTA businesses and delivery partners as we prepare. Share what you’d like us to know.</p>
+            <h2 className="recruit-display text-4xl text-primary md:text-5xl">There’s room at the table.</h2>
+            {isVendor && (
+              <div className="mt-6 rounded-xl border border-primary/15 bg-white p-5">
+                <h3 className="font-display text-xl font-semibold text-primary">For chefs and caterers</h3>
+                <p className="mt-3 leading-relaxed text-foreground/75">We plan to welcome chefs and caterers as JÍJÉ grows. Our initial pilot focuses on restaurants and grocery stores. You’re welcome to register your interest for future opportunities.</p>
+              </div>
+            )}
             {role === "driver" && (
-              <div className="mt-6 overflow-hidden rounded-xl border border-primary/10 bg-[#f4f1e8]">
+              <div className="mt-6 overflow-hidden rounded-xl border border-primary/10 bg-white">
                 <img
                   src={bagKaya}
                   alt="Kaya holding a JÍJÉ shopping bag in a hand-drawn illustration"
@@ -590,21 +573,21 @@ export function RecruitmentPage({ role }: { role: RecruitmentRole }) {
                   loading="lazy"
                   className="mx-auto block h-auto w-36 object-contain sm:w-40"
                 />
-                <p className="border-t border-primary/10 bg-[#f0eee4] p-4 text-sm leading-relaxed text-foreground/65">
+                <p className="border-t border-primary/10 bg-white p-4 text-sm leading-relaxed text-foreground/65">
                   Vehicle eligibility and onboarding depend on local rules and delivery type. We’ll confirm details during the process. This form does not request sensitive ID or financial information.
                 </p>
               </div>
             )}
-            <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary/10 bg-[#f0eee4] p-4 text-sm leading-relaxed text-foreground/65">
+            <div className="mt-6 flex items-start gap-3 rounded-xl border border-primary/10 bg-white p-4 text-sm leading-relaxed text-foreground/65">
               <ClipboardList className="mt-0.5 shrink-0 text-primary" size={19} aria-hidden="true" />
-              <span>Your application is used to review your interest and contact you about this pilot. Contact consent is required; marketing consent is not requested.</span>
+              <span>Your application is used to review your interest and contact you about {isVendor ? "relevant current or future opportunities" : "this pilot"}. Contact consent is required; marketing consent is not requested.</span>
             </div>
             <Link href={isVendor ? "/drivers" : "/vendors"} className="mt-6 inline-flex items-center gap-2 font-semibold text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary">
               {isVendor ? "Interested in delivering instead?" : "Are you a food business?"} <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </aside>
-          <div className="rounded-[1.5rem] border border-primary/10 bg-[#fbf9f3] p-5 shadow-[0_24px_70px_-48px_rgba(26,77,46,.4)] sm:p-8 md:p-10">
-            <InterestForm role={role} title={content.formTitle} intro={content.formIntro} />
+          <div className="rounded-[1.5rem] border border-primary/10 bg-white p-5 shadow-[0_24px_70px_-48px_rgba(26,77,46,.4)] sm:p-8 md:p-10">
+            <InterestForm role={role} intro={content.formIntro} />
           </div>
         </div>
       </section>

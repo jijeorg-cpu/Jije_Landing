@@ -16,3 +16,12 @@ Chef and caterer participation is planned for the future, not the current pilot 
 **Why:** the user clarified that these opportunities are slated for eventual expansion.
 
 **How to apply:** distinguish future chef/caterer opportunities from current recruitment. Do not imply they are currently onboarding or promise an expansion date.
+
+Keep chef/caterer interest registration available, explicitly labelled as
+future opportunities, alongside current restaurant and grocery-store interest.
+
+**Why:** the user approved wording that welcomes future interest without putting
+chefs and caterers in the initial pilot.
+
+**How to apply:** keep the distinction clear in recruitment descriptions, form
+choices and contact consent; registration is not an offer of onboarding.

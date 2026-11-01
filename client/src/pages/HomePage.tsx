@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, Compass, Layers3, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Layers3, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -7,19 +7,14 @@ export function HomePage() {
   return (
     <main className="min-h-[100dvh] overflow-hidden bg-background text-foreground">
       <Navbar />
-      <section className="relative min-h-[720px] bg-[#f1f5e7] pt-28 md:min-h-[770px] md:pt-32">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -right-28 top-14 h-[35rem] w-[35rem] rounded-full border border-primary/10 md:right-[-2rem]" />
-          <div className="absolute -right-8 top-28 h-[27rem] w-[27rem] rounded-full border border-primary/10" />
-          <div className="absolute bottom-0 right-0 h-[70%] w-[60%] opacity-20" style={{ backgroundImage: "radial-gradient(#1a4d2e 0.7px, transparent 0.7px)", backgroundSize: "14px 14px" }} />
-        </div>
+      <section className="relative min-h-[720px] bg-white pt-28 md:min-h-[770px] md:pt-32">
         <div className="container relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-16 md:grid-cols-[1.05fr_.95fr] md:px-10 md:pb-24">
           <div className="relative z-10 max-w-2xl">
-            <p className="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[.16em] text-[#705335]">
-              <span className="h-px w-9 bg-[#705335]" /> JÍJÉ Group Inc. · Toronto / GTA
+            <p className="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">
+              <span className="h-px w-9 bg-[#c32d39]" /> JÍJÉ Group Inc. · Toronto / GTA
             </p>
             <h1 className="font-display text-[3.5rem] font-semibold leading-[1.02] tracking-[-.025em] text-primary sm:text-7xl lg:text-[5.6rem]">
-              Rooted in <span className="text-[#705335]">Culture.</span><br />Powered by<br />Intelligence.
+              Rooted in <span className="text-[#c32d39]">Culture.</span><br />Powered by<br />Intelligence.
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-foreground/75 md:text-xl">
               Building the commerce and intelligence infrastructure for African and Afro-Caribbean food.
@@ -34,89 +29,47 @@ export function HomePage() {
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-[590px]">
-            <div className="relative aspect-[.92] overflow-hidden rounded-t-[48%] rounded-b-[2rem] bg-[#d9dfc9] shadow-[0_30px_80px_rgba(26,77,46,.12)]">
+            <div className="relative aspect-[.92] overflow-hidden rounded-t-[48%] rounded-b-[2rem] bg-white shadow-[0_30px_80px_rgba(26,77,46,.12)]">
               <img src="/attached_assets/jije_jollof.JPEG" alt="A shared platter of jollof rice and accompaniments" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1d3020]/65 via-transparent to-transparent" />
-              <div className="absolute bottom-7 left-7 right-7 flex items-end justify-between text-white">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">Culture is the beginning</p>
-                  <p className="mt-2 font-display text-2xl font-semibold">Food carries a world.</p>
-                </div>
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50"><ArrowDown size={18} /></span>
-              </div>
-            </div>
-            <div className="absolute -left-3 top-[18%] flex items-center gap-3 rounded-full border border-primary/10 bg-[#f9f7f2] px-4 py-3 shadow-sm sm:-left-10">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#e8eddf] text-primary"><Compass size={18} /></span>
-              <span className="text-sm font-semibold text-primary">Commerce meets knowledge</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="businesses" className="scroll-mt-24 bg-[#f9f7f2] py-24 md:py-32">
+      <section id="businesses" className="scroll-mt-24 bg-white py-24 md:py-32">
         <span id="spotlight" className="scroll-mt-24" />
         <div className="container mx-auto max-w-7xl px-5 md:px-10">
           <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">One company · two connected ventures</p>
-              <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-.05em] md:text-6xl">Our Businesses</h2>
+              <h2 className="font-display text-4xl font-semibold tracking-[-.05em] md:text-6xl">Our Businesses</h2>
             </div>
-              <p className="max-w-md text-base leading-7 text-foreground/75">Two connected businesses, grounded in African and Afro-Caribbean food culture.</p>
           </div>
           <div className="grid gap-5 lg:grid-cols-2">
             <article className="relative flex min-h-[380px] flex-col overflow-hidden rounded-[2rem] bg-primary p-8 text-primary-foreground md:p-11">
               <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border border-white/10" />
               <div className="absolute -right-7 -top-7 h-48 w-48 rounded-full border border-white/10" />
               <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ffcc33] text-primary"><Layers3 size={23} /></span>
-              <p className="relative mt-9 text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">JÍJÉ Marketplace · Toronto / GTA pilot in preparation</p>
-              <h3 className="relative mt-3 font-display text-3xl font-semibold text-white md:text-4xl">Your Culture, Delivered.</h3>
-              <p className="relative mt-4 max-w-lg leading-7 text-white/75">The first JÍJÉ business, connecting people with African and Afro-Caribbean food and food businesses.</p>
+              <h3 className="sr-only">JÍJÉ Marketplace</h3>
+              <p className="relative mt-9 max-w-lg leading-7 text-white/75">The first JÍJÉ business, connecting people with African and Afro-Caribbean food and food businesses.</p>
               <Link href="/marketplace" className="relative mt-auto inline-flex w-fit items-center gap-3 pt-8 font-semibold text-[#ffcc33] transition-colors hover:text-white">Explore Marketplace <ArrowRight size={17} /></Link>
             </article>
             <article className="relative flex min-h-[380px] flex-col overflow-hidden rounded-[2rem] border border-primary/10 bg-[#e9eee3] p-8 md:p-11">
               <div className="absolute -bottom-24 -right-12 h-80 w-80 rounded-full border border-primary/10" />
               <div className="absolute -bottom-12 right-0 h-56 w-56 rounded-full border border-primary/10" />
               <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-[#ffcc33]"><Sparkles size={23} /></span>
-              <p className="relative mt-9 text-xs font-bold uppercase tracking-[.16em] text-[#705335]">JÍJÉ Intelligence · Developing initiative</p>
-              <h3 className="relative mt-3 font-display text-3xl font-semibold text-primary md:text-4xl">Cultural Knowledge.<br className="hidden md:block" /> Real-World Intelligence.</h3>
-              <p className="relative mt-4 max-w-lg leading-7 text-foreground/70">A developing initiative connecting cultural food knowledge with research and intelligent technology.</p>
-              <Link href="/intelligence" className="relative mt-auto inline-flex w-fit items-center gap-3 pt-8 font-semibold text-primary transition-colors hover:text-[#705335]">Explore Intelligence <ArrowRight size={17} /></Link>
+              <h3 className="sr-only">JÍJÉ Intelligence: Cultural Knowledge. Real-World Intelligence.</h3>
+              <p className="relative mt-9 max-w-lg leading-7 text-foreground/70">A developing initiative connecting cultural food knowledge with research and intelligent technology.</p>
+              <Link href="/intelligence" className="relative mt-auto inline-flex w-fit items-center gap-3 pt-8 font-semibold text-primary transition-colors hover:text-[#c32d39]">Explore Intelligence <ArrowRight size={17} /></Link>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="mission" className="scroll-mt-24 bg-[#f1e9d7] py-24 md:py-32">
+      <section id="mission" className="scroll-mt-24 bg-primary py-24 text-primary-foreground md:py-32">
         <div className="container mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-[.72fr_1.28fr] md:px-10">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">The reason we build</p>
-            <h2 className="mt-4 max-w-sm font-display text-4xl font-semibold leading-tight tracking-[-.05em] md:text-5xl">Why JÍJÉ Exists</h2>
-            <Link href="/about" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-[#705335]">Read our story <ArrowRight size={16} /></Link>
-          </div>
-          <div className="max-w-3xl">
-            <p className="font-display text-2xl leading-[1.45] tracking-[-.025em] text-primary md:text-4xl">African and Afro-Caribbean food carries knowledge, identity, and community.</p>
-            <p className="mt-7 text-lg leading-8 text-foreground/70">JÍJÉ connects that culture through its first business, Marketplace, and the developing knowledge infrastructure of Intelligence.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="how-it-works" className="scroll-mt-24 bg-[#f9f7f2] py-24 md:py-28">
-        <div className="container mx-auto max-w-7xl px-5 md:px-10">
-          <div className="mb-14 max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">One shared foundation</p>
-            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-.05em] md:text-5xl">Commerce meets knowledge.</h2>
-          </div>
-          <div className="grid gap-0 border-y border-primary/15 md:grid-cols-2">
-            {[
-              { number: "01", title: "Marketplace", copy: "Our first business connects people, food, and merchants.", icon: Layers3 },
-              { number: "02", title: "Intelligence", copy: "A developing foundation for culturally grounded food knowledge and technology.", icon: Sparkles },
-            ].map(({ number, title, copy, icon: Icon }) => (
-              <article key={number} className="border-b border-primary/15 py-8 md:border-b-0 md:border-r md:px-8 md:py-10 first:md:pl-0 last:border-b-0 last:md:border-r-0 last:pb-0">
-                <div className="flex items-center justify-between text-primary/70"><span className="font-mono text-sm">{number}</span><Icon size={20} className="text-[#705335]" /></div>
-                <h3 className="mt-10 font-display text-2xl font-semibold">{title}</h3>
-                <p className="mt-3 max-w-sm leading-7 text-foreground/65">{copy}</p>
-              </article>
-            ))}
+            <p className="text-xs font-bold uppercase tracking-[.16em] text-white">THE REASON WE BUILD</p>
+            <Link href="/about" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[#ffcc33]">Read our story <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>
@@ -124,8 +77,7 @@ export function HomePage() {
       <section id="join" className="scroll-mt-24 bg-primary py-20 text-primary-foreground md:py-24">
         <div className="container mx-auto flex max-w-7xl flex-col justify-between gap-8 px-5 md:flex-row md:items-center md:px-10">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">Come build with us</p>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-[-.04em] text-white md:text-5xl">The next chapter is built together.</h2>
+            <p className="text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">COME BUILD WITH US</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link href="/partnerships" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#ffcc33] px-6 font-semibold text-primary hover:bg-[#f4bd20]">Explore Partnerships <ArrowRight size={17} /></Link>

@@ -7,12 +7,12 @@ const inquiryUrl = "https://tally.so/r/rjKA6p";
 
 export function ContactPage() {
   return (
-    <main className="min-h-[100dvh] bg-[#f9f7f2] text-foreground">
+    <main className="min-h-[100dvh] bg-white text-foreground">
       <Navbar />
-      <section className="relative overflow-hidden bg-[#f0f4e6] pb-20 pt-36 md:pb-28 md:pt-44">
+      <section className="relative overflow-hidden bg-white pb-20 pt-36 md:pb-28 md:pt-44">
         <div className="absolute -right-28 -top-16 h-[34rem] w-[34rem] rounded-full border border-primary/10" />
         <div className="container relative mx-auto max-w-7xl px-5 md:px-10">
-          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Contact</p>
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">Contact</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.02] tracking-[-.06em] md:text-7xl">Let’s start a conversation.</h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-foreground/70">Choose a Marketplace application or send a general or partnership inquiry.</p>
         </div>
@@ -28,10 +28,10 @@ export function ContactPage() {
           </article>
           <div className="grid gap-5">
             <Link href="/vendors" className="group flex items-center justify-between rounded-[1.5rem] border border-primary/10 bg-[#e9eee3] p-7 transition-transform hover:-translate-y-0.5">
-              <span><span className="block text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Marketplace</span><span className="mt-2 block font-display text-2xl font-semibold text-primary">Vendor interest</span><span className="mt-2 block text-sm text-foreground/60">Share your business details.</span></span><ArrowUpRight className="text-primary" />
+              <span><span className="block text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">Marketplace</span><span className="mt-2 block font-display text-2xl font-semibold text-primary">Vendor interest</span><span className="mt-2 block text-sm text-foreground/60">Share your business details.</span></span><ArrowUpRight className="text-primary" />
             </Link>
-            <Link href="/drivers" className="group flex items-center justify-between rounded-[1.5rem] border border-primary/10 bg-[#fbf9f3] p-7 transition-transform hover:-translate-y-0.5">
-              <span><span className="block text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Marketplace</span><span className="mt-2 block font-display text-2xl font-semibold text-primary">Delivery partner interest</span><span className="mt-2 block text-sm text-foreground/60">Learn about the pilot application.</span></span><ArrowUpRight className="text-primary" />
+            <Link href="/drivers" className="group flex items-center justify-between rounded-[1.5rem] border border-primary/10 bg-white p-7 transition-transform hover:-translate-y-0.5">
+              <span><span className="block text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">Marketplace</span><span className="mt-2 block font-display text-2xl font-semibold text-primary">Delivery partner interest</span><span className="mt-2 block text-sm text-foreground/60">Learn about the pilot application.</span></span><ArrowUpRight className="text-primary" />
             </Link>
           </div>
         </div>

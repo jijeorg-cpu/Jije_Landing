@@ -7,12 +7,12 @@ const officialMission = "To preserve, connect and advance African and Afro-Carib
 
 export function AboutPage() {
   return (
-    <main className="min-h-[100dvh] bg-[#f9f7f2] text-foreground">
+    <main className="min-h-[100dvh] bg-white text-foreground">
       <Navbar />
-      <header className="relative overflow-hidden bg-[#f0f4e6] pb-16 pt-32 md:pb-20 md:pt-36">
+      <header className="relative overflow-hidden bg-white pb-16 pt-32 md:pb-20 md:pt-36">
         <div className="absolute -right-28 -top-12 h-[30rem] w-[30rem] rounded-full border border-primary/10" />
         <div className="container relative mx-auto max-w-7xl px-5 md:px-10">
-          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Who We Are</p>
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">Who We Are</p>
           <h1 className="mt-5 max-w-4xl font-display text-4xl font-semibold leading-[1.06] tracking-[-.05em] sm:text-5xl md:text-6xl">Rooted in Culture. Powered by Intelligence.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-foreground/70">JÍJÉ Group builds connected businesses and knowledge infrastructure for African and Afro-Caribbean food culture.</p>
         </div>
@@ -20,17 +20,17 @@ export function AboutPage() {
 
       <section id="mission" className="scroll-mt-24 bg-primary py-16 text-primary-foreground md:py-20">
         <div className="container mx-auto grid max-w-7xl gap-7 px-5 md:grid-cols-[.62fr_1.38fr] md:items-center md:px-10">
-          <div>
-            <h2 className="text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">Our Mission</h2>
-            <span className="mt-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-[#ffcc33]"><Compass size={22} /></span>
-          </div>
+          <h2 className="flex items-center gap-3 text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-[#ffcc33]"><Compass size={22} /></span>
+            Our Mission
+          </h2>
           <p className="font-display text-xl font-medium leading-[1.5] tracking-[-.02em] text-white md:text-3xl">{officialMission}</p>
         </div>
       </section>
 
-      <section className="bg-[#f9f7f2] py-16 md:py-20">
+      <section className="bg-white py-16 md:py-20">
         <div className="container mx-auto max-w-7xl px-5 md:px-10">
-          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">What We’re Building</p>
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">What We’re Building</p>
           <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-.04em] md:text-4xl">Two businesses, one cultural foundation.</h2>
           <div className="mt-7 grid gap-5 md:grid-cols-2">
             <article className="flex min-h-[245px] flex-col rounded-[1.75rem] bg-primary p-7 text-primary-foreground md:p-8">
@@ -49,9 +49,9 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#f1e9d7] py-14 md:py-16">
+      <section className="bg-white py-14 md:py-16">
         <div className="container mx-auto grid max-w-7xl gap-5 px-5 md:grid-cols-[.62fr_1.38fr] md:items-center md:px-10">
-          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#705335]">Our Vision</p>
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">Our Vision</p>
           <div className="flex items-start gap-4">
             <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#e9eee3] text-primary"><BookOpen size={20} /></span>
             <p className="font-display text-2xl font-medium leading-snug tracking-[-.02em] text-primary md:text-3xl">A world where African and Afro-Caribbean food culture is understood, connected, and within reach.</p>

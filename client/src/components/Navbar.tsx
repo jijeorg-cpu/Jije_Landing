@@ -30,15 +30,15 @@ export function Navbar() {
     <nav
       aria-label="Main navigation"
       className={`fixed left-0 right-0 top-0 z-50 border-b border-primary/10 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen ? "bg-background/98 shadow-sm backdrop-blur-md" : "bg-background/95 backdrop-blur-md"
+        isScrolled || isMobileMenuOpen ? "bg-white shadow-sm" : "bg-white"
       }`}
     >
       <div className="container mx-auto flex min-h-[5.5rem] items-center justify-between gap-3 px-4 md:px-6">
-        <RouteLink href="/" aria-label="JÍJÉ home" className="relative flex h-[5.25rem] w-[9.5rem] shrink-0 items-center overflow-hidden">
+        <RouteLink href="/" aria-label="JÍJÉ home" className="relative flex h-[5.25rem] w-[6rem] shrink-0 items-center overflow-hidden md:w-[8rem]">
           <img
             src="/jije-icon-v2.png"
             alt="JÍJÉ"
-            className="absolute left-0 top-1/2 h-[9.5rem] w-[9.5rem] max-w-none -translate-y-1/2 object-contain"
+            className="absolute left-0 top-1/2 h-[6rem] w-[6rem] max-w-none -translate-y-1/2 object-contain md:h-[8rem] md:w-[8rem]"
           />
         </RouteLink>
 

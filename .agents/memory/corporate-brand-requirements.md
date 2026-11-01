@@ -12,6 +12,10 @@ Approved brand hierarchy:
 - JÍJÉ Marketplace — Your Culture, Delivered.
 - JÍJÉ Intelligence — Cultural Knowledge. Real-World Intelligence.
 
+These taglines identify the brands; they are not mandatory repeated visible
+headings. The user subsequently approved removing the Marketplace hero slogan
+and repeated corporate/card/footer slogans while retaining the brand hierarchy.
+
 JÍJÉ, operated by JÍJÉ Group Inc., is the parent company and broader ecosystem.
 Marketplace is its first product, not the whole company. Intelligence is the
 developing technology and intelligence business focused on African and
@@ -47,8 +51,8 @@ the guide or other historical material conflicts with approved website wording.
 ## Marketplace preservation and corporate brevity
 
 The user clarified that the updated, redesigned Marketplace is the approved
-baseline—not the old whole-page design. Keep the “Your Culture, Delivered.”
-hero, multi-Kaya illustration, updated typography/colours/spacing, updated
+baseline—not the old whole-page design. Keep the multi-Kaya illustration,
+updated typography/spacing, updated
 Discover / Find your fit / Stay connected flow, updated ecosystem section,
 Toronto/GTA recruitment, and “Follow the Marketplace pilot” waitlist.
 Restore ONLY the original three-photograph section: “One Place for Culture &
@@ -64,8 +68,25 @@ three focus groups, retaining its developing status without repeated disclaimers
 
 **Why:** the user said “The last correction restored too much” and explicitly
 limited the original-design restoration to the three photographic cards and
-associated heading/wording. The whole updated Marketplace design must stay.
+associated heading/wording. Later approved simplifications supersede the old
+hero slogan and colour treatment, not the retained Marketplace structure.
 
 **How to apply:** use the updated Marketplace as the baseline, consult the original
 version only for that photographic section, and leave approved corporate content,
 navigation/footer, recruitment cards and form/backend functionality untouched.
+
+## Approved visual simplification
+
+Use white general website backgrounds, a compact mobile logo, and JÍJÉ red/green
+text accents instead of brown. Keep intentionally coloured green sections.
+Avoid repeating slogans, location labels, process disclaimers and section
+introductions. Preserve functional CTAs, required consent, legal links and the
+official mission while shortening presentation.
+
+**Why:** the user supplied detailed annotated mobile screens and approved these
+changes after confirming the interpretation. Extra explanatory copy had become
+repetitive rather than useful.
+
+**How to apply:** do not restore removed slogans or cream/yellow background
+washes as part of later branding work. Distinguish essential application/legal
+disclosures from optional promotional wording.

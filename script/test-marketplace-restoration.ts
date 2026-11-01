@@ -5,12 +5,18 @@ import ts from "typescript";
 
 const marketplace = "client/src/pages/LandingPage.tsx";
 const original = execFileSync("git", ["show", `backup/pre-corporate-repositioning-2026-10-30:${marketplace}`], { encoding: "utf8" });
-const before = execFileSync("git", ["show", `backup/pre-targeted-marketplace-correction-2026-10-30:${marketplace}`], { encoding: "utf8" });
+const baseline = "backup/pre-approved-simplification";
+const before = execFileSync("git", ["show", `${baseline}:${marketplace}`], { encoding: "utf8" });
 const current = readFileSync(marketplace, "utf8");
 
 function compiledFunction(source: string, name: string) {
   const file = ts.createSourceFile("page.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-  const node = file.statements.find(statement => ts.isFunctionDeclaration(statement) && statement.name?.text === name);
+  let node: ts.FunctionDeclaration | undefined;
+  function find(candidate: ts.Node) {
+    if (ts.isFunctionDeclaration(candidate) && candidate.name?.text === name) node = candidate;
+    ts.forEachChild(candidate, find);
+  }
+  find(file);
   assert.ok(node, `${name} exists`);
   // Normalize the old misspelled transparent utility; it never represented
   // a deliberate design element. Whitespace/comments do not affect comparison.
@@ -18,12 +24,9 @@ function compiledFunction(source: string, name: string) {
     compilerOptions: { jsx: ts.JsxEmit.ReactJSX, removeComments: true, target: ts.ScriptTarget.ES2022 },
   }).outputText;
 }
-for (const name of ["HeroSection", "HowItWorksSection", "AudienceSection", "FinalCTA", "RecruitmentSection", "MarketplacePage"]) {
-  assert.equal(compiledFunction(current, name), compiledFunction(before, name), `${name} matches UPDATED Marketplace baseline`);
-}
-function photoSectionContent(source: string) {
+function sectionContent(source: string, name: string) {
   const file = ts.createSourceFile("page.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-  const section = file.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === "SolutionSection");
+  const section = file.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === name);
   assert.ok(section);
   const values: string[] = [];
   function visit(node: ts.Node) {
@@ -35,35 +38,34 @@ function photoSectionContent(source: string) {
   visit(section);
   return values;
 }
-assert.deepEqual(photoSectionContent(current), photoSectionContent(original), "Only photo section uses original heading, wording and photograph URLs");
+for (const name of ["HowItWorksSection", "AudienceSection", "RecruitmentSection"]) {
+  assert.deepEqual(sectionContent(current, name), sectionContent(before, name), `${name} keeps its content and links while allowing approved colour changes`);
+}
+assert.deepEqual(
+  sectionContent(current, "SolutionSection"),
+  sectionContent(original, "SolutionSection").map(value => value === "Order meals and book culinary services from top rated African and Afro-Caribbean restaurants, vendors, chefs and caterers."
+    ? "Explore meals from African and Afro-Caribbean restaurants and food businesses." : value),
+  "Photo section preserves original photographs and content except newly approved chef/caterer scope clarification",
+);
 assert.ok(!current.includes("marketplace-original"), "No legacy Marketplace theme or wrapper");
 
 for (const file of [
-  "client/src/components/Recruitment.tsx", "client/src/components/WaitlistForm.tsx",
-  "client/src/components/Navbar.tsx", "client/src/components/SiteFooter.tsx",
+  "client/src/components/WaitlistForm.tsx",
   "client/src/pages/VendorsPage.tsx", "client/src/pages/DriversPage.tsx",
-  "client/src/pages/LegalPage.tsx", "client/src/content/legal.json",
+  "client/src/content/legal.json",
   "server/routes.ts", "server/storage.ts", "shared/schema.ts",
   "server/recruitment-notifications.ts",
-  "client/src/pages/HomePage.tsx", "client/src/pages/AboutPage.tsx",
-  "client/src/pages/IntelligencePage.tsx", "client/src/pages/PartnersPage.tsx",
-  "client/src/pages/ContactPage.tsx",
 ]) {
-  const saved = execFileSync("git", ["show", `backup/pre-marketplace-scope-clarification-2026-10-30:${file}`], { encoding: "utf8" });
-  const removeLegacySeed = (source: string) => source.replace(
-    /  \/\/ Seed with a test entry if empty[\s\S]*?(?=  return httpServer;)/, "",
-  );
+  const saved = execFileSync("git", ["show", `${baseline}:${file}`], { encoding: "utf8" });
   const working = readFileSync(file, "utf8");
-  // Asset relocation changes only import paths; retain the strict comparison
-  // for all approved recruitment markup, forms, behavior and artwork selections.
-  const normalizeKayaImports = (source: string) => source
-    .replace("@assets/Mascot__Store_Owner_Kaya_1793060137575.png", "@/assets/kaya/store-owner.webp")
-    .replace("@assets/Mascot__Caterer_Kaya_1793060137561.png", "@/assets/kaya/caterer.webp")
-    .replace("@assets/Mascot__Delivery_Car_Kaya_1793060232160.png", "@/assets/kaya/delivery-car.webp")
-    .replace("@assets/Mascot__Kaya_on_Bike_1793060232174.png", "@/assets/kaya/bicycle.webp")
-    .replace("@assets/Mascot__Kaya_with_Bag_1793060232175.png", "@/assets/kaya/shopping-bag.webp");
-  const normalize = (source: string) => file === "server/routes.ts" ? removeLegacySeed(source)
-    : file === "client/src/components/Recruitment.tsx" ? normalizeKayaImports(source) : source;
-  assert.equal(normalize(working), normalize(saved), `Preserved: ${file}`);
+  assert.equal(working, saved, `Preserved: ${file}`);
 }
-console.log("PASS: updated Marketplace restored except original photo-section copy/assets; simplified corporate pages, recruitment, forms, data, mail, legal, navigation and footer unchanged.");
+const recruitment = "client/src/components/Recruitment.tsx";
+const savedRecruitment = execFileSync("git", ["show", `${baseline}:${recruitment}`], { encoding: "utf8" });
+for (const name of ["makePayload", "track", "readServerMessage", "optionalValue", "submitApplication", "markFormStarted"]) {
+  assert.equal(compiledFunction(readFileSync(recruitment, "utf8"), name), compiledFunction(savedRecruitment, name), `Unchanged form behaviour: ${name}`);
+}
+for (const file of ["client/public/legal/jije-privacy-policy.pdf", "client/public/legal/jije-terms-of-service.pdf"]) {
+  assert.deepEqual(readFileSync(file), execFileSync("git", ["show", `${baseline}:${file}`]), `Approved PDF preserved: ${file}`);
+}
+console.log("PASS: approved Marketplace content/photos, form payloads/submission/analytics behaviour, waitlist, database, mail and legal content preserved.");

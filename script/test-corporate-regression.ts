@@ -82,9 +82,9 @@ try {
   assert.equal(social.readUInt32BE(20), 630);
   console.log("PASS: initial HTML metadata and canonicals, social image, sitemap/robots, direct routes, and real HTTP 404s.");
   const email = (role: string) => `corporate-${run}-${role}@example.invalid`;
-  const post = (body: unknown) => fetch(`${origin}/api/applications`, {
+  const post = (body: unknown, ip = "192.0.2.10") => fetch(`${origin}/api/applications`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", "X-Forwarded-For": "192.0.2.10" },
+    headers: { "Content-Type": "application/json", "X-Forwarded-For": ip },
     body: JSON.stringify(body),
   });
   const base = {
@@ -107,6 +107,15 @@ try {
     assert.equal((await post(payload)).status, 409);
   }
   assert.equal((await post({ ...base, applicationType: "driver", email: "not-an-email" })).status, 400);
+  for (const businessType of ["Chef", "Caterer"]) {
+    const applicantEmail = email(businessType);
+    const response = await post({ ...base, applicationType: "vendor", email: applicantEmail, businessName: "Future Opportunity Test", businessType }, businessType === "Chef" ? "192.0.2.20" : "192.0.2.21");
+    assert.equal(response.status, 201, "Future-interest options retain compatible storage values");
+    const saved = await storage.getRecruitmentApplicationByEmail("vendor", applicantEmail);
+    assert.equal(saved?.businessType, businessType);
+    assert.equal(saved?.status, "New", "Future interest must not grant automatic approval");
+    assert.equal(saved?.marketingConsent, false);
+  }
   console.log("PASS: real database persistence, New status, source, separate consent, duplicate and invalid feedback; mail adapters invoked after save.");
 
   if (!process.argv.includes("--api-only")) {
@@ -172,6 +181,8 @@ try {
         await waitFor(`document.title === ${JSON.stringify(getSiteMetadata(route).title)}`);
         assert.equal(await evaluate("document.querySelector('link[rel=\"canonical\"]').href"), SITE_ORIGIN + getSiteMetadata(route).canonicalPath);
         assert.ok(await evaluate("getComputedStyle(document.body).fontFamily.includes('Quicksand')"), "Brand typeface");
+        assert.equal(await evaluate("getComputedStyle(document.body).backgroundColor"), "rgb(255, 255, 255)", "White general background");
+        if (width < 768) assert.ok(await evaluate(`document.querySelector('nav img').getBoundingClientRect().height <= 96`), "Compact mobile logo");
         await evaluate("document.fonts.ready");
         assert.ok(await evaluate(`document.fonts.check('16px Quicksand')`), "Self-hosted font loaded");
         if (route === "/marketplace") {
@@ -227,30 +238,32 @@ try {
     await navigate("/about");
     assert.ok(await evaluate(`document.body.innerText.includes(${JSON.stringify(mission)})`), "Exact official mission");
     for (const text of [
-      "Rooted in Culture. Powered by Intelligence.",
       "Who We Are", "Our Mission", "What We’re Building", "Our Vision",
     ]) {
       assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `About content: ${text}`);
     }
     assert.ok(await evaluate(`!document.body.textContent.includes("Our Approach")`), "Redundant Our Approach removed");
     assert.equal(await evaluate("document.querySelectorAll('main > header, main > section').length"), 4, "Four ordered About sections");
+    assert.ok(await evaluate(`(() => {const heading=Array.from(document.querySelectorAll('h2')).find(e=>e.textContent.trim()==='Our Mission'); const icon=heading?.querySelector('svg'); const text=heading && Array.from(heading.childNodes).find(n=>n.nodeType===Node.TEXT_NODE && n.textContent.includes('Our Mission')); return !!icon && !!text && !!(icon.compareDocumentPosition(text)&Node.DOCUMENT_POSITION_FOLLOWING);})()`), "Mission icon before heading text");
     await navigate("/marketplace");
     for (const text of [
-      "Your Culture,", "Delivered.", "Find your fit", "Stay connected",
+      "Find your fit", "Stay connected",
       "One Place for Culture & Community",
       "Jíjé brings the entire ecosystem together. Eat, shop, and connect without the hassle.",
       "Authentic Food", "Grocery Discovery", "Cultural Events",
-      "Order meals and book culinary services from top rated African and Afro-Caribbean restaurants, vendors, chefs and caterers.",
+      "Explore meals from African and Afro-Caribbean restaurants and food businesses.",
       "Shop cultural ingredients, spices, and essentials.",
       "Never miss a concert, festival, or community meetup again.",
       "Bringing Culture Closer", "Building the Ecosystem", "Follow the Marketplace pilot",
       "Let’s build the next chapter together.", "Grow with JÍJÉ", "Deliver with JÍJÉ",
     ]) assert.ok(await evaluate(`document.body.textContent.includes(${JSON.stringify(text)})`), `Restored Marketplace copy: ${text}`);
+    assert.ok(await evaluate(`!document.body.innerText.includes('Your Culture,') && !document.body.innerText.includes('Joining the waitlist is governed')`), "Removed Marketplace slogan and repeated legal line");
+    assert.ok(await evaluate(`(() => {const img=document.querySelector('img[src*="multi-kaya"]'); const intro=Array.from(document.querySelectorAll('p')).find(p=>p.textContent.includes('A culturally connected marketplace'));return !!img && !!intro && img.getBoundingClientRect().top < intro.getBoundingClientRect().top;})()`), "Kaya precedes introduction on mobile");
     assert.ok(await evaluate(`!document.body.textContent.includes('A table of traditions') && !document.body.textContent.includes('Culture. Commerce.') && !!document.querySelector('img[src*="multi-kaya"]')`), "Updated multi-Kaya hero without old headline or replacement photo-card title");
     const photos = await evaluate(`Array.from(document.querySelectorAll('#mission [style]')).map(e=>e.style.backgroundImage).filter(s=>s.startsWith('url(')).map(s=>s.slice(5,-2))`) as string[];
     assert.deepEqual(photos, ["/attached_assets/jije_jollof.JPEG", "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop", "/jije_cultural.JPG"]);
     assert.ok(await evaluate(`Promise.all(${JSON.stringify(photos)}.map(src=>new Promise(resolve=>{const image=new Image();const timer=setTimeout(()=>resolve(false),20000);image.onload=()=>{clearTimeout(timer);resolve(image.naturalWidth>0)};image.onerror=()=>{clearTimeout(timer);resolve(false)};image.src=src}))).then(results=>results.every(Boolean))`), "All three original photographs load");
-    console.log("PASS: updated Marketplace hero/process/ecosystem/waitlist, original three-photo copy and assets, updated fonts and unchanged recruitment presentation.");
+    console.log("PASS: simplified Marketplace hero, approved photo assets and updated pilot scope, process/ecosystem/waitlist retained.");
     for (const hash of ["#mission", "#how-it-works", "#spotlight", "#join", "#pilot"]) {
       await command("Page.navigate", { url: origin + "/" + hash });
       await waitFor(`location.pathname === '/marketplace' && location.hash === '${hash}' && !!document.getElementById('${hash.slice(1)}')`);
@@ -269,9 +282,21 @@ try {
         const route = role === "vendor" ? "/vendors" : "/drivers";
         await evaluate(`Array.from(document.querySelectorAll('a')).find(a => a.getAttribute('href') === '${route}' && a.textContent.includes('${role === "vendor" ? "List Your Business" : "Start Delivering"}')).click()`);
         await waitFor(`location.pathname === '${route}' && !!document.querySelector('form')`);
+        for (const removed of ["A quick introduction", "Start a conversation", "An open door", "Rooted in the GTA", "TORONTO / GTA PILOT · CURRENTLY IN PREPARATION", "We’re building with local voices"]) {
+          assert.ok(await evaluate(`!document.body.innerText.includes(${JSON.stringify(removed)})`), `Removed recruitment text: ${removed}`);
+        }
+        assert.ok(await evaluate(`!!Array.from(document.querySelectorAll('h2')).find(e=>e.textContent==='The Process')`), "Simplified process heading");
+        assert.ok(await evaluate(`getComputedStyle(Array.from(document.querySelectorAll('p')).find(e=>e.textContent==='Why JÍJÉ')).color === 'rgb(195, 45, 57)'`), "Why JÍJÉ uses accessible brand red");
+        if (role === "vendor") {
+          assert.ok(await evaluate(`document.body.innerText.includes('Our initial pilot focuses on restaurants and grocery stores.')`), "Future-opportunities note visible");
+          assert.deepEqual(await evaluate(`Array.from(document.querySelector('select[name="businessType"]').options).filter(o=>o.value==='Chef'||o.value==='Caterer').map(o=>({value:o.value,label:o.textContent}))`), [
+            {value:"Chef", label:"Chef — future opportunities"},
+            {value:"Caterer", label:"Caterer — future opportunities"},
+          ]);
+        }
         const testEmail = email(`${role}-${width}`);
         const values = { ...base, email: testEmail,
-          ...(role === "vendor" ? { businessName: "Synthetic Test Kitchen", businessType: "Restaurant" }
+          ...(role === "vendor" ? { businessName: "Synthetic Test Kitchen", businessType: width < 768 ? "Chef" : "Restaurant" }
             : { vehicleType: "Bicycle", isAtLeast18: true }) };
         await evaluate(`(() => {
           const form = document.querySelector('form');

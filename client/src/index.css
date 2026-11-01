@@ -31,7 +31,7 @@
   --jije-cocoa: 31 36% 32%;
   --primary: var(--jije-green);
   --primary-foreground: 0 0% 98%;
-  --background: var(--jije-ivory);
+  --background: 0 0% 100%;
   --foreground: var(--jije-charcoal);
   --secondary: 74 35% 91%;
   --secondary-foreground: var(--jije-charcoal);
@@ -44,11 +44,11 @@
   --border: 75 18% 83%;
   --input: 75 18% 78%;
   --ring: var(--jije-green);
-  --card: 0 0% 97.8%;
+  --card: 0 0% 100%;
   --card-foreground: var(--jije-charcoal);
   --radius: 1rem;
   --recruit-ink: var(--jije-charcoal);
-  --recruit-paper: var(--jije-ivory);
+  --recruit-paper: var(--background);
   --recruit-leaf: var(--jije-green);
   --recruit-citrus: var(--jije-plantain);
   --recruit-clay: var(--jije-cocoa);
@@ -140,14 +140,14 @@ html { scroll-behavior: smooth; }
 .recruit-field {
   min-height: 3.25rem;
   width: 100%;
-  border: 1px solid hsl(34 22% 78%);
+  border: 1px solid hsl(0 0% 78%);
   border-radius: .7rem;
-  background: hsl(42 38% 97%);
+  background: hsl(0 0% 100%);
   padding: .8rem 1rem;
   color: hsl(var(--recruit-ink));
   transition: border-color .2s ease, box-shadow .2s ease;
 }
-.recruit-field::placeholder { color: hsl(25 12% 52%); }
+.recruit-field::placeholder { color: hsl(0 0% 48%); }
 .recruit-field:focus-visible {
   outline: 2px solid hsl(var(--recruit-leaf) / .32);
   outline-offset: 2px;

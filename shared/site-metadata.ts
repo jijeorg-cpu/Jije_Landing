@@ -36,7 +36,7 @@ export const sitePages: Record<string, Omit<SiteMetadata, "canonicalPath" | "ind
   },
   "/vendors": {
     title: "Grow Your Business with JÍJÉ | Vendor Pilot",
-    description: "Register your Toronto/GTA food business's interest in the JÍJÉ Marketplace pilot. For African and Afro-Caribbean restaurants, markets, chefs, and caterers.",
+    description: "Register your Toronto/GTA restaurant or grocery store's interest in the JÍJÉ Marketplace pilot. Chefs and caterers can register for future opportunities.",
   },
   "/drivers": {
     title: "Deliver with JÍJÉ | Driver Pilot",
