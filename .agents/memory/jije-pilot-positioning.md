@@ -10,3 +10,9 @@ Commission rates, delivery fees, driver earnings, payout timing, launch date, an
 **Why:** the user stated these product and business constraints in the recruitment brief.
 
 **How to apply:** keep public copy and recruitment flows accurate to the prelaunch pilot; do not promise rates, earnings, payout schedules, launch timing, broad availability, or account activation.
+
+Chef and caterer participation is planned for the future, not the current pilot scope.
+
+**Why:** the user clarified that these opportunities are slated for eventual expansion.
+
+**How to apply:** distinguish future chef/caterer opportunities from current recruitment. Do not imply they are currently onboarding or promise an expansion date.
