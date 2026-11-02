@@ -94,9 +94,12 @@ disclosures from optional promotional wording.
 The homepage's green story/community area should stay compact, with a proper
 rounded button for “Read our story,” consistent with the other CTAs. Do not
 reintroduce the red corporate/location eyebrow above the homepage hero.
+Keep the two headings aligned in a left column and both button rows aligned
+at the same starting position in a right column on desktop.
 
 **Why:** the user explicitly approved this refinement because the green area
 looked empty and the story link needed the same button treatment as the other CTAs.
+The user subsequently requested matching horizontal alignment for the button rows.
 
 **How to apply:** retain this compact presentation when refining the homepage;
 do not add filler copy or expand the green area just to occupy space.

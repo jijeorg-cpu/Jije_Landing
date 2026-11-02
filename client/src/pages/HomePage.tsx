@@ -63,16 +63,14 @@ export function HomePage() {
       </section>
 
       <section id="mission" className="scroll-mt-24 bg-primary py-10 text-primary-foreground md:py-12">
-        <div className="container mx-auto flex max-w-7xl flex-col justify-between gap-5 px-5 md:flex-row md:items-center md:px-10">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-            <p className="text-xs font-bold uppercase tracking-[.16em] text-white">THE REASON WE BUILD</p>
-            <Link href="/about" className="inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-full border border-white/35 px-6 text-sm font-semibold text-white transition-colors hover:bg-white/10">Read our story <ArrowRight size={16} /></Link>
-          </div>
+        <div className="container mx-auto grid max-w-7xl gap-5 px-5 md:grid-cols-[.72fr_1.28fr] md:items-center md:px-10">
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-white">THE REASON WE BUILD</p>
+          <Link href="/about" className="inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-full border border-white/35 px-6 text-sm font-semibold text-white transition-colors hover:bg-white/10">Read our story <ArrowRight size={16} /></Link>
         </div>
       </section>
 
       <section id="join" className="scroll-mt-24 bg-primary py-10 text-primary-foreground md:py-12">
-        <div className="container mx-auto flex max-w-7xl flex-col justify-between gap-5 px-5 md:flex-row md:items-center md:px-10">
+        <div className="container mx-auto grid max-w-7xl gap-5 px-5 md:grid-cols-[.72fr_1.28fr] md:items-center md:px-10">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">COME BUILD WITH US</p>
           </div>
