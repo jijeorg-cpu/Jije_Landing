@@ -10,9 +10,6 @@ export function HomePage() {
       <section className="relative min-h-[720px] bg-white pt-28 md:min-h-[770px] md:pt-32">
         <div className="container relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-16 md:grid-cols-[1.05fr_.95fr] md:px-10 md:pb-24">
           <div className="relative z-10 max-w-2xl">
-            <p className="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[.16em] text-[#c32d39]">
-              <span className="h-px w-9 bg-[#c32d39]" /> JÍJÉ Group Inc. · Toronto / GTA
-            </p>
             <h1 className="font-display text-[3.5rem] font-semibold leading-[1.02] tracking-[-.025em] text-primary sm:text-7xl lg:text-[5.6rem]">
               Rooted in <span className="text-[#c32d39]">Culture.</span><br />Powered by<br />Intelligence.
             </h1>
@@ -65,17 +62,17 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="mission" className="scroll-mt-24 bg-primary py-24 text-primary-foreground md:py-32">
-        <div className="container mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-[.72fr_1.28fr] md:px-10">
-          <div>
+      <section id="mission" className="scroll-mt-24 bg-primary py-10 text-primary-foreground md:py-12">
+        <div className="container mx-auto flex max-w-7xl flex-col justify-between gap-5 px-5 md:flex-row md:items-center md:px-10">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
             <p className="text-xs font-bold uppercase tracking-[.16em] text-white">THE REASON WE BUILD</p>
-            <Link href="/about" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[#ffcc33]">Read our story <ArrowRight size={16} /></Link>
+            <Link href="/about" className="inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-full border border-white/35 px-6 text-sm font-semibold text-white transition-colors hover:bg-white/10">Read our story <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>
 
-      <section id="join" className="scroll-mt-24 bg-primary py-20 text-primary-foreground md:py-24">
-        <div className="container mx-auto flex max-w-7xl flex-col justify-between gap-8 px-5 md:flex-row md:items-center md:px-10">
+      <section id="join" className="scroll-mt-24 bg-primary py-10 text-primary-foreground md:py-12">
+        <div className="container mx-auto flex max-w-7xl flex-col justify-between gap-5 px-5 md:flex-row md:items-center md:px-10">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">COME BUILD WITH US</p>
           </div>

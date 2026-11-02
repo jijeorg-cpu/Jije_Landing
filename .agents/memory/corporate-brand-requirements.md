@@ -90,3 +90,13 @@ repetitive rather than useful.
 **How to apply:** do not restore removed slogans or cream/yellow background
 washes as part of later branding work. Distinguish essential application/legal
 disclosures from optional promotional wording.
+
+The homepage's green story/community area should stay compact, with a proper
+rounded button for “Read our story,” consistent with the other CTAs. Do not
+reintroduce the red corporate/location eyebrow above the homepage hero.
+
+**Why:** the user explicitly approved this refinement because the green area
+looked empty and the story link needed the same button treatment as the other CTAs.
+
+**How to apply:** retain this compact presentation when refining the homepage;
+do not add filler copy or expand the green area just to occupy space.
