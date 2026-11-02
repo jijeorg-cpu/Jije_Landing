@@ -26,13 +26,9 @@ export const sitePages: Record<string, Omit<SiteMetadata, "canonicalPath" | "ind
     title: "JÍJÉ Intelligence | Cultural Knowledge. Real-World Intelligence.",
     description: "Explore JÍJÉ Intelligence, a developing initiative focused on African and Afro-Caribbean food knowledge, culturally aware discovery, research, and future technology.",
   },
-  "/partnerships": {
-    title: "Partnerships | Build with JÍJÉ",
-    description: "Explore vendor, delivery partner, community, research, and technology partnership inquiries with JÍJÉ and its Toronto/GTA Marketplace pilot.",
-  },
   "/contact": {
-    title: "Contact JÍJÉ | General and Partnership Inquiries",
-    description: "Contact JÍJÉ through our existing partnership inquiry form, or register your interest as a Marketplace vendor or delivery partner.",
+    title: "Contact & Partnerships | JÍJÉ",
+    description: "Connect with JÍJÉ for community, research, technology, and general partnership inquiries, or register vendor and delivery interest in the Toronto/GTA pilot.",
   },
   "/vendors": {
     title: "Grow Your Business with JÍJÉ | Vendor Pilot",
@@ -53,7 +49,7 @@ export const sitePages: Record<string, Omit<SiteMetadata, "canonicalPath" | "ind
 };
 
 export function getSiteMetadata(pathname: string): SiteMetadata {
-  const path = pathname === "/partners" ? "/partnerships" : pathname;
+  const path = ["/partners", "/partnerships"].includes(pathname) ? "/contact" : pathname;
   const page = sitePages[path];
   return page
     ? { ...page, canonicalPath: path, index: true }

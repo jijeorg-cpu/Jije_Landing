@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Switch, Route, useLocation } from "wouter";
+import { Switch, Route, Redirect, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -8,7 +8,6 @@ import { MarketplacePage } from "@/pages/LandingPage";
 import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
 import { IntelligencePage } from "@/pages/IntelligencePage";
-import { PartnersPage } from "@/pages/PartnersPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { VendorsPage } from "@/pages/VendorsPage";
 import { DriversPage } from "@/pages/DriversPage";
@@ -49,8 +48,8 @@ function Router() {
       <Route path="/about" component={AboutPage} />
       <Route path="/marketplace" component={MarketplacePage} />
       <Route path="/intelligence" component={IntelligencePage} />
-      <Route path="/partners" component={PartnersPage} />
-      <Route path="/partnerships" component={PartnersPage} />
+      <Route path="/partners"><Redirect to="/contact" replace /></Route>
+      <Route path="/partnerships"><Redirect to="/contact" replace /></Route>
       <Route path="/contact" component={ContactPage} />
       <Route path="/vendors" component={VendorsPage} />
       <Route path="/drivers" component={DriversPage} />

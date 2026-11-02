@@ -75,6 +75,19 @@ hero slogan and colour treatment, not the retained Marketplace structure.
 version only for that photographic section, and leave approved corporate content,
 navigation/footer, recruitment cards and form/backend functionality untouched.
 
+## Unified contact and partnership entry
+
+Keep Contact and Partnerships consolidated into one entry, not two parallel
+pages with the same destinations. Preserve vendor interest, driver interest,
+and the established general/partnership inquiry form.
+
+**Why:** the user identified their overlapping purpose and approved combining
+them to avoid duplicated navigation and content.
+
+**How to apply:** use “Contact & Partnerships” as the shared navigation label;
+keep old partnership addresses working through redirects rather than recreating
+a separate partnership hub.
+
 ## Approved visual simplification
 
 Use white general website backgrounds, a compact mobile logo, and JÍJÉ red/green

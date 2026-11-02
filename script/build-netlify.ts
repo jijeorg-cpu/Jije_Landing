@@ -7,7 +7,7 @@ import { sitePages } from "../shared/site-metadata";
 await build();
 const directory = path.resolve("dist/public");
 const template = await readFile(path.join(directory, "index.html"), "utf8");
-for (const route of [...Object.keys(sitePages), "/partners"]) {
+for (const route of Object.keys(sitePages)) {
   // Netlify's pretty URLs serve about.html at /about without a SPA catch-all.
   const filename = route === "/" ? "index.html" : `${route.slice(1)}.html`;
   await writeFile(path.join(directory, filename), renderSiteHtml(template, route));

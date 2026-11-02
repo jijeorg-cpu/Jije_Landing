@@ -16,8 +16,7 @@ export function SiteFooter() {
             <span className="text-xs font-bold uppercase tracking-[.16em] text-primary">Company</span>
             <Link href="/" className="transition-colors hover:text-primary">Home</Link>
             <Link href="/about" className="transition-colors hover:text-primary">About JÍJÉ</Link>
-            <Link href="/partnerships" className="transition-colors hover:text-primary">Partnerships</Link>
-            <Link href="/contact" className="transition-colors hover:text-primary">Contact</Link>
+            <Link href="/contact" className="transition-colors hover:text-primary">Contact &amp; Partnerships</Link>
           </nav>
           <nav aria-label="Businesses" className="flex flex-col gap-3 text-sm font-medium text-foreground/70">
             <span className="text-xs font-bold uppercase tracking-[.16em] text-primary">Businesses</span>

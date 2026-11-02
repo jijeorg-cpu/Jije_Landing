@@ -55,6 +55,10 @@ export function siteSitemap() {
 }
 
 export function registerSiteSeo(app: Express) {
+  app.get(["/partners", "/partnerships"], (req, res) => {
+    const query = req.originalUrl.includes("?") ? req.originalUrl.slice(req.originalUrl.indexOf("?")) : "";
+    res.redirect(301, `/contact${query}`);
+  });
   app.get("/robots.txt", (_req, res) => {
     res.type("text/plain").send(siteRobots());
   });

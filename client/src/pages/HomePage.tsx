@@ -75,7 +75,7 @@ export function HomePage() {
             <p className="text-xs font-bold uppercase tracking-[.16em] text-[#ffcc33]">COME BUILD WITH US</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link href="/partnerships" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#ffcc33] px-6 font-semibold text-primary hover:bg-[#f4bd20]">Explore Partnerships <ArrowRight size={17} /></Link>
+            <Link href="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#ffcc33] px-6 font-semibold text-primary hover:bg-[#f4bd20]">Explore Partnerships <ArrowRight size={17} /></Link>
             <Link href="/marketplace#pilot" id="pilot" className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/35 px-6 font-semibold text-white hover:bg-white/10">Join the Pilot</Link>
           </div>
         </div>

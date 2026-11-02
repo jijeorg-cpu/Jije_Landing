@@ -56,12 +56,12 @@ try {
   const address = server.address();
   assert.ok(address && typeof address !== "string");
   const origin = `http://127.0.0.1:${address.port}`;
-  for (const route of [...Object.keys(sitePages), "/partners"]) {
+  for (const route of [...Object.keys(sitePages), "/partners", "/partnerships"]) {
     const response = await fetch(origin + route);
     assert.equal(response.status, 200, `Direct route ${route}`);
     const html = await response.text();
     const meta = getSiteMetadata(route);
-    assert.ok(html.includes(`<title>${meta.title}</title>`), `Initial HTML title ${route}`);
+    assert.ok(html.includes(`<title>${meta.title.replaceAll("&", "&amp;")}</title>`), `Initial HTML title ${route}`);
     assert.ok(html.includes(`rel="canonical" href="${SITE_ORIGIN}${meta.canonicalPath}"`), `Canonical ${route}`);
     assert.equal((html.match(/property="og:title"/g) ?? []).length, 1);
     assert.equal((html.match(/name="description"/g) ?? []).length, 1);
@@ -69,6 +69,11 @@ try {
     assert.ok(html.includes('<noscript>'), "Crawlable no-JavaScript navigation");
   }
   const missing = await fetch(origin + "/this-page-does-not-exist");
+  for (const legacy of ["/partners", "/partnerships"]) {
+    const redirect = await fetch(origin + legacy + "?source=legacy", { redirect: "manual" });
+    assert.equal(redirect.status, 301);
+    assert.equal(redirect.headers.get("location"), "/contact?source=legacy");
+  }
   assert.equal(missing.status, 404);
   assert.ok((await missing.text()).includes('content="noindex, follow"'));
   assert.equal((await fetch(origin + "/api/not-an-endpoint")).status, 404);
@@ -165,7 +170,8 @@ try {
     };
     const navigate = async (route: string) => {
       await command("Page.navigate", { url: origin + route });
-      await waitFor(`document.readyState !== 'loading' && !!document.querySelector('h1') && location.pathname === ${JSON.stringify(route)}`);
+      const destination = ["/partners", "/partnerships"].includes(route) ? "/contact" : route;
+      await waitFor(`document.readyState !== 'loading' && !!document.querySelector('h1') && location.pathname === ${JSON.stringify(destination)}`);
     };
     await command("Runtime.enable");
     await command("Page.enable");
@@ -232,7 +238,10 @@ try {
     }
     assert.equal(await evaluate("document.querySelectorAll('article').length"), 3, "Three consolidated Intelligence groups");
     await evaluate(`Array.from(document.querySelectorAll('a')).find(a => a.textContent.includes('Explore a Partnership')).click()`);
-    await waitFor(`location.pathname === '/partnerships' && !!document.querySelector('h1')`);
+    await waitFor(`location.pathname === '/contact' && !!document.querySelector('h1')`);
+    assert.ok(await evaluate(`document.body.textContent.includes('General & Partnership Inquiries')`));
+    assert.ok(await evaluate(`!!document.querySelector('a[href="/vendors"]') && !!document.querySelector('a[href="/drivers"]') && !!document.querySelector('a[href="https://tally.so/r/rjKA6p"]')`), "All three contact paths remain available");
+    assert.equal(await evaluate(`document.querySelectorAll('nav[aria-label="Main navigation"] a[href="/contact"]').length`), 1, "One desktop Contact & Partnerships navigation entry");
     console.log("PASS: every discovered internal link, PDF and anchor; consolidated Intelligence concepts and working partnership CTA.");
     const mission = "To preserve, connect and advance African and Afro-Caribbean food culture by building the digital and intelligence infrastructure that strengthens cultural preservation, expands access to its foods, knowledge and traditions, and makes them more understandable to technology.";
     await navigate("/about");

@@ -114,7 +114,7 @@ export function IntelligencePage() {
               <h2 className="mt-4 max-w-2xl font-display text-3xl font-semibold tracking-[-.04em] text-primary-foreground md:text-5xl">Help shape what comes next.</h2>
               <p className="mt-4 max-w-2xl leading-7 text-primary-foreground/75">Working in food, research, culture, or technology? Let’s talk.</p>
             </div>
-            <Link href="/partnerships" className="inline-flex min-h-12 items-center justify-center gap-3 self-start rounded-full bg-[#ffcc33] px-6 font-semibold text-primary transition-transform hover:-translate-y-0.5 md:self-end">Explore a Partnership <ArrowRight size={17} /></Link>
+            <Link href="/contact" className="inline-flex min-h-12 items-center justify-center gap-3 self-start rounded-full bg-[#ffcc33] px-6 font-semibold text-primary transition-transform hover:-translate-y-0.5 md:self-end">Explore a Partnership <ArrowRight size={17} /></Link>
           </div>
         </div>
       </section>
