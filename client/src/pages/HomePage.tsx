@@ -2,6 +2,7 @@ import { ArrowRight, ArrowUpRight, Layers3, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { SiteFooter } from "@/components/SiteFooter";
+import homeBrandPattern from "@/assets/home-brand-pattern.jpg";
 
 export function HomePage() {
   return (
@@ -27,7 +28,7 @@ export function HomePage() {
           </div>
           <div className="relative mx-auto w-full max-w-[590px]">
             <div className="relative aspect-[.92] overflow-hidden rounded-t-[48%] rounded-b-[2rem] bg-white shadow-[0_30px_80px_rgba(26,77,46,.12)]">
-              <img src="/attached_assets/jije_jollof.JPEG" alt="A shared platter of jollof rice and accompaniments" className="h-full w-full object-cover" />
+              <img src={homeBrandPattern} alt="Jíjé green food-pattern artwork with the Jíjé logo" className="h-full w-full object-cover object-bottom" />
             </div>
           </div>
         </div>
