@@ -87,6 +87,11 @@ them to avoid duplicated navigation and content.
 **How to apply:** use “Contact & Partnerships” as the shared navigation label;
 keep old partnership addresses working through redirects rather than recreating
 a separate partnership hub.
+In its three inquiry cards, use each action title only once, on the bottom
+clickable link, rather than repeating it as a heading. Keep the cards compact.
+
+**Why:** the user explicitly requested removing the repeated titles and avoiding
+empty space after their removal.
 
 ## Approved visual simplification
 

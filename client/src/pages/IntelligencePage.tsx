@@ -16,7 +16,7 @@ const focusAreas = [
   {
     number: "01",
     title: "Cultural Knowledge",
-    description: "Food names, ingredients, regional variations, and the cultural context that connects them.",
+    description: "Food names, ingredients, regional variations, nutritional context, and the cultural context that connects them.",
     icon: Utensils,
     note: "Food · language · place",
   },
