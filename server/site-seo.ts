@@ -1,5 +1,5 @@
 import type { Express } from "express";
-import { getSiteMetadata, SITE_ORIGIN, SOCIAL_IMAGE, sitePages } from "../shared/site-metadata";
+import { getSiteMetadata, SITE_ORIGIN, SOCIAL_IMAGE, SITE_NAME, STRUCTURED_DATA_ID, serializedSiteStructuredData, sitePages } from "../shared/site-metadata";
 
 const escapeHtml = (text: string) => text.replace(/[&<>"']/g, (char) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -14,7 +14,7 @@ export function renderSiteHtml(template: string, pathname: string) {
     `<meta name="description" content="${escapeHtml(meta.description)}">`,
     `<meta name="robots" content="${meta.index ? "index, follow" : "noindex, follow"}">`,
     `<link rel="canonical" href="${escapeHtml(canonical)}">`,
-    `<meta property="og:site_name" content="JÍJÉ">`,
+    `<meta property="og:site_name" content="${SITE_NAME}">`,
     `<meta property="og:type" content="website">`,
     `<meta property="og:title" content="${escapeHtml(meta.title)}">`,
     `<meta property="og:description" content="${escapeHtml(meta.description)}">`,
@@ -29,11 +29,13 @@ export function renderSiteHtml(template: string, pathname: string) {
     `<meta name="twitter:description" content="${escapeHtml(meta.description)}">`,
     `<meta name="twitter:image" content="${SOCIAL_IMAGE}">`,
     `<meta name="twitter:image:alt" content="JÍJÉ — Rooted in Culture. Powered by Intelligence.">`,
+    `<script id="${STRUCTURED_DATA_ID}" type="application/ld+json">${serializedSiteStructuredData()}</script>`,
   ].join("\n    ");
   let html = template
     .replace(/<title>[\s\S]*?<\/title>/gi, "")
     .replace(/<meta\b[^>]*(?:name=["'](?:description|robots|twitter:[^"']+)["']|property=["']og:[^"']+["'])[^>]*>/gi, "")
     .replace(/<link\b[^>]*rel=["']canonical["'][^>]*>/gi, "")
+    .replace(new RegExp(`<script\\b[^>]*id=["']${STRUCTURED_DATA_ID}["'][^>]*>[\\s\\S]*?<\\/script>`, "gi"), "")
     .replace("</head>", `    ${tags}\n  </head>`);
   if (meta.index) {
     // A small crawlable route directory also works for visitors without JS.

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
-import { getSiteMetadata, SITE_ORIGIN, SOCIAL_IMAGE } from "@shared/site-metadata";
+import { getSiteMetadata, SITE_ORIGIN, SOCIAL_IMAGE, SITE_NAME, STRUCTURED_DATA_ID, serializedSiteStructuredData } from "@shared/site-metadata";
 
 /** One route-aware controller, shared with initial server HTML metadata. */
 export function PageMeta() {
@@ -20,7 +20,8 @@ export function PageMeta() {
     document.title = meta.title;
     setMeta("name", "description", meta.description);
     setMeta("name", "robots", meta.index ? "index, follow" : "noindex, follow");
-    setMeta("property", "og:site_name", "JÍJÉ");
+    setMeta("property", "og:site_name", SITE_NAME);
+    setMeta("property", "og:locale", "en_CA");
     setMeta("property", "og:type", "website");
     setMeta("property", "og:title", meta.title);
     setMeta("property", "og:description", meta.description);
@@ -33,6 +34,15 @@ export function PageMeta() {
     setMeta("name", "twitter:title", meta.title);
     setMeta("name", "twitter:description", meta.description);
     setMeta("name", "twitter:image", SOCIAL_IMAGE);
+    setMeta("name", "twitter:image:alt", "JÍJÉ — Rooted in Culture. Powered by Intelligence.");
+    let structuredData = document.getElementById(STRUCTURED_DATA_ID) as HTMLScriptElement | null;
+    if (!structuredData) {
+      structuredData = document.createElement("script");
+      structuredData.id = STRUCTURED_DATA_ID;
+      structuredData.type = "application/ld+json";
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = serializedSiteStructuredData();
     let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!link) {
       link = document.createElement("link");

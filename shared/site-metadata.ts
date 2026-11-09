@@ -1,6 +1,50 @@
 /** User-supplied public domain; never derive public canonicals from preview hosts. */
 export const SITE_ORIGIN = "https://jije.ca";
 export const SOCIAL_IMAGE = `${SITE_ORIGIN}/jije-social.png`;
+export const SITE_NAME = "Jíjé";
+export const STRUCTURED_DATA_ID = "jije-site-identity";
+
+// Add sameAs only for profiles whose ownership has been confirmed by Jíjé.
+export const OFFICIAL_SOCIAL_PROFILES: string[] = [];
+
+export function siteStructuredData() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_ORIGIN}/#organization`,
+        name: "Jíjé Group",
+        legalName: "Jíjé Group Inc.",
+        alternateName: ["Jíjé", "Jije", "Jije Group", "Jije Group Inc.", "JÍJÉ Group Inc."],
+        url: `${SITE_ORIGIN}/`,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_ORIGIN}/jije-icon-v2.png`,
+        },
+        brand: [
+          { "@type": "Brand", name: "Jíjé Marketplace", alternateName: "Jije Marketplace", url: `${SITE_ORIGIN}/marketplace` },
+          { "@type": "Brand", name: "Jíjé Intelligence", alternateName: "Jije Intelligence", url: `${SITE_ORIGIN}/intelligence` },
+        ],
+        ...(OFFICIAL_SOCIAL_PROFILES.length ? { sameAs: OFFICIAL_SOCIAL_PROFILES } : {}),
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_ORIGIN}/#website`,
+        name: SITE_NAME,
+        alternateName: ["Jije", "Jíjé Group", "Jije Group"],
+        url: `${SITE_ORIGIN}/`,
+        inLanguage: "en-CA",
+        publisher: { "@id": `${SITE_ORIGIN}/#organization` },
+      },
+    ],
+  };
+}
+
+/** Safe inside an HTML script block as well as with DOM textContent. */
+export function serializedSiteStructuredData() {
+  return JSON.stringify(siteStructuredData()).replace(/</g, "\\u003c");
+}
 
 export interface SiteMetadata {
   title: string;
@@ -11,24 +55,24 @@ export interface SiteMetadata {
 
 export const sitePages: Record<string, Omit<SiteMetadata, "canonicalPath" | "index">> = {
   "/": {
-    title: "JÍJÉ | Rooted in Culture. Powered by Intelligence.",
-    description: "JÍJÉ connects African and Afro-Caribbean food, cultural knowledge, commerce, and technology through JÍJÉ Marketplace and JÍJÉ Intelligence.",
+    title: "Jíjé Group | African & Afro-Caribbean Food and Culture",
+    description: "Discover Jíjé Group Inc. (Jije), the company behind Jíjé Marketplace and Jíjé Intelligence, connecting African and Afro-Caribbean food, culture and technology.",
   },
   "/about": {
-    title: "About JÍJÉ | Our Mission and Vision",
-    description: "Meet JÍJÉ Group Inc., the parent company behind JÍJÉ Marketplace and the developing JÍJÉ Intelligence initiative. Explore our mission, vision, and approach.",
+    title: "About Jíjé Group Inc. | Our Mission, Vision and Culture",
+    description: "Learn about Jíjé Group Inc., our mission and vision, and how Jíjé Marketplace and Jíjé Intelligence connect African and Afro-Caribbean food culture and knowledge.",
   },
   "/marketplace": {
-    title: "JÍJÉ Marketplace | Your Culture, Delivered.",
-    description: "JÍJÉ Marketplace is preparing its Toronto/GTA pilot for African and Afro-Caribbean groceries, meals, and food businesses. Join the waitlist or register vendor and delivery interest.",
+    title: "Jíjé Marketplace | African & Afro-Caribbean Food Pilot",
+    description: "Explore Jíjé Marketplace's planned Toronto/GTA pilot for African and Afro-Caribbean food and groceries. Join the waitlist or register business or delivery interest.",
   },
   "/intelligence": {
-    title: "JÍJÉ Intelligence | Cultural Knowledge. Real-World Intelligence.",
-    description: "Explore JÍJÉ Intelligence, a developing initiative focused on African and Afro-Caribbean food knowledge, culturally aware discovery, research, and future technology.",
+    title: "Jíjé Intelligence | Food Knowledge, Culture and Research",
+    description: "Explore Jíjé Intelligence, a developing initiative for African and Afro-Caribbean food knowledge, nutritional context, culturally aware discovery and research.",
   },
   "/contact": {
-    title: "Contact & Partnerships | JÍJÉ",
-    description: "Connect with JÍJÉ for community, research, technology, and general partnership inquiries, or register vendor and delivery interest in the Toronto/GTA pilot.",
+    title: "Contact Jíjé Group | Partnerships and General Inquiries",
+    description: "Contact Jíjé Group for community, research, technology and partnership inquiries, or find business and delivery interest forms for the Toronto/GTA Marketplace pilot.",
   },
   "/vendors": {
     title: "Grow Your Business with JÍJÉ | Vendor Pilot",
