@@ -5,7 +5,12 @@ export const SITE_NAME = "Jíjé";
 export const STRUCTURED_DATA_ID = "jije-site-identity";
 
 // Add sameAs only for profiles whose ownership has been confirmed by Jíjé.
-export const OFFICIAL_SOCIAL_PROFILES: string[] = [];
+export const OFFICIAL_SOCIAL_PROFILES: string[] = [
+  "https://www.linkedin.com/company/jije/",
+  "https://x.com/Jijeservices",
+  "https://www.facebook.com/p/J%C3%ADj%C3%A9-61593073857880/",
+  "https://www.instagram.com/jijeservices/",
+];
 
 export function siteStructuredData() {
   return {

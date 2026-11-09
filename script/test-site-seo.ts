@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { getSiteMetadata, SITE_ORIGIN, sitePages, siteStructuredData, STRUCTURED_DATA_ID } from "../shared/site-metadata";
+import { getSiteMetadata, OFFICIAL_SOCIAL_PROFILES, SITE_ORIGIN, sitePages, siteStructuredData, STRUCTURED_DATA_ID } from "../shared/site-metadata";
 import { renderSiteHtml, siteRobots, siteSitemap } from "../server/site-seo";
 
 // Run after build:netlify. No database, email, browser or external service needed.
@@ -38,6 +38,14 @@ assert(graph[0].alternateName.includes("Jije Group"));
 assert.equal(graph[1]["@type"], "WebSite");
 assert.equal(graph[1].publisher?.["@id"], graph[0]["@id"]);
 assert.equal(graph[0].url, `${SITE_ORIGIN}/`);
+assert.deepEqual(graph[0].sameAs, OFFICIAL_SOCIAL_PROFILES);
+assert.equal(OFFICIAL_SOCIAL_PROFILES.length, 4);
+for (const profile of OFFICIAL_SOCIAL_PROFILES) {
+  const url = new URL(profile);
+  assert.equal(url.protocol, "https:");
+  assert.equal(url.search, "", "Profile identity URLs must not include sharing/tracking parameters.");
+  assert(!url.pathname.startsWith("/share/"), "Use a resolved profile URL rather than a sharing link.");
+}
 const sitemap = siteSitemap();
 assert.equal(await readFile("dist/public/sitemap.xml", "utf8"), sitemap);
 const locations = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);

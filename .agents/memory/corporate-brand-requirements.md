@@ -75,6 +75,18 @@ hero slogan and colour treatment, not the retained Marketplace structure.
 version only for that photographic section, and leave approved corporate content,
 navigation/footer, recruitment cards and form/backend functionality untouched.
 
+## Official social identity
+
+The owner confirmed Jíjé's official social presence on LinkedIn (company/jije),
+Facebook (page ID 61593073857880), Instagram and X (jijeservices).
+
+**Why:** these identities were supplied directly by the owner for SEO entity
+verification; similarly named accounts must not be substituted based on search.
+
+**How to apply:** use the confirmed profiles for organization identity links.
+Remove tracking parameters and resolve sharing links to their canonical page
+addresses; do not treat automated login/rate-limit blocks as proof of non-ownership.
+
 ## Unified contact and partnership entry
 
 Keep Contact and Partnerships consolidated into one entry, not two parallel

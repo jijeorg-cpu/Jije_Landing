@@ -45,8 +45,19 @@ Added a linked Schema.org Organization/WebSite JSON-LD graph:
 - No fabricated addresses, ratings, launch dates or functional site-search action.
 
 The identity graph is present in initial HTML for crawlers and maintained during
-client-side navigation, without duplicate script blocks. Social profiles are
-included only after their exact URLs are confirmed by the owner.
+client-side navigation, without duplicate script blocks. The owner supplied
+these official profiles, included in the Organization's `sameAs` array:
+
+- https://www.linkedin.com/company/jije/
+- https://x.com/Jijeservices
+- https://www.facebook.com/p/J%C3%ADj%C3%A9-61593073857880/
+- https://www.instagram.com/jijeservices/
+
+Removed sharing/tracking parameters. Facebook's supplied sharing link resolved
+to its canonical profile URL, and X returned the canonical capitalization
+shown above. LinkedIn blocked automated access (403); Instagram redirected to
+login/rate limiting (429). Ownership of these two profiles is owner-confirmed,
+not independently authenticated through those platforms.
 
 Open Graph and Twitter metadata continue to use page-specific titles,
 descriptions and canonical URLs, with the existing 1200 × 630 public sharing
